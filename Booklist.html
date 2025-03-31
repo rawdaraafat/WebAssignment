@@ -7,14 +7,32 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4e1c1;
             margin: 0;
             padding: 0;
             display: flex;
         }
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            color: black;
+            height: 100vh;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .sidebar ul li:hover {
+            background-color: #654321;
+        }
         .container {
-            width: 75%;
-            margin: 20px;
+            flex: 1;
             padding: 20px;
         }
         .header {
@@ -23,13 +41,20 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
+        .book-section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
         .book-shelf {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             background: url('shelf.png') repeat-x;
             padding: 15px 0;
-            margin-bottom: 20px;
             border-bottom: 5px solid #8B5A2B;
         }
         .book {
@@ -42,21 +67,6 @@
             height: 150px;
             border-radius: 5px;
         }
-        .search-section {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        .search-icon {
-            width: 20px;
-            height: 20px;
-            margin-left: 5px;
-            cursor: pointer;
-        }
         .book-title {
             font-weight: bold;
         }
@@ -64,91 +74,67 @@
             font-size: 14px;
             color: gray;
         }
-        
-        /* Sidebar Styling */
-        .sidebar {
-            width: 20%;
-            padding: 20px;
-            position: fixed;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            overflow-y: auto;
-        }
-        .sidebar h3 {
-            font-size: 18px;
-            font-weight: bold;
-            border-bottom: 2px solid brown;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            padding: 5px 0;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .sidebar ul li:hover {
-            color: darkred;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <h2>Categories</h2>
+        <ul>
+            <li>Fantasy</li>
+            <li>Mystery/Thriller</li>
+            <li>Science Fiction</li>
+            <li>Historical</li>
+        </ul>
+    </div>
     <div class="container">
         <div class="header">The Readers' Planet - Book List</div>
         
-        <div class="search-section">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search by Title or Author">
-                <img src="search.png" alt="Search" class="search-icon">
+        <div class="book-section">
+            <div class="section-title">Fantasy</div>
+            <div class="book-shelf">
+                <div class="book">
+                    <img src="harry1.jpg" alt="Harry Potter 1">
+                    <p class="book-title">Harry Potter and the Sorcerer’s Stone</p>
+                    <p class="book-author">J.K. Rowling</p>
+                </div>
+                <div class="book">
+                    <img src="harry2.jpg" alt="Harry Potter 2">
+                    <p class="book-title">Harry Potter and the Chamber of Secrets</p>
+                    <p class="book-author">J.K. Rowling</p>
+                </div>
+                <div class="book">
+                    <img src="harry3.jpg" alt="Harry Potter 3">
+                    <p class="book-title">Harry Potter and the Prisoner of Azkaban</p>
+                    <p class="book-author">J.K. Rowling</p>
+                </div>
+                <div class="book">
+                    <img src="harry4.jpg" alt="Harry Potter 4">
+                    <p class="book-title">Harry Potter and the Goblet of Fire</p>
+                    <p class="book-author">J.K. Rowling</p>
+                </div>
             </div>
         </div>
-        
-        <div class="book-shelf">
-            <div class="book">
-                <img src="harry1.jpg" alt="Harry Potter 1">
-                <p class="book-title">Harry Potter and the Sorcerer’s Stone</p>
-                <p class="book-author">J.K. Rowling</p>
-            </div>
-            <div class="book">
-                <img src="harry2.jpg" alt="Harry Potter 2">
-                <p class="book-title">Harry Potter and the Chamber of Secrets</p>
-                <p class="book-author">J.K. Rowling</p>
-            </div>
-            <div class="book">
-                <img src="harry3.jpg" alt="Harry Potter 3">
-                <p class="book-title">Harry Potter and the Prisoner of Azkaban</p>
-                <p class="book-author">J.K. Rowling</p>
-            </div>
-            <div class="book">
-                <img src="harry4.jpg" alt="Harry Potter 4">
-                <p class="book-title">Harry Potter and the Goblet of Fire</p>
-                <p class="book-author">J.K. Rowling</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="sidebar">
-        <h3>Categories</h3>
-        <ul>
-            <li>Anthology</li>
-            <li>Autobiography</li>
-            <li>Biography</li>
-            <li>Comics</li>
-            <li>Fantasy</li>
-            <li>Fiction</li>
-            <li>History</li>
-            <li>Philosophy</li>
-            <li>Psychology</li>
-            <li>Romance</li>
-            <li>Science</li>
-            <li>Technology</li>
-            <li>Thriller</li>
-        </ul>
+        <div class="book-section">
+            <div class="section-title">Mystery/Thriller</div>
+            <div class="book-shelf">
+                <div class="book">
+                    <img src="inmydreamiholdaknife.jpg" alt="In My Dream I Hold a Knife">
+                    <p class="book-title">In My Dream I Hold a Knife</p>
+                    <p class="book-author">Ashley Winstead</p>
+                </div>
+                <div class="book">
+                    <img src="listenforthelie.jpg" alt="listen for the lie">
+                    <p class="book-title">Listen for the Lie</p>
+                    <p class="book-author">Amy Tintera</p>
+                </div>
+                <div class="book">
+                    <img src="firstliewins.jpg" alt="First Lie Wins">
+                    <p class="book-title">First Lie Wins</p>
+                    <p class="book-author">Ashley Elston</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
