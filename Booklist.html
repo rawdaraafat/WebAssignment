@@ -7,29 +7,33 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4e1c1;
             margin: 0;
             padding: 0;
             display: flex;
         }
         .sidebar {
             width: 250px;
-            padding: 20px;
             color: black;
+            padding: 20px;
             height: 100vh;
         }
         .sidebar h2 {
             text-align: center;
         }
         .sidebar ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
         .sidebar ul li {
             padding: 10px;
             cursor: pointer;
+            border-bottom: 1px solid white;
         }
-        .sidebar ul li:hover {
-            background-color: #654321;
+        .sidebar ul li a {
+            color: black;
+            text-decoration: none;
+            display: block;
         }
         .container {
             flex: 1;
@@ -41,13 +45,27 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
-        .book-section {
-            margin-bottom: 30px;
+        .search-section {
+            text-align: right;
+            margin-bottom: 20px;
         }
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
+        .search-section input {
+            padding: 5px;
+            margin: 5px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .book-section {
+            margin-bottom: 20px;
         }
         .book-shelf {
             display: flex;
@@ -82,15 +100,21 @@
         <ul>
             <li>Fantasy</li>
             <li>Mystery/Thriller</li>
-            <li>Science Fiction</li>
-            <li>Historical</li>
+            <li><a href="favoutitePageDemo.html">Favorite Books</a></li>
         </ul>
     </div>
     <div class="container">
         <div class="header">The Readers' Planet - Book List</div>
         
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by Title or Author">
+                <img src="search.png" alt="Search" class="search-icon">
+            </div>
+        </div>
+
         <div class="book-section">
-            <div class="section-title">Fantasy</div>
+            <h3>Fantasy</h3>
             <div class="book-shelf">
                 <div class="book">
                     <img src="harry1.jpg" alt="Harry Potter 1">
@@ -114,7 +138,6 @@
                 </div>
             </div>
         </div>
-
         <div class="book-section">
             <div class="section-title">Mystery/Thriller</div>
             <div class="book-shelf">
