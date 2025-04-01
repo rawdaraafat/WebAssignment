@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> 
+    <title>Books Library</title>
+    <style>
+        body {
+            background-color: #F5DEB3;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navigation {
+            background-color: #8B4513;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navigation a {
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #DEB887;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+        .all-books {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .book {
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            margin: 15px;
+            background: #FAEBD7;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .book img {
+            width: 100px;
+            height: auto;
+        }
+        h2 {
+            border-bottom: 2px solid #8B4513;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <div class="logo">FCAI LIBRARY</div>
+            <ul>
+                <li><a href="books-library.html">Home</a></li>
+                <li><a href="books.html" target="_blank">My Books</a></li>
+                <li><a href="file:///C:/Users/user/Documents/Program%20Languanges%20Learning/CSS%20Projects/css/categories.html">Categories</a></li>
+                <li>
+                    <input type="text" placeholder="Search for books...">
+                    <button type="submit"><img src="search-icon.png" alt="Search"></button>
+                </li>
+                <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
+                <li><a href="login.html" class="login-btn">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <aside class="sidebar">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="#">Fantasy</a></li>
+            <li><a href="#">Mystery/Thriller</a></li>
+            <li><a href="#">Science Fiction</a></li>
+            <li><a href="#">Romance</a></li>
+            <li><a href="#">Non-Fiction</a></li>
+            <li><a href="#">Historical Fiction</a></li>
+            <li><a href="#">Favorite Books</a></li>
+            <li><a href="#">Borrowed Books</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </aside>
+    
+    <main class="main all-books">
+        <section>
+            <h2>Fantasy</h2>
+            <div class="book">
+                <img src="https://github.com/rawdaraafat/WebAssignment/blob/main/harry1.jpg" alt="Harry Potter 1">
+                <p><strong>Harry Potter and the Sorcerer’s Stone</strong></p>
+                <p>J.K. Rowling</p>
+            </div>
+            <div class="book">
+                <img src="https://github.com/rawdaraafat/WebAssignment/blob/main/harry2.jpg" alt="Harry Potter 2">
+                <p><strong>Harry Potter and the Chamber of Secrets</strong></p>
+                <p>J.K. Rowling</p>
+            </div>
+            <div class="book">
+                <img src="https://github.com/rawdaraafat/WebAssignment/blob/main/harry3.jpg" alt="Harry Potter 3">
+                <p><strong>Harry Potter and the prisoner of Azkaban</strong></p>
+                <p>J.K. Rowling</p>
+            </div><div class="book">
+                <img src="https://github.com/rawdaraafat/WebAssignment/blob/main/harry4.jpg" alt="Harry Potter 4">
+                <p><strong>Harry Potter and the Golbet of Fire</strong></p>
+                <p>J.K. Rowling</p>
+            </div><div class="book">
+                <img src="https://github.com/rawdaraafat/WebAssignment/blob/main/inmydreamiholdaknife.jpg" alt="In My Dream I Hold a Knife">
+                <p><strong>In My Dream I Hold a Knife</strong></p>
+                <p>Rachel Howzell Hall</p>
+            </div>
+        </div><div class="book">
+            <img src="https://github.com/rawdaraafat/WebAssignment/blob/main/listenforthelie.jpg" alt="Listen for the Lie">
+            <p><strong>Listen for the Lie</strong></p>
+            <p>Jessica Treadway</p>
+        </div>
+        </section>
+    </main>
+    
+    <footer>
+        <h2>Around The Project</h2>
+        <p>Our team is developing a modern digital library that provides electronic access to books with smart recommendations and digital borrowing options.</p>
+    </footer>
+</body>
+</html>
