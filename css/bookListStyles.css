@@ -1,0 +1,133 @@
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: #f5efeb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.top-bar {
+    display: flex;
+    background-color: #2f4156;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+}
+
+.top-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
+}
+.search-container {
+    display: flex;
+    text-align: right;
+    justify-content: space-around;
+    position : fixed;
+    right: 3%;
+    height: 10%;
+    align-items: center;
+    z-index: 3;
+}
+
+.search-container input {
+    padding: 5%;
+    margin: 1%;
+    border-radius: 10px;
+    height: 10%;
+}
+.search-icon {
+    background-color: #c8d9e6;
+    padding: 3%;
+    width: 20px;
+    height: 20px;
+    margin-left: 1%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sidebar {
+    background-color: #567cbd;
+    width: 15%;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    white-space: normal;
+    top: 10%;
+    z-index: 1;
+}
+.sidebar h2 {
+    text-align: center;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+
+.container {
+    flex: 1;
+    justify-content: vertical;
+    margin-top: 70px;
+    margin-left : 17%;
+}
+.book-section {
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.section-title {
+    background-color: #c8d9e6;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 0;
+    z-index: 2;
+}
+.book-shelf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 15px 0;
+    border-bottom:10px solid #2f4156;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    overflow-x: auto;
+    z-index: 1;
+}
+.book {
+    width: 120px;
+    text-align: center;
+    margin: 10px;
+}
+.book img {
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
+}
+.book-title {
+    font-weight: bold;
+    width: 140px;
+}
+.book-author {
+    font-size: 14px;
+    color: gray;
+}

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book List - The Readers' Planet</title>
-    <style>
+    <link rel = "stylesheet" href = "css/bookListStyles.css"> 
+    <!--<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4e1c1;
@@ -92,14 +93,24 @@
             font-size: 14px;
             color: gray;
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    <div class="sidebar">
+    <header class="top-bar">
+        <a href="Home.html">
+            <h1 class="header">The Readers' Planet - Book List</h1>
+        </a>
+        <section class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by Title or Author">
+            <img src="search.png" alt="Search" class="search-icon">
+        </section>
+    </header>
+    
+    <nav class="sidebar">
         <h2>Categories</h2>
         <ul>
             <li>Fantasy</li>
-            <li>Mystery/Thriller</li>
+            <li>Mystery / Thriller</li>
             <li>Science Fiction</li>
             <li>Romance</li>
             <li>Non-Fiction</li>
@@ -108,19 +119,12 @@
             <li>Borrowed books</li>
             <li><a href="about.html">About Us</a></li>
         </ul>
-    </div>
-    <div class="container">
-        <div class="header">The Readers' Planet - Book List</div>
-        
-        <div class="search-section">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search by Title or Author">
-                <img src="search.png" alt="Search" class="search-icon">
-            </div>
-        </div>
+    </nav>
 
-        <div class="book-section">
-            <h3>Fantasy</h3>
+    <main class="container">     
+        <!--Fantasy Section--> 
+        <section class="book-section">
+            <h3 class="section-title">Fantasy</h3>
               <div class="book-shelf">
                 <div class="book">
                   <a href="book detailed demo.html">
@@ -145,9 +149,10 @@
                     <p class="book-author">J.K. Rowling</p>
                 </div>
             </div>
-        </div>
-        <div class="book-section">
-            <div class="section-title">Mystery/Thriller</div>
+        </section>
+        <!--Mystery / Thriller Section--> 
+        <section class="book-section">
+            <h3 class="section-title">Mystery / Thriller</h3>
             <div class="book-shelf">
                 <div class="book">
                     <img src="inmydreamiholdaknife.jpg" alt="In My Dream I Hold a Knife">
@@ -165,7 +170,7 @@
                     <p class="book-author">Ashley Elston</p>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>
