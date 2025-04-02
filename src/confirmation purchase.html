@@ -3,41 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Purchase</title>
-    <link rel="stylesheet" href="confirmation.css">
+    <title>Books Library - Confirm Purchase</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    
-    <nav>
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="Booklist.html">Books</a></li>
-        </ul>
-    </nav>
+<nav class="navigation">
+    <p id="logo">FCAI LIBRARY</p>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="favoutitePageDemo.html">My Books</a></li>
+        <li><a href="Booklist.html">Books</a></li>
+        <!--                <li>-->
+        <!--                    <input type="text" placeholder="Search for books...">-->
+        <!--                    <button type="submit"><img src="search-icon.png" alt="Search"></button>-->
+        <!--                </li>-->
+        <li><a href="SignUp.html">Sign Up</a></li>
+        <li><a href="LogIn.html">Log In</a></li>
+        <li><a href="user profile.html">
+            <img src="boy reads book .jpg" alt="Profile" style="width:40px; height:40px; border-radius:70%;">
+        </a></li>
+    </ul>
+</nav>
+</header>
 
-    <div class="container">
-        <div class="confirmation-box">
-            <h2>Confirm Your Purchase</h2>
-            <div class="book-info">
-                <img src="harry1.jpg" alt="Book Cover">
-                <div class="details">
-                    <h3>Harry Potter and the Sorcerer’s Stone</h3>
-                    <p>Author: J.K. Rowling</p>
-                    <p class="price">Price: $25.99</p>
-                    <label for="payment">Choose Payment Method:</label>
-                    <select id="payment">
-                        <option value="credit-card">Credit Card</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="cash">Cash on Delivery</option>
-                    </select>
-                </div>
+<aside class="sidebar">
+    <h3>Categories</h3><br>
+    <ul>
+        <li><a href="#">Fantasy</a></li>
+        <li><a href="#">Mystery/Thriller</a></li>
+        <li><a href="#">Science Fiction</a></li>
+        <li><a href="#">Romance</a></li>
+        <li><a href="#">Non-Fiction</a></li>
+        <li><a href="#">Historical Fiction</a></li>
+        <li><a href="favoutitePageDemo.html">Favorite Books</a></li>
+        <li><a href="#">Borrowed Books</a></li>
+        <li><a href="about.html">About Us</a></li>
+    </ul>
+</aside>
+<div class="container">
+    <div class="confirmation-box">
+        <h2>Confirm Your Purchase</h2>
+        <div class="book-info">
+            <img src="harry1.jpg" alt="Book Cover">
+            <div class="details">
+                <h3>Harry Potter and the Sorcerer’s Stone</h3>
+                <p>Author: J.K. Rowling</p>
+                <p class="price">Price: $25.99</p>
+                <label for="payment">Choose Payment Method:</label>
+                <select id="payment">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="cash">Cash on Delivery</option>
+                </select>
             </div>
-            <a href="#">
-                <button class="confirm-btn">Confirm Purchase</button>
-            </a>
         </div>
+        <a href="#">
+            <button class="confirm-btn">Confirm Purchase</button>
+        </a>
     </div>
-
+</div>
+<div class="footer">
+    digital library that provides electronic access to books with smart recommendations and digital borrowing options.<br>
+    Contact us :
+    <a href="#" style="font-size: 12px ;font-weight: bold" >📧 E-mail</a>
+    <a href="#" style="font-size: 12px ;font-weight: bold">📘 Facebook</a>
+</div>
 </body>
 </html>

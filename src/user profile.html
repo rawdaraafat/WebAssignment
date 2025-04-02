@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:style="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books Library - Login</title>
+    <title>Books Library - User Profile</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Navigation Bar -->
 <nav class="navigation">
     <p id="logo">FCAI LIBRARY</p>
     <ul>
@@ -24,7 +25,6 @@
         </a></li>
     </ul>
 </nav>
-</header>
 
 <aside class="sidebar">
     <h3>Categories</h3><br>
@@ -41,32 +41,39 @@
     </ul>
 </aside>
 
-<div class="container">
-    <div class="book-section">
+<div class="profile-card">
+    <img src="boy reads book .jpg" alt="Profile Picture">
+        <h3>John Doe</h3>
+        <p><strong>Age:</strong> 28</p>
+        <p><strong>Location:</strong> New York, USA</p>
+        <p><strong>Hobbies:</strong> Coding, Gaming, Traveling</p>
+        <p><strong>Favourite book ever:</strong> Harry Potter and the Philosopher’s Stone </p>
+        <p><strong>Profile password:</strong> ******** </p>
+        <p><strong>Card password:</strong> ******** </p>
+        <p><strong>Card number:</strong> 4001 1253 **** ****</p>
 
-    <div class="main-content">
-            <h2>Login</h2>
-            <p>Welcome back! Please login to continue.</p>
-
-            <form>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email">
-
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required placeholder="Enter your password">
-
-                <button type="submit">Login</button>
-            </form>
-
-            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
-        </div>
-    </div>
+        <p><strong>Borrowed Books :</strong></p>
+        <ul style="list-style: none">
+            <li>Harry Potter and the Philosopher’s Stone</li>
+            <li>Alise in borderlands</li>
+            <li>Caraval</li>
+        </ul>
+        <p><strong>Favourite Books :</strong></p>
+        <ul style="list-style: none">
+            <li>Harry Potter and the Philosopher’s Stone</li>
+            <li>Alise in borderlands</li>
+        </ul>
+        <p><strong>Books i didn't like:</strong></p>
+        <ul style="list-style: none">
+            <li>Caraval</li>
+        </ul>
+    <button>Update Profile</button>
 </div>
+</body>
 <div class="footer">
     digital library that provides electronic access to books with smart recommendations and digital borrowing options.<br>
     Contact us :
     <a href="#" style="font-size: 12px ;font-weight: bold" >📧 E-mail</a>
     <a href="#" style="font-size: 12px ;font-weight: bold">📘 Facebook</a>
 </div>
-</body>
 </html>
