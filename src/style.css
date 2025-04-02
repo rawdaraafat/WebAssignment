@@ -185,6 +185,8 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    display: block;
+    margin-bottom: 50px;
 }
 
 button:hover {
@@ -229,10 +231,10 @@ button:hover {
 }
 
 .book {
-    width: 200px;
-    height: 250px;
+    width: 175px;
+    height: 200px;
     text-align: center;
-    margin: 10px;
+    margin: 50px;
 }
 
 .book img {
@@ -306,3 +308,4 @@ button:hover {
     font-weight: bold;
     font-size: 12px;
 }
+    
