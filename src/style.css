@@ -179,21 +179,6 @@ input {
     border-radius: 5px;
 }
 
-button {
-    width: 80%;
-    padding: 10px;
-    background-color:  #567c8d;
-    color: #2F4156;
-    border-radius: 5px;
-    font-size: 15px;
-    display: block;
-    margin: 0 auto 70px;
-}
-
-button:hover {
-    background-color: #FAEBD7;
-}
-
 .footer {
     background-color: #567c8d;
     text-align: center;
@@ -206,7 +191,7 @@ button:hover {
     width: 100%;
 }
 
-.container {
+.container{
     justify-content: vertical;
     margin-top:50px;
     margin-left : 15%;
@@ -329,6 +314,7 @@ button:hover {
     top: 60px;
     margin-bottom: 130px;
 }
+
 .profile-card img {
     width: 100px;
     height: 100px;
@@ -340,4 +326,82 @@ button:hover {
     color: #2F4156;
     font-size: 18px;
     margin: 5px 0;
+}
+
+.confirmation-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+}
+
+.book-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #1a2a44;
+}
+
+.book-info img {
+    width: 150px;
+    height: 200px;
+    margin-right: 15px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 80%;
+    display: block;
+    margin: 0 auto 70px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #1a2a44;
+    border-radius: 5px;
+    background-color: white;
+    color: #1a2a44;
+    cursor: pointer;
+}
+
+select option {
+    padding: 10px;
+    background-color: white;
+    color: #1a2a44;
+}
+
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a2a44;
+    margin-bottom: 15px;
+}
+
+.return {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.return:hover {
+    background-color: blue;
 }
