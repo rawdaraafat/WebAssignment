@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Library</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3ac92bd72e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
+    <nav class="navigation">
+        <p id="logo">FCAI LIBRARY</p>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="favoutitePageDemo.html">My Books</a></li>
+            <li><a href="Booklist.html">Books</a></li>
+            <!--                <li>-->
+            <!--                    <input type="text" placeholder="Search for books...">-->
+            <!--                    <button type="submit"><img src="search-icon.png" alt="Search"></button>-->
+            <!--                </li>-->
+            <li><a href="SignUp.html">Sign Up</a></li>
+            <li><a href="LogIn.html">Log In</a></li>
+            <li class="profile"><a href="user profile.html">
+                <img src="boy reads book .jpg" alt="Profile" style="width:40px; height:40px; border-radius:70%;">
+            </a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="adminDashboard">
         <h2>Admin Dashboard</h2>
         <div class="button-group">
             <button>Add New Book</button>
@@ -18,6 +37,17 @@
             </a>
             
         </div>
+        <div class="visits">
+            <i class="fa-solid fa-users"></i>
+            <h3>Number of visits in the past week</h3>
+            <p>17</p>
+        </div>
+    </div>
+    <div class="footer">
+        digital library that provides electronic access to books with smart recommendations and digital borrowing options.<br>
+        Contact us :
+        <a href="#" style="font-size: 12px ;font-weight: bold" >📧 E-mail</a>
+        <a href="#" style="font-size: 12px ;font-weight: bold">📘 Facebook</a>
     </div>
 </body>
 </html>

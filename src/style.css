@@ -8,8 +8,11 @@ body {
 #logo{
     color: #c8d9e6;
     position: fixed;
-    left: 10px;
+    left: 1%;
     top: 0;
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0.7%;
 }
 
 .sidebar {
@@ -17,17 +20,20 @@ body {
     min-width: 90px;
     color: #2F4156;
     background-color: #567c8d;
-    padding: 20px;
+    padding: 1%;
+    padding-top: 2%;
     height: 100vh;
     position: fixed;
     left: 0;
-    top: 40px;
+    top: 7%;
+    
 }
 
 .sidebar h3 {
     position: fixed;
-    left: 5px;
-    top: 40px;
+    font-size: 22px;
+    left: 1%;
+    top: 7%;
 }
 
 .sidebar ul {
@@ -38,9 +44,9 @@ body {
 }
 
 .sidebar ul li {
-    padding: 5px;
+    padding: 0.5%;
     cursor: pointer;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #F5EFEB;
     text-align: left;
     left: 0;
 }
@@ -49,7 +55,7 @@ body {
     display: block;
     text-decoration: none;
     color:  #2F4156;
-    font-size: 12px;
+    font-size: 16px;
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -85,16 +91,17 @@ body {
 
 .navigation {
     background-color: #2F4156;
-    padding: 10px 10px;
+    padding: 1% 1%;
     color: #c8d9e6;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 25px;
+    height: 2%;
+    min-height: 25px;
     z-index: 1000;
 }
 
@@ -103,19 +110,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    position: relative;
     width: 100%;
     padding: 0;
     margin: 0;
 }
 
 .navigation li {
-    margin: 0 20px;
+    margin: 0 1%;
 }
 
 .navigation a {
     color: #c8d9e6;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 18px;
+}
+
+.profile {
+    position: fixed;
+    right: -0.5%;
+    margin: 1%;
 }
 
 h2 {
@@ -180,12 +195,11 @@ input {
 }
 
 .footer {
-    background-color: #567c8d;
+    background-color: #31505e;
     text-align: center;
-    padding: 10px;
+    padding: 0.5%;
     font-size: 14px;
-    color: #2F4156;
-    padding-left: 120px;
+    color: #F5EFEB;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -193,10 +207,39 @@ input {
 
 .container{
     justify-content: vertical;
-    margin-top:50px;
+    margin-top: 5%;
     margin-left : 15%;
     position: relative;
     margin-bottom: 50px;
+}
+
+#adminDashboard {
+    background-color: white;
+    text-align: center;
+    justify-self: center;
+    width: 50%;
+    height: 75vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 0;
+}
+
+#adminDashboard h2 {
+    padding: 2%;
+}
+
+.visits {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10%;
+}
+.fa-users {
+    font-size: 46px;
+    color: #3c5d82;
+}
+
+.button-group {
+    margin-top: 8%;
 }
 
 .book-section {
@@ -304,15 +347,19 @@ input {
 
 .profile-card {
     background: white;
-    padding: 20px;
+    padding: 2%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    width: 700px;
     position: relative;
-    left: 200px;
-    top: 60px;
+    margin-left: max(13%, 130px);
+    margin-right: 1%;
+    margin-top: 4.25%;
     margin-bottom: 130px;
+}
+
+.profileOverview {
+    text-align: center;
+    margin-bottom: 5%;
 }
 
 .profile-card img {
@@ -351,7 +398,7 @@ input {
 }
 
 button {
-    background-color: #28a745;
+    background-color: #3c5d82;
     color: white;
     padding: 10px 15px;
     font-size: 16px;
@@ -364,7 +411,11 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #8ab4c7;
+}
+
+#adminDashboard button {
+    margin: 0 auto 4%;
 }
 
 select {
