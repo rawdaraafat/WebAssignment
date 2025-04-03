@@ -188,12 +188,14 @@ select option {
 .search-section {
     text-align: left;
     margin-bottom: 10px;
+    height: 50px;
 }
 
 .search-section input {
     padding: 5px;
     margin: 0;
-    width: 200px;
+    width: 400px;
+    height: 30px;
 }
 
 .search-container {
