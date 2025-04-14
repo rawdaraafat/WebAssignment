@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Library - login,signup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login-signup.css">
+</head>
+<body>
+    <div class="container2">
+        <div class="form-box login">
+            <form action="">
+                <h3 style="text-align: center;" >Login</h3>
+                <p>Welcome back! Please login to continue.</p>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+                <button type="submit">Login</button>
+                <p>Forget Password? <a href="resetPassword.html">Reset Password</a></p>
+
+            </form>
+        </div>
+
+        <div class="form-box signup">
+           <form action="">
+                <h3 style="text-align: center;">Sign Up</h3>
+                <p>Create an account to access our digital library.</p>
+
+                <label for="e-mail">Email</label>
+                <input type="email" id="e-mail" name="email" required placeholder="Enter your email">
+
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" required placeholder="Choose a username">
+
+                <label for="pass-word">Password</label>
+                <input type="password" id="pass-word" name="password" required placeholder="Enter your password">
+
+                <label for="card-number">Card number</label>
+                <input type="text" id="card-number" name="card-number" required placeholder="Enter your card number">
+
+                <label for="card-password">Card password</label>
+                <input type="password" id="card-password" name="card-password" required placeholder="Enter your card password">
+
+                <label>
+                    <input type="checkbox" name="newsletter"> I want to receive news and updates
+                </label>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <div class="switch-box">
+            <div class="switch-panel switch-left">
+                <h1 style="color: white">Hello, Welcome back!</h1>
+                <p style="color: white; font-weight: bold;">Don't have an account?</p>
+                <button class="button signup-b" type="submit">Sign up</button>
+            </div>
+            <div class="switch-panel switch-right">
+                <h1 style="color: white">Hello, Welcome!</h1>
+                <p style="color: white; font-weight: bold;">Already have an account?</p>
+                <button class="button login-b" type="submit">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="login-signup.js"></script>
+</body>
+</html>
