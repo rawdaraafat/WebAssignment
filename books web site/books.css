@@ -85,13 +85,13 @@
 
 #AboutBook img {
     height: 200px;
-    weight: 200px;
+    width: 200px;
     border-radius: 4px;
     margin-right: 20px;
 }
 
 #AboutBook p {
-    color: #1a2a44;
+   color: #1a2a44;
     font-weight: bold;
     font-size: 20px;
 }
