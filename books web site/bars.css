@@ -17,6 +17,7 @@
     position: fixed;
     left: -100%;
     top: 7%;
+    z-index: 9999;
 }
 
 .sidebar ul {
@@ -120,4 +121,9 @@
     bottom: 0;
     width: 100%;
     z-index: 9999;
+}
+
+img{
+    height: 30px;
+    width: 30px;
 }
