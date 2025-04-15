@@ -85,6 +85,7 @@
 
 #AboutBook img {
     height: 200px;
+    weight: 200px;
     border-radius: 4px;
     margin-right: 20px;
 }
