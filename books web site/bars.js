@@ -3,25 +3,37 @@ function includeHTMLWithScript(selector, htmlFile) {
         .then(response => response.text())
         .then(data => {
             const container = document.querySelector(selector);
-            container.innerHTML = data;
-
-            // Call updateNavBar and other logic after content is injected
-            setTimeout(() => {
-                if (typeof updateNavBar === 'function') {
-                    updateNavBar();
-                }
-                bindSidebarToggle();
-            }, 100);
-        }
-    );
+            if (container) {
+                container.innerHTML = data;
+                // Call updateNavBar and other logic after content is injected
+                setTimeout(() => {
+                    if (typeof updateNavBar === 'function') {
+                        updateNavBar();
+                    }
+                    bindSidebarToggle();
+                }, 100);
+            }
+        })
+        .catch(error => console.error('Error loading navigation:', error));
 }
 
 function bindSidebarToggle() {
     const sidebarIcon = document.querySelector('.sidebar-icon');
     const sidebar = document.querySelector('.sidebar');
+
     if (sidebarIcon && sidebar) {
-        sidebarIcon.addEventListener('click', () => {
+        sidebarIcon.addEventListener('click', (e) => {
+            e.preventDefault();
             sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active') &&
+                !sidebar.contains(e.target) &&
+                !sidebarIcon.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
         });
     }
 }
