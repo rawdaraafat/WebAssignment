@@ -1,62 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.container2');
-    const signupb = document.querySelector('.signup-b');
-    const loginb = document.querySelector('.login-b');
-    const loginForm = document.querySelector('.form-box.login');
-    const signupForm = document.querySelector('.form-box.signup');
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Library - Reset password</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login-signup.css">
+</head>
+<body>
 
-    signupb?.addEventListener('click', () => {
-        container?.classList.add('active');
-    });
+    <div class="container2">
+        <div class="form-box login">
+            <form action="">
+                <h3>Reset Password</h3>
 
-    loginb?.addEventListener('click', () => {
-        container?.classList.remove('active');
-    });
+                <label for="password1">Old Password</label>
+                <input type="password" id="password1" name="old_password" required placeholder="Enter old password">
 
-    loginForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('loginTime', Date.now());
-        updateNavBar();
-        console.log('Login successful, redirecting...');
-        window.location.href = 'home.html';
-    });
+                <label for="password2">New Password</label>
+                <input type="password" id="password2" name="new_password" required placeholder="Enter new password">
 
-    signupForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        localStorage.setItem('signedUp', 'true');
-        localStorage.setItem('signupTime', Date.now());
-        updateNavBar();
-        console.log('Signup successful, redirecting...');
-        window.location.href = 'user profile.html';
-    });
+                <label for="password3">Confirm New Password</label>
+                <input type="password" id="password3" name="confirm_password" required placeholder="confirm new password">
 
-    function updateNavBar() {
-        const loginTime = parseInt(localStorage.getItem('loginTime')) || 0;
-        const signupTime = parseInt(localStorage.getItem('signupTime')) || 0;
-        const now = Date.now();
-        const sessionDuration = 20000;  // Set to 24 hours for example
-
-        const loginLink = document.querySelector('.login-link');
-        const profileIcon = document.querySelector('.profile');
-        const cartIcon = document.querySelector('.cart-icon');
-
-        const isLoggedIn = localStorage.getItem('loggedIn') === 'true' && (now - loginTime < sessionDuration);
-        const isSignedUp = localStorage.getItem('signedUp') === 'true' && (now - signupTime < sessionDuration);
-
-        console.log('isLoggedIn:', isLoggedIn, 'isSignedUp:', isSignedUp);
-
-        if (loginLink && profileIcon && cartIcon) {
-            if (isLoggedIn || isSignedUp) {
-                loginLink.style.display = 'none';
-                profileIcon.style.display = 'inline-block';
-                cartIcon.style.display = 'inline-block';
-            } else {
-                loginLink.style.display = 'inline-block';
-                profileIcon.style.display = 'none';
-                cartIcon.style.display = 'none';
-            }
-        }
-    }
-    updateNavBar();
-});
+                <button type="submit">Reset Password</button>
+            </form>
+        </div>
+        <div class="switch-box">
+        <div class="switch-panel switch-left">
+            <h1 style="color: white">Hello, Welcome back!</h1>
+            <p style="color: white; font-weight: bold;">Don't have an account?</p>
+            <button class="button signup-b" type="submit">Sign up</button>
+        </div>
+        <div class="switch-panel switch-right">
+            <h1 style="color: white">Hello, Welcome!</h1>
+            <p style="color: white; font-weight: bold;">Already have an account?</p>
+            <button class="button login-b" type="submit">Login</button>
+        </div>
+    </div>
+    </div>
+    <script src="login-signup.js"></script>
+</body>
+</html>
