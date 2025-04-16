@@ -59,6 +59,24 @@
 .book-back {
     transform: rotateY(180deg);
     justify-content: center;
+    padding: 20px;
+}
+
+.book-back .Purchase {
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 15px;
+    background-color: #3c5d82;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-back .Purchase:hover {
+    background-color: #2c4d72;
 }
 
 .book img {
