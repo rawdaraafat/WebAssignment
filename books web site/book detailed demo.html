@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bars.css">
     <link rel="stylesheet" href="books.css">
+    <script src="login-signup.js"></script>
 </head>
-    <body>
+<body>
     <div class="bars"></div>
     <script src="bars.js"></script>
     <div id="AboutBook">
@@ -24,10 +25,34 @@
             </div>
         </div>
         <ul class="book-edite">
-            <li><a href="update%20book%20detailed.html">Edit book details</a></li>
-            <li><a href="#">Delete</a></li>
+            <!-- Add IDs to buttons -->
+            <li><a id="editButton" href="update%20book%20detailed.html">Edit book details</a></li>
+            <li><a id="deleteButton" href="#">Delete</a></li>
             <li><a href="favouritePageDemo.html">Add to Favorites</a></li>
         </ul>
     </div>
-    </body>
+
+    <!-- JavaScript for role-based button visibility -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get the user role from localStorage
+        const userRole = localStorage.getItem('userRole');
+    
+        // Select the buttons
+        const updateButton = document.getElementById('editButton');
+        const deleteButton = document.getElementById('deleteButton');
+    
+        // Check if the user is an admin
+        if (userRole === 'admin') {
+            // Show buttons for admin
+            updateButton.style.display = 'inline-block';
+            deleteButton.style.display = 'inline-block';
+        } else {
+            // Hide buttons for non-admin users
+            updateButton.style.display = 'none';
+            deleteButton.style.display = 'none';
+        }
+    });
+    </script>
+</body>
 </html>
