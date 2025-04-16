@@ -2,7 +2,6 @@ body {
     align-items: center;
     display: flex;
     justify-content: center;
-    background: linear-gradient(90deg,#F5EFEB,#3c5d82);
 }
 
 .container2{
@@ -10,7 +9,7 @@ body {
     position: relative;
     width: 1000px;
     height: 600px;
-    background: white;
+    background: #8ab4c7;
     border-radius: 30px;
     box-shadow: 0 0 30px rgba(0 ,0 ,0 ,.2);
     overflow: hidden;
@@ -27,7 +26,7 @@ body {
     color: #1a2a44;
     font-weight: bold;
     z-index: 1;
-    background: white;
+    background: #8ab4c7;
     transition: .5s ease-in-out .5s;
 }
 
@@ -51,11 +50,15 @@ form {
     border-radius: 10px;
 }
 
+form input{
+    background: #8ab4c7;
+    color: #1a2a44;
+}
+
 .switch-box{
     position: absolute;
     width: 100%;
     height: 100%;
-    /*background: #3c5d82;*/
 }
 
 .switch-box::before{
@@ -65,7 +68,6 @@ form {
     width: 300%;
     height: 100%;
     background: #3c5d82;
-    /*border: 2px solid #c8d9e6;*/
     border-radius: 150px;
     z-index: 2;
     transition: 1s ease-in-out;
@@ -80,7 +82,7 @@ form {
     width: 50%;
     height: 100%;
     display: flex;
-    color: white;
+    color: #8ab4c7;
     flex-direction: column;
     justify-content: center;
     text-align: center;
@@ -112,16 +114,17 @@ button.signup-b{
     background: transparent;
     color: white;
     font-weight: bold;
-    border-color: white;
+    border-color: #8ab4c7;
 }
 
 button.login-b{
     background: transparent;
     color: white;
     font-weight: bold;
-    border-color: white;
+    border-color:#8ab4c7;
 }
 
 label{
     font-size: 16px;
 }
+
