@@ -11,14 +11,14 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    padding: 30px;
+    padding: 50px;
     border-bottom: 10px solid #1a2a44;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     margin-bottom: 30px;
 }
 
 .book {
-    width: 220px;
+    width: 280px;
     height: 280px;
     text-align: center;
     position: relative;
