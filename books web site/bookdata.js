@@ -42,18 +42,6 @@ const books = [
     genre: "fantasy",
     image: "imgs/harry7.jpg"
   },
-    {
-    title: "Harry Potter and the Sorcerer’s Stone",
-    author: "J.K. Rowling",
-    genre: "fantasy",
-    image: "imgs/harry1.jpg"
-  },
-    {
-    title: "Harry Potter and the Sorcerer’s Stone",
-    author: "J.K. Rowling",
-    genre: "fantasy",
-    image: "imgs/harry1.jpg"
-  },
   {
     title: "In My Dream I Hold a Knife",
     author: "Ashley Winstead",
