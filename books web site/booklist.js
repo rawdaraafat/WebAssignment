@@ -56,23 +56,6 @@ function renderBooks() {
   console.log('Finished rendering books'); // Debug log
 }
 
-// Search functionality
-document.getElementById('searchInput').addEventListener('input', function (e) {
-  const searchTerm = e.target.value.toLowerCase();
-  const allBooks = document.querySelectorAll('.book');
-
-  allBooks.forEach(book => {
-    const title = book.querySelector('.book-title').textContent.toLowerCase();
-    const author = book.querySelector('.book-author').textContent.toLowerCase();
-
-    if (title.includes(searchTerm) || author.includes(searchTerm)) {
-      book.style.display = '';
-    } else {
-      book.style.display = 'none';
-    }
-  });
-});
-
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM Content Loaded'); // Debug log
