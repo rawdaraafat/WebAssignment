@@ -15,31 +15,30 @@
     <div class="profileOverview">
         <img src="imgs/women.png" alt="Profile Picture">
     </div>
-    <form>
+    <form id="updateProfileForm">
         <strong>Name:</strong> <input type="text" size="20" maxlength="100" name="name" value="John Doe"> <br/>
-        <strong>Age:</strong> <input type="number" size="3" maxlength="3" age="age" value="28"> <br/>
-        <strong>Location: </strong><input type="text" size="10" maxlength="100" loc="loc" value="New York, USA"> <br/>
-        <strong>Hobbies:</strong><input type="text" size="10" maxlength="100" hobbies="hobbies" value="Coding, Gaming, Traveling"> <br/>
-        <strong>Favourite book ever:</strong><input type="text" size="10" maxlength="100" favever="favever" value="Harry Potter and the Philosopher’s Stone"> <br/>
-        <strong>Profile password:</strong><input type="password" size="10" maxlength="100" ppas="ppas" value="********"> <br/>
-        <strong>Card password:</strong><input type="password" size="10" maxlength="100" cpas="cpas" value="********"> <br/>
-        <strong>Card number:</strong><input type="password" size="10" maxlength="100" cpas="cpas" value=" 4001 1253 **** ****"> <br/>
+        <strong>Age:</strong> <input type="number" size="3" maxlength="3" name="age" value="28"> <br/>
+        <strong>Location: </strong><input type="text" size="10" maxlength="100" name="location" value="New York, USA"> <br/>
+        <strong>Hobbies:</strong><input type="text" size="10" maxlength="100" name="hobbies" value="Coding, Gaming, Traveling"> <br/>
+        <strong>Favourite book ever:</strong><input type="text" size="10" maxlength="100" name="favoriteBook" value="Harry Potter and the Philosopher's Stone"> <br/>
+        <strong>Profile password:</strong><input type="password" size="10" maxlength="100" name="profilePassword" value="********"> <br/>
+        <strong>Card password:</strong><input type="password" size="10" maxlength="100" name="cardPassword" value="********"> <br/>
+        <strong>Card number:</strong><input type="password" size="10" maxlength="100" name="cardNumber" value=" 4001 1253 **** ****"> <br/>
         <strong>Borrowed Books :</strong><br/>
-        <textarea rows="10" cols="90" name="borrowed">Harry Potter and the Philosopher’s Stone
+        <textarea rows="10" cols="90" name="borrowedBooks">Harry Potter and the Philosopher's Stone
 Alise in borderlands
 Caraval
         </textarea><br/>
         <strong>Favourite Books :</strong><br/>
-        <textarea rows="10" cols="90" name="fav">Harry Potter and the Philosopher’s Stone
+        <textarea rows="10" cols="90" name="favoriteBooks">Harry Potter and the Philosopher's Stone
 Alise in borderlands
         </textarea><br/>
         <strong>Books i didn't like:</strong><br/>
-        <textarea rows="10" cols="90" name="fav">Caraval
+        <textarea rows="10" cols="90" name="dislikedBooks">Caraval
         </textarea><br/>
+        <button type="submit">Update Profile</button>
     </form>
-    <a href="user%20profile.html">
-        <button>Update Profile</button>
-    </a>
+    <script src="updateProfile.js"></script>
 </div>
 </body>
 </html>
