@@ -43,16 +43,16 @@ const books = [
     image: "imgs/harry7.jpg"
   },
     {
-    title: "Harry Potter and the Sorcerer’s Stone",
-    author: "J.K. Rowling",
-    genre: "fantasy",
-    image: "imgs/harry1.jpg"
+    title: "The Book Thief",
+    author: "Markus Zusak",
+    genre: "historical",
+    image: "imgs/bookthief.jpg"
   },
     {
-    title: "Harry Potter and the Sorcerer’s Stone",
-    author: "J.K. Rowling",
-    genre: "fantasy",
-    image: "imgs/harry1.jpg"
+    title: "Dune",
+    author: "Frank Herbert",
+    genre: "scifi",
+    image: "imgs/dune.jpg"
   },
   {
     title: "In My Dream I Hold a Knife",
@@ -77,6 +77,18 @@ const books = [
     author: "Jane Austen",
     genre: "romance",
     image: "imgs/pride.webp"
+  },
+  {
+    title: "First lie Wins",
+    author: "Ashley Elston",
+    genre: "mystery",
+    image: "imgs/firstliewins.jpg"
+  },
+  {
+    title: "Listen for the Lie",
+    author: "Amy Tintera",
+    genre: "mystery",
+    image: "imgs/listenforthelie.jpg"
   },
 
 ];

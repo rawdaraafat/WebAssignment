@@ -3,9 +3,15 @@ const shelf = document.getElementById("bookShelf");
 function createBookCard(book) {
   return `
     <div class="book">
-      <img src="${book.image}" alt="${book.title}">
-      <p><strong>${book.title}</strong></p>
-      <p>${book.author}</p>
+      <div class="book-inner">
+        <div class="book-front">
+          <img src="${book.image}" alt="${book.title}">
+        </div>
+        <div class="book-back">
+          <p class="book-title">${book.title}</p>
+          <p class="book-author">${book.author}</p>
+        </div>
+      </div>
     </div>
   `;
 }
