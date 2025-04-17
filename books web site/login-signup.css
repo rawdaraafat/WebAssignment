@@ -9,7 +9,7 @@ body {
     position: relative;
     width: 1000px;
     height: 600px;
-    background: #8ab4c7;
+    background: #c8d9e6;
     border-radius: 30px;
     box-shadow: 0 0 30px rgba(0 ,0 ,0 ,.2);
     overflow: hidden;
@@ -26,7 +26,7 @@ body {
     color: #1a2a44;
     font-weight: bold;
     z-index: 1;
-    background: #8ab4c7;
+    background: #c8d9e6;
     transition: .5s ease-in-out .5s;
 }
 
@@ -51,7 +51,7 @@ form {
 }
 
 form input{
-    background: #8ab4c7;
+    background:  #c8d9e6;
     color: #1a2a44;
 }
 
@@ -67,7 +67,7 @@ form input{
     left: -250%;
     width: 300%;
     height: 100%;
-    background: #3c5d82;
+    background: #4d6f94;
     border-radius: 150px;
     z-index: 2;
     transition: 1s ease-in-out;
@@ -82,7 +82,7 @@ form input{
     width: 50%;
     height: 100%;
     display: flex;
-    color: #8ab4c7;
+    color: #c8d9e6;
     flex-direction: column;
     justify-content: center;
     text-align: center;
@@ -114,14 +114,14 @@ button.signup-b{
     background: transparent;
     color: white;
     font-weight: bold;
-    border-color: #8ab4c7;
+    border-color: #c8d9e6;
 }
 
 button.login-b{
     background: transparent;
     color: white;
     font-weight: bold;
-    border-color:#8ab4c7;
+    border-color:#c8d9e6;
 }
 
 label{
