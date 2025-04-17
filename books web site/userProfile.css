@@ -1,5 +1,5 @@
 .profile-card {
-    background:  #8ab4c7;
+    background:  #c8d9e6;
     padding: 2%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,12 +32,12 @@ input{
     font-weight: bold;
     font-size: 15px;
     left: 10%;
-    background: #a0bfd6;
+    background: #c8d9e6;
 }
 
 textarea{
     font-weight: bold;
     font-size: 15px;
     left: 10%;
-    background: #a0bfd6;
+    background: #c8d9e6;
 }
