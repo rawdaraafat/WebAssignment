@@ -131,3 +131,16 @@ select option {
     width: 1000px;
     height: 550px;
 }
+
+.shadow{
+    background-color: rgba(160, 200, 230, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hero {
+    background: url("imgs/books.jpg") center/cover no-repeat;
+    color: #1a2a44;
+    padding: 170px 50px;
+    text-align: center;
+}
