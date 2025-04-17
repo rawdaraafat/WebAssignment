@@ -5,22 +5,21 @@ function displayBooks(books) {
 
     // Loop through the books array and create book elements
     books.forEach(book => {
-        console.log(book.title);
         const bookDiv = document.createElement('div');
         bookDiv.className = 'book';
         bookDiv.innerHTML = `
-            <div class="book-image">
-                <img src="${book.image || 'imgs/default-book.jpg'}" alt="${book.title}">
+            <div class="book">
+              <div class="book-inner">
+                <div class="book-front">
+                  <img src="${book.image}" alt="${book.title}">
+                </div>
+                <div class="book-back">
+                  <p class="book-title">${book.title}</p>
+                  <p class="book-author">${book.author}</p>
+                </div>
+              </div>
             </div>
-            <div class="book-info">
-                <p class="book-title">${book.title}</p>
-                <p class="book-author">${book.author}</p>
-                <p class="book-price">$25.99</p>
-                <a href="Book Purchase.html" class="purchase">
-                    <button class="Purchase">Buy Now</button>
-                </a>
-            </div>
-        `;
+          `;
         bookShelf.appendChild(bookDiv);
     });
 }
