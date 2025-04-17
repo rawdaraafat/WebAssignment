@@ -16,6 +16,9 @@ function displayBooks(books) {
                 <div class="book-back">
                   <p class="book-title">${book.title}</p>
                   <p class="book-author">${book.author}</p>
+                  <a href="Book Purchase.html" class="purchase">
+                        <button class="Purchase">Buy</button>
+                    </a>
                 </div>
               </div>
             </div>
