@@ -1,6 +1,6 @@
 body {
     font-family: "Calibri Light";
-    background: linear-gradient(180deg, #c8d9e6,#1a2a44);
+    background: linear-gradient(180deg, #c8d9e6, #1a2a44);
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -74,13 +74,25 @@ select option {
     text-align: left;
     margin-bottom: 10px;
     height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-section img {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
 }
 
 .search-section input {
-    padding: 5px;
+    padding: 5px 5px 5px 40px;
     margin: 0;
     width: 400px;
     height: 30px;
+    position: relative;
 }
 
 .search-container {
@@ -132,7 +144,7 @@ select option {
     height: 550px;
 }
 
-.shadow{
+.shadow {
     background-color: rgba(160, 200, 230, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);

@@ -8,21 +8,19 @@ function displayBooks(books) {
         const bookDiv = document.createElement('div');
         bookDiv.className = 'book';
         bookDiv.innerHTML = `
-            <div class="book">
-              <div class="book-inner">
+            <div class="book-inner">
                 <div class="book-front">
-                  <img src="${book.image}" alt="${book.title}">
+                    <img src="${book.image}" alt="${book.title}">
                 </div>
                 <div class="book-back">
-                  <p class="book-title">${book.title}</p>
-                  <p class="book-author">${book.author}</p>
-                  <a href="Book Purchase.html" class="purchase">
+                    <p class="book-title">${book.title}</p>
+                    <p class="book-author">${book.author}</p>
+                    <a href="Book Purchase.html" class="purchase">
                         <button class="Purchase">Buy</button>
                     </a>
                 </div>
-              </div>
             </div>
-          `;
+        `;
         bookShelf.appendChild(bookDiv);
     });
 }
@@ -39,7 +37,7 @@ searchInput.addEventListener('input', () => {
         book.author.toLowerCase().includes(searchTerm)
     );
 
-    
+
     // Display filtered books
     displayBooks(filteredBooks);
 });
