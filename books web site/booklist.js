@@ -1,9 +1,13 @@
-const bookShelf = document.getElementById('dynamicBookShelf');
-// Function to display books dynamically
 function displayBooks(books) {
-    bookShelf.innerHTML = ''; // Clear the shelf before re-rendering
+    const bookShelf = document.getElementById('dynamicBookShelf');
+    bookShelf.innerHTML = ''; // Clear the shelf
 
-    // Loop through the books array and create book elements
+    // Check if books is defined and is an array
+    if (!Array.isArray(books)) {
+        console.error("The 'books' parameter must be an array.");
+        return;
+    }
+
     books.forEach(book => {
         const bookDiv = document.createElement('div');
         bookDiv.className = 'book';
