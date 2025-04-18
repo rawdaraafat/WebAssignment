@@ -56,8 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Create a new book object
+        const newBook = { title, author, price, image };
+
         // Add the new book to the array
-        books.push({ title, author, price, image });
+        books.push(newBook);
 
         // Save the updated books array to localStorage
         localStorage.setItem('books', JSON.stringify(books));
