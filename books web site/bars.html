@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="bars.css">
     <link rel="stylesheet" href="books.css">
     <script src="login-signup.js"></script>
+
 </head>
 <body>
 <nav class="navigation">
 
 
     <p id="logo">FCAI LIBRARY</p>
-
     <ul>
-        <a href="cart.html" class="cart-icon" style="display: none;">
+        <a href="cart.html" class="appears cart-icon">
             <img src="imgs/shopping-cart_9407982.png">
         </a>
 
-        <a href="user profile.html" class="profile " style="display: none;">
+        <a href="user profile.html" class="appears profile">
             <img src="imgs/avatar_11955094.png" alt="Profile" style="width:40px; height:40px; border-radius:70%;">
+        </a>
+
+        <a href="admin%20dashboard.html" class="appears admin-icon">
+            <img src="imgs/manager_14353881.png">
         </a>
 
         <a href="login-signup.html" class="login-link a">Log In</a>
@@ -37,10 +41,9 @@
                 <li><a href="category.html?genre=historical"><img src="imgs/historical.png">  Historical Fiction</a></li>
             </ul>
         </li>
-        <li><a href="favouritePageDemo.html" class="a"><img src="imgs/fav.png"></a></li>
-        <li><a href="borrowed.html" class="a"><img src="imgs/borrow.png"></a></li>
-        <li><a href="admin%20dashboard.html" class="a"><img src="imgs/manager_14353881.png"></a></li>
-        <li><a href="about.html"><img src="imgs/info-button_10027434.png"></a></li>
+        <li><a href="favouritePageDemo.html" class="appears" id="fav"><img src="imgs/fav.png"></a></li>
+        <li><a href="borrowed.html" class="appears" id="borrow"><img src="imgs/borrow.png"></a></li>
+        <li><a href="about.html" class="appears about"><img src="imgs/info-button_10027434.png"></a></li>
     </ul>
 
 </nav>
