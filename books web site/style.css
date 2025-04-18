@@ -130,7 +130,7 @@ select option {
     text-align: center;
     padding: 10px;
     font-size: 14px;
-    color: #520a63;
+    color: #f5efeb;
     margin: 80px;
 }
 
@@ -145,14 +145,14 @@ select option {
 }
 
 .shadow {
-    background-color: rgba(160, 200, 230, 0.5);
+    background-color: rgba(100, 000, 100, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
 .hero {
     background: url("imgs/books.jpg") center/cover no-repeat;
-    color: #520a63;
+    color: #f5efeb;
     padding: 170px 50px;
     text-align: center;
 }
