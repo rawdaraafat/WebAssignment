@@ -23,7 +23,7 @@ body {
     right: 0;
     display: flex;
     align-items: center;
-    color: #520a63;
+    color: #1a2a44;
     font-weight: bold;
     z-index: 1;
     background: #f5efeb;
@@ -52,7 +52,7 @@ form {
 
 form input{
     background:#f5efeb;
-    color: #520a63;
+    color:#1a2a44;
 }
 
 .switch-box{
@@ -67,7 +67,7 @@ form input{
     left: -250%;
     width: 300%;
     height: 100%;
-    background: #520a63;
+    background: #1a2a99;
     border-radius: 150px;
     z-index: 2;
     transition: 1s ease-in-out;

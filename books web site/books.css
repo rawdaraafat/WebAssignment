@@ -12,7 +12,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     padding: 50px;
-    border-bottom: 10px solid #520a63;
+    border-bottom: 10px solid #1a2a44;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     margin-bottom: 30px;
 }
@@ -48,7 +48,7 @@
     backface-visibility: hidden;
     background-color:#f5efeb;
     border-radius: 5px;
-    box-shadow: 0 2px 5px #520a63;
+    box-shadow: 0 2px 5px #1a2a44;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@
 .book-back .book-title {
     font-weight: bold;
     font-size: 14px;
-    color: #520a63;
+    color: #1a2a44;
     margin: 5px 0;
     max-width: 100%;
     overflow: hidden;
@@ -81,7 +81,7 @@
 
 .book-back .book-author {
     font-size: 14px;
-    color: #520a63;
+    color: #1a2a44;
     font-weight: bold;
     margin: 5px 0;
     max-width: 100%;
@@ -95,7 +95,7 @@
     height: 40px;
     font-size: 16px;
     margin-top: 15px;
-    background-color: rgba(160, 000, 230, 0.5);
+    background-color: rgba(100, 000, 200, 0.5);
     color: #f5efeb;
     border: none;
     border-radius: 5px;
@@ -104,7 +104,7 @@
 }
 
 .book-back .Purchase:hover {
-    background-color: rgba(160, 000, 230);
+    background-color: rgba(100, 000, 200);
 }
 
 .book-info {
@@ -134,19 +134,19 @@
 
 .book-info h2 {
     font-size: 28px;
-    color: #520a63;
+    color: #1a2a44;
     margin: 0;
 }
 
 .book-info h3 {
     font-size: 20px;
-    color:#520a63;
+    color:#1a2a44;
     margin: 0;
 }
 
 .book-info .price {
     font-size: 24px;
-    color: #520a63;
+    color:#1a2a44;
     font-weight: bold;
     margin: 10px 0;
 }
@@ -159,7 +159,7 @@
 }
 
 .book-info .return {
-    background-color: #520a63;
+    background-color: #1a2a44;
 }
 
 #AboutBook {
@@ -177,7 +177,7 @@
 }
 
 #AboutBook h2 {
-    color: #520a63;
+    color:#1a2a44;
     margin-bottom: 10px;
     text-align: center;
     font-size: 22px;
@@ -196,7 +196,7 @@
 }
 
 #AboutBook p {
-    color: #520a63;
+    color:#1a2a44;
     font-weight: bold;
     font-size: 20px;
 }
@@ -204,7 +204,7 @@
 .book-edite a {
     display: block;
     text-decoration: none;
-    color: #520a63;
+    color:#1a2a44;
     font-size: 20px;
     margin-bottom: 10px;
     margin-top: 10px;

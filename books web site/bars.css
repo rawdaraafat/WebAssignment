@@ -11,7 +11,7 @@
 
 /* Navigation */
 .navigation {
-    background-color: #520a63;
+    background-color:#1a2a44;
     padding: 1% 1%;
     color: #f5efeb;
     display: flex;
@@ -54,7 +54,7 @@ ul li.dropdown {
 ul li .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #520a63;
+    background-color:#1a2a44;
     width: 210px;
     z-index: 2;
 }
@@ -94,7 +94,7 @@ ul li.dropdown:hover .dropdown-content {
 
 
 .footer {
-    background-color: #520a63;
+    background-color:#1a2a44;
     text-align: center;
     padding: 0.5%;
     font-size: 14px;
