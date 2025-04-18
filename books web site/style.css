@@ -151,7 +151,7 @@ select option {
 }
 
 .hero {
-    background: url("imgs/books.jpg") center/cover no-repeat;
+    background: url("imgs/background.jpg") center/cover no-repeat;
     color: #f5efeb;
     padding: 170px 50px;
     text-align: center;
