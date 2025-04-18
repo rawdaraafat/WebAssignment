@@ -18,16 +18,9 @@ function updateProfilePage(userData) {
   document.querySelector('p:nth-of-type(1)').innerHTML = `<strong>Age:</strong> ${userData.age}`;
   document.querySelector('p:nth-of-type(2)').innerHTML = `<strong>Location:</strong> ${userData.location}`;
   document.querySelector('p:nth-of-type(3)').innerHTML = `<strong>Hobbies:</strong> ${userData.hobbies}`;
-  document.querySelector('p:nth-of-type(4)').innerHTML = `<strong>Favourite book ever:</strong> ${userData.favoriteBook}`;
-
-  // Update lists
-  const borrowedList = document.querySelector('ul:nth-of-type(1)');
-  const favoriteList = document.querySelector('ul:nth-of-type(2)');
-  const dislikedList = document.querySelector('ul:nth-of-type(3)');
-
-  borrowedList.innerHTML = userData.borrowedBooks.map(book => `<li>${book}</li>`).join('');
-  favoriteList.innerHTML = userData.favoriteBooks.map(book => `<li>${book}</li>`).join('');
-  dislikedList.innerHTML = userData.dislikedBooks.map(book => `<li>${book}</li>`).join('');
+  document.querySelector('p:nth-of-type(4)').innerHTML = `<strong>profilePassword</strong> ${userData.profilePassword}`;
+  document.querySelector('p:nth-of-type(5)').innerHTML = `<strong>cardPassword</strong> ${userData.cardPassword}`;
+  document.querySelector('p:nth-of-type(6)').innerHTML = `<strong>cardNumber</strong> ${userData.cardNumber}`;
 }
 
 // Handle form submission
@@ -41,10 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.elements.age.value = existingData.age || '';
     form.elements.location.value = existingData.location || '';
     form.elements.hobbies.value = existingData.hobbies || '';
-    form.elements.favoriteBook.value = existingData.favoriteBook || '';
-    form.elements.borrowedBooks.value = existingData.borrowedBooks ? existingData.borrowedBooks.join('\n') : '';
-    form.elements.favoriteBooks.value = existingData.favoriteBooks ? existingData.favoriteBooks.join('\n') : '';
-    form.elements.dislikedBooks.value = existingData.dislikedBooks ? existingData.dislikedBooks.join('\n') : '';
+    form.elements.profilePassword.value = existingData.profilePassword || '';
+    form.elements.cardPassword.value = existingData.cardPassword || '';
+    form.elements.cardNumber.value = existingData.cardNumber || '';
   }
 
   form.addEventListener('submit', (e) => {
@@ -56,10 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
       age: form.elements.age.value,
       location: form.elements.location.value,
       hobbies: form.elements.hobbies.value,
-      favoriteBook: form.elements.favoriteBook.value,
-      borrowedBooks: form.elements.borrowedBooks.value.split('\n').filter(book => book.trim()),
-      favoriteBooks: form.elements.favoriteBooks.value.split('\n').filter(book => book.trim()),
-      dislikedBooks: form.elements.dislikedBooks.value.split('\n').filter(book => book.trim())
+      profilePassword : form.elements.profilePassword.value,
+      cardPassword : form.elements.cardPassword.value,
+      cardNumber : form.elements.cardNumber.value,
     };
 
     // Save the data
@@ -68,4 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Redirect to profile page
     window.location.href = 'user profile.html';
   });
-}); 
+});
