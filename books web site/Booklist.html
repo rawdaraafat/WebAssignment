@@ -23,11 +23,36 @@
 
             </div>
         </div>
-        <script src="bookdata.js"></script>
         <script src="booklist.js"></script>
         <script src="search.js"></script>
         <script>
             setupSearch('searchInput', books, displayBooks);
+        </script>
+
+        <script>
+            // Load books from localStorage or use the default list if localStorage is empty
+            const storedBooks = JSON.parse(localStorage.getItem('books')) || books;
+
+            // Save the default list to localStorage if it's empty
+            if (!localStorage.getItem('books')) {
+                localStorage.setItem('books', JSON.stringify(storedBooks));
+            }
+
+            // Initialize the book list
+            setupSearch('searchInput', storedBooks, displayBooks);
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Load books from localStorage
+                const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
+
+                // Check if storedBooks is defined
+                console.log(storedBooks); // To verify the data
+
+                // Call displayBooks with storedBooks
+                displayBooks(storedBooks);
+            });
         </script>
     </body>
 </html>
