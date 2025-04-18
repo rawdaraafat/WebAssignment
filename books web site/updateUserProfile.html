@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bars.css">
     <link rel="stylesheet" href="books.css">
     <link rel="stylesheet" href="userProfile.css">
+    <link rel="stylesheet" href="updateUser.css">
     <script src="login-signup.js"></script>
 </head>
 <body>
@@ -21,22 +22,17 @@
         <strong>Age:</strong> <input style="background-color: snow" type="number" size="3" maxlength="3" name="age" value="28"> <br/>
         <strong>Location: </strong><input style="background-color: snow" type="text" size="10" maxlength="100" name="location" value="New York, USA"> <br/>
         <strong>Hobbies:</strong><input style="background-color: snow" type="text" size="10" maxlength="100" name="hobbies" value="Coding, Gaming, Traveling"> <br/>
-        <strong>Favourite book ever:</strong><input style="background-color: snow" type="text" size="10" maxlength="100" name="favoriteBook" value="Harry Potter and the Philosopher's Stone"> <br/>
-        <strong>Profile password:</strong><input style="background-color: snow" type="password" size="10" maxlength="100" name="profilePassword" value="********"> <br/>
+       <!-- <strong>Favourite book ever:</strong><input style="background-color: snow" type="text" size="10" maxlength="100" name="favoriteBook" value="Harry Potter and the Philosopher's Stone"> <br/>-->
+        <label>
+            <strong>
+                Profile password:
+            </strong>
+            <input style="background-color: snow" type="password" size="10" maxlength="100" name="profilePassword" value="********"> <br/>
+        </label>
+
         <strong>Card password:</strong><input style="background-color: snow" type="password" size="10" maxlength="100" name="cardPassword" value="********"> <br/>
-        <strong>Card number:</strong><input style="background-color: snow" type="password" size="10" maxlength="100" name="cardNumber" value=" 4001 1253 **** ****"> <br/>
-        <strong>Borrowed Books :</strong><br/>
-        <textarea style="background-color: snow" rows="10" cols="90" name="borrowedBooks">Harry Potter and the Philosopher's Stone
-Alise in borderlands
-Caraval
-         </textarea><br/>
-        <strong>Favourite Books :</strong><br/>
-        <textarea style="background-color: snow" rows="10" cols="90" name="favoriteBooks">Harry Potter and the Philosopher's Stone
-Alise in borderlands
-        </textarea><br/>
-        <strong>Books i didn't like:</strong><br/>
-        <textarea style="background-color: snow" rows="10" cols="90" name="dislikedBooks">Caraval
-        </textarea><br/>
+        <label for="cardNumber">Card Number:</label>
+        <input style="background-color: snow" type="text" id="cardNumber" pattern="40011253\d{4}\d{4}" placeholder="4001 1253 **** ****" required>
         <button type="submit">Update Profile</button>
     </form>
     <script src="updateProfile.js"></script>
