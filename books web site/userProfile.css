@@ -18,7 +18,7 @@
 }
 
 .profile-card p {
-    color: #1a2a44;
+    color:  #520a63;
     font-size: 18px;
     margin: 5px 0;
 }
@@ -39,5 +39,5 @@ textarea{
     font-weight: bold;
     font-size: 15px;
     left: 10%;
-    background: #f5efeb;
+    background:#f5efeb;
 }

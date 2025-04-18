@@ -1,6 +1,6 @@
 /*side/navigation bar*/
 #logo {
-    color: #c8d9e6;
+    color: #f5efeb;
     position: fixed;
     left: 2%;
     top: 0;
@@ -11,9 +11,9 @@
 
 /* Navigation */
 .navigation {
-    background-color: #243b4a;
+    background-color: #520a63;
     padding: 1% 1%;
-    color: #c8d9e6;
+    color: #f5efeb;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -40,7 +40,7 @@
 }
 
 .navigation a {
-    color: #c8d9e6;
+    color: #f5efeb;
     text-decoration: none;
     font-size: 18px;
 }
@@ -54,7 +54,7 @@ ul li.dropdown {
 ul li .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #243b4a;
+    background-color: #520a63;
     width: 210px;
     z-index: 2;
 }
@@ -68,7 +68,7 @@ ul li .dropdown-content li a {
 
 ul li .dropdown-content li a:hover {
     background: transparent;
-    box-shadow: 0px 15px 20px #c8d9e6;
+    box-shadow: 0px 15px 20px #f5efeb;
 }
 
 /* Show the dropdown on hover */
@@ -94,11 +94,11 @@ ul li.dropdown:hover .dropdown-content {
 
 
 .footer {
-    background-color: #243b4a;
+    background-color: #520a63;
     text-align: center;
     padding: 0.5%;
     font-size: 14px;
-    color: #c8d9e6;
+    color: #f5efeb;
     position: fixed;
     bottom: 0;
     width: 100%;

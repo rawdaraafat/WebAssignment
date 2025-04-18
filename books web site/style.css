@@ -1,6 +1,6 @@
 body {
     font-family: "Calibri Light";
-    background: linear-gradient(180deg, #f5efeb, #1a2a44);
+    background: linear-gradient(180deg, #f5efeb, #520a63);
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -8,7 +8,7 @@ body {
 }
 
 h2 {
-    border-bottom: 2px solid #1a2a44;
+    border-bottom: 2px solid #520a63;
     padding-bottom: 5px;
 }
 
@@ -20,7 +20,7 @@ input[type="checkbox"] {
 
 label {
     font-size: 22px;
-    color: #1a2a44;
+    color: #520a63;
     display: block;
     margin: 10px 0 5px;
     font-weight: bold;
@@ -30,13 +30,13 @@ input {
     width: 90%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid  #f5efeb;
     border-radius: 5px;
 }
 
 button {
-    background-color: #3c5d82;
-    color: white;
+    background-color: #520099;
+    color:  #f5efeb;
     padding: 10px 15px;
     font-size: 12px;
     text-align: center;
@@ -55,18 +55,18 @@ select {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 2px solid #1a2a44;
+    border: 2px solid #520a63;
     border-radius: 5px;
-    background-color: #f5efeb;
-    color: #1a2a44;
+    background-color:  #f5efeb;
+    color: #520a63;
     cursor: pointer;
     font-weight: bold;
 }
 
 select option {
     padding: 10px;
-    background-color: #f5efeb;
-    color: #1a2a44;
+    background-color:  #f5efeb;
+    color:#520a63;
     font-weight: bold;
 }
 
@@ -102,14 +102,14 @@ select option {
 
 .container h2 {
     font-size: 26px;
-    color: #1a2a44;
+    color:#520a63;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .container p {
     font-size: 16px;
-    color: #1a2a44;
+    color: #520a63;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -120,7 +120,7 @@ select option {
     margin-top: 7%;
     margin-bottom: 5%;
     position: relative;
-    background-color: #f5efeb;
+    background-color:  #f5efeb;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -130,12 +130,12 @@ select option {
     text-align: center;
     padding: 10px;
     font-size: 14px;
-    color: #1a2a44;
+    color: #520a63;
     margin: 80px;
 }
 
 .confirmation-box {
-    background: #f5efeb;
+    background:  #f5efeb;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -152,7 +152,7 @@ select option {
 
 .hero {
     background: url("imgs/books.jpg") center/cover no-repeat;
-    color: #1a2a44;
+    color: #520a63;
     padding: 170px 50px;
     text-align: center;
 }
