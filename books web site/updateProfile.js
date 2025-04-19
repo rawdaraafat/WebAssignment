@@ -9,23 +9,11 @@ function loadUserData() {
   return savedData ? JSON.parse(savedData) : null;
 }
 
-// Update the profile page with new data
-function updateProfilePage(userData) {
-  if (!userData) return;
-
-  // Update basic info
-  document.querySelector('.profileOverview h3').textContent = userData.name;
-  document.querySelector('p:nth-of-type(1)').innerHTML = `<strong>Age:</strong> ${userData.age}`;
-  document.querySelector('p:nth-of-type(2)').innerHTML = `<strong>Location:</strong> ${userData.location}`;
-  document.querySelector('p:nth-of-type(3)').innerHTML = `<strong>Hobbies:</strong> ${userData.hobbies}`;
-  document.querySelector('p:nth-of-type(4)').innerHTML = `<strong>profilePassword</strong> ${userData.profilePassword}`;
-  document.querySelector('p:nth-of-type(5)').innerHTML = `<strong>cardPassword</strong> ${userData.cardPassword}`;
-  document.querySelector('p:nth-of-type(6)').innerHTML = `<strong>cardNumber</strong> ${userData.cardNumber}`;
-}
-
 // Handle form submission
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('updateProfileForm');
+  const imagePreview = document.getElementById('preview');
+  const imageUpload = document.getElementById('imageUpload');
 
   // Load existing data into form
   const existingData = loadUserData();
@@ -37,26 +25,76 @@ document.addEventListener('DOMContentLoaded', () => {
     form.elements.profilePassword.value = existingData.profilePassword || '';
     form.elements.cardPassword.value = existingData.cardPassword || '';
     form.elements.cardNumber.value = existingData.cardNumber || '';
+
+    // Show saved image if it exists
+    if (existingData.profileImage) {
+      imagePreview.src = existingData.profileImage;
+    }
   }
 
+  // Handle form submit
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Get form data
     const userData = {
       name: form.elements.name.value,
       age: form.elements.age.value,
       location: form.elements.location.value,
       hobbies: form.elements.hobbies.value,
-      profilePassword : form.elements.profilePassword.value,
-      cardPassword : form.elements.cardPassword.value,
-      cardNumber : form.elements.cardNumber.value,
+      profilePassword: form.elements.profilePassword.value,
+      cardPassword: form.elements.cardPassword.value,
+      cardNumber: form.elements.cardNumber.value,
+      profileImage: imagePreview.src // Save image from preview
     };
 
-    // Save the data
     saveUserData(userData);
-
-    // Redirect to profile page
     window.location.href = 'user profile.html';
+  });
+
+  // Handle image upload and preview
+  imageUpload.addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imageData = e.target.result;
+        imagePreview.src = imageData;
+
+        const currentData = loadUserData() || {};
+        currentData.profileImage = imageData;
+        saveUserData(currentData);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
+// Toggle profile password visibility
+document.addEventListener('DOMContentLoaded', () => {
+  const togglePassword = document.getElementById('togglePassword');
+  const passwordField = document.getElementById('password');
+  let isPasswordVisible = false;
+
+  togglePassword.addEventListener('click', () => {
+    isPasswordVisible = !isPasswordVisible;
+    passwordField.type = isPasswordVisible ? 'text' : 'password';
+    togglePassword.src = isPasswordVisible
+        ? 'imgs/invisibleEye.png'
+        : 'imgs/eye.png';
+  });
+});
+
+// Toggle card password visibility
+document.addEventListener('DOMContentLoaded', () => {
+  const togglePassword = document.getElementById('eyePassword');
+  const passwordField = document.getElementById('cardpassword');
+  let isPasswordVisible = false;
+
+  togglePassword.addEventListener('click', () => {
+    isPasswordVisible = !isPasswordVisible;
+    passwordField.type = isPasswordVisible ? 'text' : 'password';
+    togglePassword.src = isPasswordVisible
+        ? 'imgs/invisibleEye.png'
+        : 'imgs/eye.png';
   });
 });

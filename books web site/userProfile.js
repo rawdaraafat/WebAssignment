@@ -9,6 +9,12 @@ function updateProfilePage() {
   const userData = loadUserData();
   if (!userData) return;
 
+  // Update profile image if available
+  const profileImage = document.querySelector('.profileOverview img');
+  if (userData.profileImage) {
+    profileImage.src = userData.profileImage;
+  }
+
   // Update basic info
   document.querySelector('.profileOverview h3').textContent = userData.name;
   document.querySelector('p:nth-of-type(1)').innerHTML = `<strong>Age:</strong> ${userData.age}`;
@@ -16,10 +22,7 @@ function updateProfilePage() {
   document.querySelector('p:nth-of-type(3)').innerHTML = `<strong>Hobbies:</strong> ${userData.hobbies}`;
   document.querySelector('p:nth-of-type(4)').innerHTML = `<strong>Profile password:</strong> ********`;
   document.querySelector('p:nth-of-type(5)').innerHTML = `<strong>Card password:</strong> ********`;
-  //document.querySelector('p:nth-of-type(4)').innerHTML = `<strong>Profile password:</strong> ${userData.profilePassword}`;
-  //document.querySelector('p:nth-of-type(5)').innerHTML = `<strong>Card password:</strong> ${userData.cardPassword}`;
-  document.querySelector('p:nth-of-type(6)').innerHTML = `<strong>Card number:</strong> ${'4001 1253 **** ****'}`;
-
+  document.querySelector('p:nth-of-type(6)').innerHTML = `<strong>Card number:</strong> **** **** **** ****`;
 }
 
 // Update the profile when the page loads
