@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     togglePassword.addEventListener('click', () => {
         isPasswordVisible = !isPasswordVisible;
         passwordField.type = isPasswordVisible ? 'text' : 'password';
-        /*togglePassword.querySelector('img').src = isPasswordVisible
-            ? 'https://img.icons8.com/ios-glyphs/30/000000/visible.png'
-            : 'https://img.icons8.com/ios-glyphs/30/000000/invisible.png';*/
+        togglePassword.src = isPasswordVisible
+            ? 'imgs/invisibleEye.png' 
+            : 'imgs/Eye.png'; 
     });
 });
+
 document.addEventListener('DOMContentLoaded', () => {
     const togglePassword = document.getElementById('eyePassword');
     const passwordField = document.getElementById('cardpassword');
@@ -19,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     togglePassword.addEventListener('click', () => {
         isPasswordVisible = !isPasswordVisible;
         passwordField.type = isPasswordVisible ? 'text' : 'password';
-        /*togglePassword.querySelector('img').src = isPasswordVisible
-            ? 'https://img.icons8.com/ios-glyphs/30/000000/visible.png'
-            : 'https://img.icons8.com/ios-glyphs/30/000000/invisible.png';*/
+        togglePassword.src = isPasswordVisible
+            ? 'imgs/invisibleEye.png' 
+            : 'imgs/Eye.png'; 
     });
 });
