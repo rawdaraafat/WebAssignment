@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function includeHTMLWithScript(selector, htmlFile) {
     return fetch(htmlFile)
         .then(response => response.text())
@@ -103,8 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     includeHTMLWithScript('.bars', 'bars.html');
 });
 
-
-=======
 function includeHTMLWithScript(selector, htmlFile) {
     return fetch(htmlFile)
         .then(response => response.text())
@@ -196,4 +193,3 @@ function updateNavBar() {
 document.addEventListener('DOMContentLoaded', () => {
     includeHTMLWithScript('.bars', 'bars.html');
 });
->>>>>>> 11a2f5d050e27a235a44cf14e82b207d83632f41
