@@ -102,4 +102,22 @@ document.addEventListener('DOMContentLoaded', () => {
     includeHTMLWithScript('.bars', 'bars.html');
 });
 
+function includeHTMLWithScript(selector, htmlFile) {
+    return fetch(htmlFile)
+        .then(response => response.text())
+        .then(data => {
+            const container = document.querySelector(selector);
+            if (container) {
+                container.innerHTML = data;
+                // Call updateNavBar and other logic after content is injected
+                setTimeout(() => {
+                    if (typeof updateNavBar === 'function') {
+                        updateNavBar();
+                    }
+                    bindSidebarToggle();
+                }, 100);
+            }
+        })
+        .catch(error => console.error('Error loading navigation:', error));
+}
 

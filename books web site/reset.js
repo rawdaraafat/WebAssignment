@@ -6,7 +6,7 @@ function generateSixDigitNumber() {
 
 // Wait until the page is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-    const resetBtn = document.querySelector("a[href='home.html'] > button");
+    const resetBtn = document.querySelector("a[href='login-signup.html'] > button");
 
     resetBtn.addEventListener("click", (e) => {
         e.preventDefault(); // Prevent jumping to home.html immediately
@@ -83,7 +83,7 @@ function clearErrors() {
 
 // Wait until the page is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-    const resetBtn = document.querySelector("a[href='home.html'] > button");
+    const resetBtn = document.querySelector("a[href='login-signup.html'] > button");
 
     resetBtn.addEventListener("click", (e) => {
         e.preventDefault(); // Prevent jumping to home.html immediately
@@ -156,32 +156,3 @@ function clearErrors() {
     document.querySelectorAll("input").forEach(el => el.style.borderColor = "");
 }
 
-// Toggle profile password visibility
-document.addEventListener('DOMContentLoaded', () => {
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordField = document.getElementById('password');
-    let isPasswordVisible = false;
-
-    togglePassword.addEventListener('click', () => {
-        isPasswordVisible = !isPasswordVisible;
-        passwordField.type = isPasswordVisible ? 'text' : 'password';
-        togglePassword.src = isPasswordVisible
-            ? 'imgs/invisibleEye.png'
-            : 'imgs/eye.png';
-    });
-});
-
-// Toggle card password visibility
-document.addEventListener('DOMContentLoaded', () => {
-    const togglePassword = document.getElementById('eyePassword');
-    const passwordField = document.getElementById('ppassword');
-    let isPasswordVisible = false;
-
-    togglePassword.addEventListener('click', () => {
-        isPasswordVisible = !isPasswordVisible;
-        passwordField.type = isPasswordVisible ? 'text' : 'password';
-        togglePassword.src = isPasswordVisible
-            ? 'imgs/invisibleEye.png'
-            : 'imgs/eye.png';
-    });
-});
