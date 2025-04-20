@@ -144,17 +144,51 @@ select option {
     height: 550px;
 }
 
-.shadow {
-    background-color: rgba(000, 000, 100, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+.intro {
+    position:absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100vh;
+    background-color: #f5ede0;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 10% 100%);
+    background: linear-gradient(to left, #f5ede0 65%, transparent);
+    padding-left: 15%;
+    font-weight: bold;
+    line-height: 100%;
 }
 
 .hero {
     background: url("imgs/background.jpg") center/cover no-repeat;
-    color: #f5efeb;
-    padding: 170px 50px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.intro h1{
+    font-size: 4vh;
+    font-weight: bolder;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.intro p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2.5vh;
+    margin: 2vh;
+    line-height: 150%;
+}
+.intro button {
+    font-weight: bold;
+    font-size: 3vh;
+    height: 10vh;
+    margin-top: 3vh;
+    border-radius: 20px;
+    border:none;
 }
 
 
