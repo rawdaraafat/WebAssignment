@@ -21,7 +21,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 30px;
+    height: 3%;
     z-index: 1000;
 }
 
@@ -55,7 +55,7 @@ ul li .dropdown-content {
     display: none;
     position: absolute;
     background-color:#1a2a44;
-    width: 210px;
+    width: 700%;
     z-index: 2;
 }
 
@@ -84,7 +84,7 @@ ul li.dropdown:hover .dropdown-content {
 
 .cart-icon {
     position: fixed;
-    right: 110px;
+    right: 6%;
 }
 
 .cart-icon img {
@@ -94,7 +94,7 @@ ul li.dropdown:hover .dropdown-content {
 
 .admin-icon {
     position: fixed;
-    right: 110px;
+    right: 6%;
 }
 
 .admin-icon img {

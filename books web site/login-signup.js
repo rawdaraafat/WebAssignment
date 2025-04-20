@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateNavBar() {
             const loginTime = parseInt(localStorage.getItem('loginTime')) || 0;
             const now = Date.now();
-            const sessionDuration = 20000; // 24 hours
+            const sessionDuration = 20000;
 
             const loginLink = document.querySelector('.login-link');
             const profileIcon = document.querySelector('.profile');
