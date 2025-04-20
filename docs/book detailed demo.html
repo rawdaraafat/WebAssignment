@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Library - Book Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bars.css">
+    <link rel="stylesheet" href="books.css">
+    <script src="login-signup.js"></script>
+</head>
+<body>
+    <div class="bars"></div>
+    <script src="bars.js"></script>
+    <div id="AboutBook">
+        <h2> Harry Potter and the Philosopher’s Stone </h2>
+        <div class="content-row">
+            <img src="imgs/harry1.jpg">
+            <div class="book-details">
+                <p>Category: Fantasy</p>
+                <p>Author: J.K. Rowling</p>
+                <p>About the book: "Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger, and a snake surrounding a large letter 'H'."
+                    Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!</p>
+                <p>Pages: 333</p>
+                <p>State: Available</p>
+            </div>
+        </div>
+        <ul class="book-edite">
+            <!-- Add IDs to buttons -->
+            <li><a id="editButton" href="update%20book%20detailed.html">Edit book details</a></li>
+            <li><a id="deleteButton" href="#">Delete</a></li>
+            <li><a href="favouritePageDemo.html">Add to Favorites</a></li>
+        </ul>
+    </div>
+
+    <!-- JavaScript for role-based button visibility -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get the user role from localStorage
+        const userRole = localStorage.getItem('userRole');
+    
+        // Select the buttons
+        const updateButton = document.getElementById('editButton');
+        const deleteButton = document.getElementById('deleteButton');
+    
+        // Check if the user is an admin
+        if (userRole === 'admin') {
+            // Show buttons for admin
+            updateButton.style.display = 'inline-block';
+            deleteButton.style.display = 'inline-block';
+        } else {
+            // Hide buttons for non-admin users
+            updateButton.style.display = 'none';
+            deleteButton.style.display = 'none';
+        }
+    });
+    </script>
+</body>
+</html>
