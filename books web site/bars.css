@@ -1,3 +1,4 @@
+
 #logo {
     color: #f5efeb;
     position: fixed;
@@ -10,7 +11,7 @@
 
 /* Navigation */
 .navigation {
-    background-color: #1a2a44;
+    background-color:#1a2a44;
     padding: 1% 1%;
     color: #f5efeb;
     display: flex;
