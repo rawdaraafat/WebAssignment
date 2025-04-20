@@ -109,11 +109,15 @@ ul li.dropdown:hover .dropdown-content {
 .footer {
     background-color:#1a2a44;
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
     padding: 0.5%;
     font-size: 14px;
     color: #f5efeb;
     position: fixed;
     bottom: 0;
+    min-height: 35px;
     width: 100%;
     z-index: 9999;
 }
@@ -133,4 +137,51 @@ img {
 
 a:hover {
     box-shadow: 0px 15px 20px #f5efeb;
+}
+
+.ContactUs {
+    border-radius: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 2%;
+    width: 40px;
+    height: 40px;
+}
+
+.ContactUs img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer p {
+    text-align: center;
+    display: flex;
+    margin-right: 50px;
+}
+
+.menuItem {
+    border-radius: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 2%;
+    bottom: 3%;
+    width: 40px;
+    height: 40px;
+    transform-origin: center;
+    visibility: hidden;
+    transition: 0.3s;
+
+}
+
+.icon {
+    transform: rotate(calc(var(--i) * -22.5deg)) translateX(0);
+}
+
+.menu.show .menuItem {
+    transform: rotate(calc(var(--i) * 22.5deg)) translateX(-120px);
+    visibility: visible;
 }

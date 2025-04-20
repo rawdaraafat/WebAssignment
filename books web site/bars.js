@@ -11,6 +11,7 @@ function includeHTMLWithScript(selector, htmlFile) {
                         updateNavBar();
                     }
                     bindSidebarToggle();
+                    footerMenu();
                 }, 100);
             }
         })
@@ -86,6 +87,19 @@ function updateNavBar() {
     }
 }
 
+function footerMenu() {
+    const menu = document.getElementById("ContactMenu");
+    const button = document.getElementById("menuToggle");
+    console.log("button");
+    button.onclick = () => {
+        console.log("clicked");
+        menu.classList.toggle("show");    
+};
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     includeHTMLWithScript('.bars', 'bars.html');
 });
+
+
