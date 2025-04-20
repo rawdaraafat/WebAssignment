@@ -1,5 +1,5 @@
 .section-title {
-    background-color: #f5efeb;
+    background-color: white;
     font-size: 20px;
     font-weight: bold;
     padding: 5px;
@@ -46,7 +46,7 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-color:#f5efeb;
+    background-color:white;
     border-radius: 5px;
     box-shadow: 0 2px 5px #1a2a44;
     padding: 10px;
@@ -96,7 +96,7 @@
     font-size: 16px;
     margin-top: 15px;
     background-color: rgba(100, 000, 200, 0.5);
-    color: #f5efeb;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -127,7 +127,7 @@
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-    background-color:#f5efeb;
+    background-color:white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -163,10 +163,10 @@
 }
 
 #AboutBook {
-    background-color: #f5efeb;
+    background-color: white;
     padding: 20px;
     width: 1200px;
-    border: 1px solid #f5efeb;
+    border: 1px solid white;
     border-radius: 8px;
     margin: 20px auto;
     position: relative;

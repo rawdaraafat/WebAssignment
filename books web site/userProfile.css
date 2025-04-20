@@ -1,5 +1,5 @@
 .profile-card {
-    background:  #f5efeb;
+    background: white;
     padding: 2%;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,14 +32,14 @@ input{
     font-weight: bold;
     font-size: 15px;
     left: 10%;
-    background:#f5efeb;
+    background:white;
 }
 
 textarea{
     font-weight: bold;
     font-size: 15px;
     left: 10%;
-    background:#f5efeb;
+    background:white;
 }
 
 input[type="text"],
@@ -49,8 +49,8 @@ input[type="password"] {
     padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
-    background-color: snow;
-    border: 1px solid #ccc;
+    background-color: white;
+    border: 1px solid white;
     border-radius: 8px;
 }
 

@@ -1,6 +1,6 @@
 body {
     font-family: "Calibri Light";
-    background:#f5efeb;
+    background:white;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ select {
     font-size: 16px;
     border: 2px solid #1a2a44;
     border-radius: 5px;
-    background-color:  #f5efeb;
+    background-color: white;
     color: #1a2a44;
     cursor: pointer;
     font-weight: bold;
@@ -120,7 +120,7 @@ select option {
     margin-top: 7%;
     margin-bottom: 5%;
     position: relative;
-    background-color:  #f5efeb;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -130,12 +130,12 @@ select option {
     text-align: center;
     padding: 10px;
     font-size: 14px;
-    color: #f5efeb;
+    color: white;
     margin: 80px;
 }
 
 .confirmation-box {
-    background:  #f5efeb;
+    background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -146,14 +146,14 @@ select option {
 
 .shadow {
     background-color: rgba(000, 000, 100, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .hero {
     background: url("imgs/background.jpg") center/cover no-repeat;
-    color: #f5efeb;
-    padding: 170px 50px;
+    color: white;
+    padding: 180px 30px;
     text-align: center;
 }
 

@@ -1,6 +1,5 @@
-
 #logo {
-    color: #f5efeb;
+    color: white;
     position: fixed;
     left: 2%;
     top: 0;
@@ -11,9 +10,12 @@
 
 /* Navigation */
 .navigation {
-    background-color:#1a2a44;
+    /*background-color:#1a2a44;*/
+    background-color: rgba(000, 000, 100, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     padding: 1% 1%;
-    color: #f5efeb;
+    color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -40,7 +42,7 @@
 }
 
 .navigation a {
-    color: #f5efeb;
+    color:white;
     text-decoration: none;
     font-size: 18px;
 }
@@ -63,12 +65,12 @@ ul li .dropdown-content {
 ul li .dropdown-content li a {
     display: block;
     padding: 5px;
-    color: #f5efeb;
+    color: white;
 }
 
 ul li .dropdown-content li a:hover {
     background: transparent;
-    box-shadow: 0px 15px 20px #f5efeb;
+    box-shadow: 0px 15px 20px white;
 }
 
 /* Show the dropdown on hover */
@@ -107,14 +109,16 @@ ul li.dropdown:hover .dropdown-content {
 }
 
 .footer {
-    background-color:#1a2a44;
+    background-color: rgba(000, 000, 100, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
     padding: 0.5%;
     font-size: 14px;
-    color: #f5efeb;
+    color: white;
     position: fixed;
     bottom: 0;
     min-height: 35px;
@@ -136,7 +140,7 @@ img {
 }
 
 a:hover {
-    box-shadow: 0px 15px 20px #f5efeb;
+    box-shadow: 0px 15px 20px white;
 }
 
 .ContactUs {
