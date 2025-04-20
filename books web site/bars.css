@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*side/navigation bar*/
 #logo {
     color: #f5efeb;
@@ -185,3 +186,141 @@ a:hover {
     transform: rotate(calc(var(--i) * 22.5deg)) translateX(-120px);
     visibility: visible;
 }
+=======
+/*side/navigation bar*/
+#logo {
+    color: #f5efeb;
+    position: fixed;
+    left: 2%;
+    top: 0;
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0.7%;
+}
+
+/* Navigation */
+.navigation {
+    background-color:#1a2a44;
+    padding: 1% 1%;
+    color: #f5efeb;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 1000;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    width: 100%;
+}
+
+.navigation li {
+    margin: 0 1%;
+}
+
+.navigation a {
+    color: #f5efeb;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Dropdown container */
+ul li.dropdown {
+    position: relative;
+}
+
+/* Hide the dropdown content by default */
+ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:#1a2a44;
+    width: 210px;
+    z-index: 2;
+}
+
+/* Dropdown items */
+ul li .dropdown-content li a {
+    display: block;
+    padding: 5px;
+    color: #f5efeb;
+}
+
+ul li .dropdown-content li a:hover {
+    background: transparent;
+    box-shadow: 0px 15px 20px #f5efeb;
+}
+
+/* Show the dropdown on hover */
+ul li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.profile {
+    position: fixed;
+    right: .5%;
+    margin: 2%;
+}
+
+.cart-icon {
+    position: fixed;
+    right: 110px;
+}
+
+.cart-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.admin-icon {
+    position: fixed;
+    right: 110px;
+}
+
+.admin-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.appears{
+    display: none;
+}
+
+.footer {
+    background-color:#1a2a44;
+    text-align: center;
+    padding: 0.5%;
+    font-size: 14px;
+    color: #f5efeb;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+img {
+    height: 30px;
+    width: 30px;
+}
+
+.login-link{
+    position: fixed;
+    right: 2%;
+    margin: 2%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+a:hover {
+    box-shadow: 0px 15px 20px #f5efeb;
+}
+>>>>>>> 11a2f5d050e27a235a44cf14e82b207d83632f41
