@@ -5,9 +5,9 @@ body {
 }
 
 .container2{
-    top: 2%;
+    top: 40px;
     position: relative;
-    width: 60%;
+    width: 1000px;
     height: 600px;
     background: #f5efeb;
     border-radius: 30px;
