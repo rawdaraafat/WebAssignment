@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /*side/navigation bar*/
-=======
-
->>>>>>> 8afb341451dcc31b03599b648ea5dcdf5377a7fd
 #logo {
     color: #f5efeb;
     position: fixed;
@@ -189,7 +185,3 @@ a:hover {
     transform: rotate(calc(var(--i) * 22.5deg)) translateX(-120px);
     visibility: visible;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8afb341451dcc31b03599b648ea5dcdf5377a7fd
