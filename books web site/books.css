@@ -95,7 +95,7 @@
     height: 40px;
     font-size: 16px;
     margin-top: 15px;
-    background-color: rgba(100, 000, 200, 0.5);
+    background-color: #1a2a99;
     color: white;
     border: none;
     border-radius: 5px;
@@ -104,7 +104,7 @@
 }
 
 .book-back .Purchase:hover {
-    background-color: rgba(100, 000, 200);
+    background-color: #4400FA;
 }
 
 .book-info {

@@ -22,6 +22,12 @@ function displayBooks(books) {
                     <a href="Book Purchase.html" class="purchase">
                         <button class="Purchase">Buy</button>
                     </a>
+                    <a href="borrowed.html">
+                        <button>Borrow</button>
+                    </a>
+                    <a href="favouritePageDemo.html">
+                        <button>Add to Favorites</button>
+                    </a>
                 </div>
             </div>
         `;
