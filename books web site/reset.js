@@ -156,3 +156,18 @@ function clearErrors() {
     document.querySelectorAll("input").forEach(el => el.style.borderColor = "");
 }
 
+
+// Toggle card password visibility
+document.addEventListener('DOMContentLoaded', () => {
+    const togglePassword = document.getElementById('eyePassword');
+    const passwordField = document.getElementById('ppassword');
+    let isPasswordVisible = false;
+
+    togglePassword.addEventListener('click', () => {
+        isPasswordVisible = !isPasswordVisible;
+        passwordField.type = isPasswordVisible ? 'text' : 'password';
+        togglePassword.src = isPasswordVisible
+            ? 'imgs/invisibleEye.png'
+            : 'imgs/eye.png';
+    });
+});
