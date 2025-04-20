@@ -156,3 +156,37 @@ select option {
     padding: 170px 50px;
     text-align: center;
 }
+
+#cart {
+    display: flex;
+    align-items: flex-start;
+}
+
+
+#cartBooks {
+    width: 60%;
+    margin-right: 0;
+}
+
+
+#cartTotal {
+    width: 30%;
+}
+
+#cartTotal h3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumbnail {
+    display:flex;
+    padding: 3%;
+    margin: 2% 2%;
+}
+
+.thumbnail div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 3%;
+}
