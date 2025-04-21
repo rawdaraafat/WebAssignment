@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!hasError) {
             alert("Password reset successful!");
             // Proceed to home or wherever you want
-            window.location.href = "home.html";
+            window.location.href = "login-signup.html";
         }
     });
 });
