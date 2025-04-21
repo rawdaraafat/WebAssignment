@@ -56,9 +56,11 @@ ul li.dropdown {
 ul li .dropdown-content {
     display: none;
     position: absolute;
-    background-color:#1a2a44;
+    background-color: rgba(000, 000, 150, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     width: 210px;
-    z-index: 2;
+    z-index: 1;
 }
 
 /* Dropdown items */
