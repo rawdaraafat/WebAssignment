@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -12,47 +13,56 @@
     <div class="bars"></div>
     <script src="bars.js"></script>
     <div id="AboutBook">
-        <h2> Harry Potter and the Philosopher’s Stone </h2>
+        <!-- Book Title -->
+        <h2 id="bookTitle">Harry Potter and the Philosopher’s Stone</h2>
         <div class="content-row">
             <img src="imgs/harry1.jpg">
             <div class="book-details">
-                <p>Category: Fantasy</p>
-                <p>Author: J.K. Rowling</p>
-                <p>About the book: "Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger, and a snake surrounding a large letter 'H'."
-                    Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!</p>
-                <p>Pages: 333</p>
-                <p>State: Available</p>
+                <!-- Book Details -->
+                <p id="category">Category: Fantasy</p>
+                <p id="author">Author: J.K. Rowling</p>
+                <p id="description">About the book: Turning the envelope over, his hand trembling...</p>
+                <p id="pages">Pages: 333</p>
+                <p id="state">State: Available</p>
             </div>
         </div>
         <ul class="book-edite">
-            <!-- Add IDs to buttons -->
+            <!-- Edit Button -->
             <li><a id="editButton" href="update%20book%20detailed.html">Edit book details</a></li>
-            <li><a id="deleteButton" href="#">Delete</a></li>
             <li><a href="favouritePageDemo.html">Add to Favorites</a></li>
         </ul>
     </div>
 
-    <!-- JavaScript for role-based button visibility -->
+    <!-- JavaScript to Load Book Data from localStorage -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Get the user role from localStorage
-        const userRole = localStorage.getItem('userRole');
-    
-        // Select the buttons
-        const updateButton = document.getElementById('editButton');
-        const deleteButton = document.getElementById('deleteButton');
-    
-        // Check if the user is an admin
-        if (userRole === 'admin') {
-            // Show buttons for admin
-            updateButton.style.display = 'inline-block';
-            deleteButton.style.display = 'inline-block';
-        } else {
-            // Hide buttons for non-admin users
-            updateButton.style.display = 'none';
-            deleteButton.style.display = 'none';
-        }
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get book data from localStorage
+            const bookId = 'book1'; // Unique ID for the book
+            const storedBooks = JSON.parse(localStorage.getItem('books')) || {};
+            const book = storedBooks[bookId];
+
+            if (book) {
+                // Update page content with book data
+                document.getElementById('bookTitle').innerText = book.title;
+                document.getElementById('category').innerText = `Category: ${book.category}`;
+                document.getElementById('author').innerText = `Author: ${book.author}`;
+                document.getElementById('description').innerText = `About the book: ${book.description}`;
+                document.getElementById('pages').innerText = `Pages: ${book.pages}`;
+                document.getElementById('state').innerText = `State: ${book.state}`;
+            } else {
+                console.log('Book data not found in localStorage.');
+            }
+
+            // Show or hide buttons based on user role
+            const userRole = localStorage.getItem('userRole');
+            const editButton = document.getElementById('editButton');
+
+            if (userRole === 'admin') {
+                editButton.style.display = 'inline-block';
+            } else {
+                editButton.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
