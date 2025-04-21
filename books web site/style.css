@@ -1,6 +1,6 @@
 body {
     font-family: "Calibri Light";
-    background:#f5efeb;
+    background:white;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -66,7 +66,7 @@ select {
 select option {
     padding: 10px;
     background-color:  #f5efeb;
-    color:#1a2a44;
+    color:#f5efeb;
     font-weight: bold;
 }
 

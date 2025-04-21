@@ -44,20 +44,35 @@ document.addEventListener('DOMContentLoaded', () => {
     addBookForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+
         // Get form data
+        const book_id = parseInt(document.getElementById('book_id').value);
         const title = document.getElementById('title').value.trim();
         const author = document.getElementById('author').value.trim();
         const price = parseFloat(document.getElementById('price').value);
         const image = document.getElementById('image').value.trim();
-
+        const genre = document.getElementById('genre').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const pages = parseInt(document.getElementById('pages').value);
+        console.log("Form submitted");
         // Validate form data
-        if (!title || !author || isNaN(price) || price <= 0 || !image) {
+        if (
+            !title ||
+            !author ||
+            isNaN(price) || price <= 0 ||
+            !image ||
+            !genre || genre === 'Select genre' ||
+            !description ||
+            isNaN(pages) || pages <= 0 ||
+            isNaN(book_id) || book_id <= 0
+        )   {
             alert("Please fill in all fields correctly.");
             return;
         }
 
+
         // Create a new book object
-        const newBook = { title, author, price, image };
+        const newBook = {book_id, title, author, price, image,  genre, description, pages };
 
         // Add the new book to the array
         books.push(newBook);
@@ -67,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Display the updated list of books
         displayBooks();
+
+        alert("Book added successfully!");
 
         // Clear the form
         addBookForm.reset();

@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('signupTime', Date.now());
         localStorage.setItem('showCart','true' );
         localStorage.setItem('showAdmin', 'false');
+         localStorage.setItem('loggedIn', 'true');
         window.location.href = 'user profile.html'; // Redirect to user profile page
 
         // Update the navigation bar
@@ -133,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('signupTime', Date.now());
             localStorage.setItem('showCart', 'true');
             localStorage.setItem('showAdmin', 'false');
+            localStorage.setItem('loggedIn', 'true');
 
             console.log('User signed up');
             window.location.href = 'user profile.html';

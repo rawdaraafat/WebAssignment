@@ -90,8 +90,11 @@
     white-space: nowrap;
 }
 
-.book-back .Purchase {
-    width: 120px;
+.book-back .Purchase,
+.Borrow
+,.fav
+,.details{
+    width: 175px;
     height: 40px;
     font-size: 16px;
     margin-top: 15px;
