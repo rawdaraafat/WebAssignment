@@ -1,6 +1,6 @@
 body {
     font-family: "Calibri Light";
-    background:white;
+    background:#f5efeb;
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ select {
     font-size: 16px;
     border: 2px solid #1a2a44;
     border-radius: 5px;
-    background-color: white;
+    background-color:  #f5efeb;
     color: #1a2a44;
     cursor: pointer;
     font-weight: bold;
@@ -120,7 +120,7 @@ select option {
     margin-top: 7%;
     margin-bottom: 5%;
     position: relative;
-    background-color: white;
+    background-color:  #f5efeb;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -130,12 +130,12 @@ select option {
     text-align: center;
     padding: 10px;
     font-size: 14px;
-    color: white;
+    color: #f5efeb;
     margin: 80px;
 }
 
 .confirmation-box {
-    background: white;
+    background:  #f5efeb;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -144,17 +144,59 @@ select option {
     height: 550px;
 }
 
-.shadow {
+.intro {
+    position:absolute;
+    top: 7.5%;
+    bottom:80%;
+    right: 0;
+    width: 40%;
+    height: 85vh;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 10% 100%);
     background-color: rgba(000, 000, 150, 0.3);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    padding-left: 15%;
+    font-weight: bold;
 }
 
 .hero {
     background: url("imgs/background.jpg") center/cover no-repeat;
-    color: white;
-    padding: 180px 30px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.intro h1{
+    font-size: 4vh;
+    font-weight: bolder;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+.intro p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2.5vh;
+    margin: 2vh;
+    line-height: 150%;
+    color: white;
+}
+
+.intro button {
+    background-color: #1a2a99;
+    color:  #f5efeb;
+    padding: 10px 15px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 80%;
+    display: block;
+    margin: 0 auto 5px;
 }
 
 
