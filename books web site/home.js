@@ -17,7 +17,10 @@ function createBookCard(book) {
 }
 
 function loadAllBooks() {
-  shelf.innerHTML = books.map(createBookCard).join("");
+  // shelf.innerHTML = books.map(createBookCard).join("");
+  if (localStorage.getItem('books') == null) {
+    localStorage.setItem("books", JSON.stringify(books));
+  }
 }
 
 document.addEventListener("DOMContentLoaded", loadAllBooks);

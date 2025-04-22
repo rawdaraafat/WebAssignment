@@ -1,16 +1,15 @@
 function createBookCard(book) {
   return `
-        <div class="book">
-            <div class="book-inner">
-                <div class="book-front">
-                    <img src="${book.image}" alt="${book.title}">
-                </div>
-                <div class="book-back">
-                    <p class="book-title">${book.title}</p>
-                    <p class="book-author">${book.author}</p>
-                </div>
-            </div>
-        </div>
+          <div class="book-inner">
+              <div class="book-front">
+                  <img src="${book.image}" alt="${book.title}">
+              </div>
+              <div class="book-back">
+                  <p class="book-title">${book.title}</p>
+                  <p class="book-author">${book.author}</p>
+                  <button class="remove">Remove</button>
+              </div>
+          </div>
     `;
 }
 
@@ -24,9 +23,22 @@ function renderFavorites() {
 
   // For demo purposes, let's show the first 2 books as favorites
   // In a real application, you would have a separate array of favorite book IDs
-  const favoriteBooks = books.slice(0, 2);
+  let favoriteBooks = JSON.parse(localStorage.getItem('Favorites')) || [];
 
-  container.innerHTML = favoriteBooks.map(createBookCard).join('');
+  favoriteBooks.forEach(book => {
+      const bookDiv = document.createElement('div');
+      bookDiv.className = 'book';
+
+      bookDiv.innerHTML = createBookCard(book);
+      bookDiv.getElementsByClassName("remove")[0].addEventListener("click", () => {
+        let favs =  JSON.parse(localStorage.getItem("Favorites")) || [];
+        favs = favs.filter(elm => elm.title !== book.title);
+        localStorage.setItem("Favorites", JSON.stringify(favs));
+        container.innerHTML = "";
+        renderFavorites();
+      });
+      container.appendChild(bookDiv); 
+  });
   console.log('Finished rendering favorites');
 }
 

@@ -90,9 +90,7 @@ function updateNavBar() {
 function footerMenu() {
     const menu = document.getElementById("ContactMenu");
     const button = document.getElementById("menuToggle");
-    console.log("button");
     button.onclick = () => {
-        console.log("clicked");
         menu.classList.toggle("show");    
 };
 

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load books from localStorage or initialize an empty array
     let books = JSON.parse(localStorage.getItem('books')) || [];
+    console.log(books[0].title);
 
     // Function to display books in the list
     function displayBooks() {
