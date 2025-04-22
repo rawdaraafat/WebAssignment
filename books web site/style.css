@@ -37,12 +37,12 @@ input {
 button {
     background-color: #1a2a99;
     color:  #f5efeb;
-    padding: 10px 15px;
+    padding: 10px 10px;
     font-size: 12px;
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
-    width: 80%;
+    width: 50%;
     display: block;
     margin: 0 auto 5px;
 }

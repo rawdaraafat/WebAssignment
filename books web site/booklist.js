@@ -29,13 +29,13 @@ function displayBooks(books) {
                     <a href="book%20detailed%20demo.html">
                         <button class="details">Show Details</button>
                     </a>
-                    <a href="${purchaseLink}">
+                    <a href="${purchaseLink}" class="user">
                         <button class="Purchase">Buy</button>
                     </a>
-                    <a href="${borrowLink}">
+                    <a href="${borrowLink}" class="user">
                         <button class="Borrow">Borrow</button>
                     </a>
-                    <a href="${favLink}">
+                    <a href="${favLink}" class="user">
                         <button class="fav">Add to Favorites</button>
                     </a>
                 </div>
@@ -54,7 +54,7 @@ function displayBooks(books) {
             let borrowed =  JSON.parse(localStorage.getItem("Borrowed")) || [];
             if (!(borrowed.some(elm => elm.title == book.title))) {
                 let dueDate = new Date();
-                dueDate.setDate(dueDate.getDate() + 7); //set due date to 1 week from the date borrowed
+                dueDate.setDate(dueDate.getDate() + 7);
                 book.dueDate = dueDate;
                 borrowed.push(book);
                 localStorage.setItem("Borrowed", JSON.stringify(borrowed));
@@ -72,6 +72,11 @@ function displayBooks(books) {
 
         bookShelf.appendChild(bookDiv);
     });
+
+    // ✅ Update user buttons visibility after DOM elements are created
+    if (typeof updateUserButtons === 'function') {
+        updateUserButtons();
+    }
 }
 
 // Initial display of books
@@ -85,8 +90,5 @@ searchInput.addEventListener('input', () => {
         book.title.toLowerCase().includes(searchTerm) ||
         book.author.toLowerCase().includes(searchTerm)
     );
-
-
-    // Display filtered books
     displayBooks(filteredBooks);
 });

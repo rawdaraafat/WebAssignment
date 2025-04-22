@@ -19,41 +19,27 @@
                 <img src="imgs/search.png" style="width: 25px ; height: 25px">
                 <input type="text" id="searchInput" style="background-color: white" placeholder="Search by Title or Author">
             </div>
+            <div class="book-shelf" id="dynamicBookShelf"></div>
 
-            <div class="book-shelf" id="dynamicBookShelf">
-
-            </div>
         </div>
         <script src="booklist.js"></script>
         <script src="search.js"></script>
-        <script>
-            setupSearch('searchInput', books, displayBooks);
-        </script>
 
-        <script>
-            // Load books from localStorage or use the default list if localStorage is empty
-            const storedBooks = JSON.parse(localStorage.getItem('books')) || books;
-
-            // Save the default list to localStorage if it's empty
-            if (!localStorage.getItem('books')) {
-                localStorage.setItem('books', JSON.stringify(storedBooks));
-            }
-
-            // Initialize the book list
-            setupSearch('searchInput', storedBooks, displayBooks);
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                // Load books from localStorage
-                const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
-
-                // Check if storedBooks is defined
-                console.log(storedBooks); // To verify the data
-
-                // Call displayBooks with storedBooks
-                displayBooks(storedBooks);
+        <!-- JavaScript to Load Book Data from localStorage -->
+    <script>
+        function updateUserButtons() {
+            const userRole = localStorage.getItem("userRole");
+            const userButtons = document.querySelectorAll(".user");
+            userButtons.forEach((btn) => {
+                btn.style.display = userRole === "user" ? "inline-block" : "none";
             });
-        </script>
+        }
+
+        // Ensure the function runs after the books are displayed
+        document.addEventListener("DOMContentLoaded", () => {
+            updateUserButtons();
+        });
+    </script>
+
     </body>
 </html>

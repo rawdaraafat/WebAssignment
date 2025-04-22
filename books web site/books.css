@@ -217,3 +217,7 @@
 .book-edite a:hover {
     text-decoration: underline;
 }
+
+.user {
+    display: none;
+}
