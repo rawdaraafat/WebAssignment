@@ -26,7 +26,7 @@ function displayBooks(books) {
                     <img src="${book.image}" alt="${book.title}">
                 </div>
                 <div class="book-back">
-                    <a href="book%20detailed%20demo.html">
+                    <a href="book%20detailed%20demo.html?id=${book.book_id}">
                         <button class="details">Show Details</button>
                     </a>
                     <a href="${purchaseLink}" class="user">
