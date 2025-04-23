@@ -10,78 +10,78 @@
 <body>
 <div class="bars"></div>
 <script src="bars.js"></script>
-<div class="container">
-    <h1>Add New Book</h1>
+    <div class="container">
+        <h1>Add New Book</h1>
 
-    <!-- Form to add a new book -->
-    <form id="addBookForm" class="form">
+        <!-- Form to add a new book -->
+        <form id="addBookForm" class="form">
 
-        <div class="form-group">
-            <label for="book_id">Book ID:</label>
-            <input type="number" id="book_id" name="book-id"  style="background-color: white" required placeholder="Enter book ID" min="0">
-        </div>
+            <div class="form-group">
+                <label for="book_id">Book ID:</label>
+                <input type="number" id="book_id" name="book-id"  style="background-color: white" required placeholder="Enter book ID" min="0">
+            </div>
 
-        <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title"  style="background-color: white" required placeholder="Enter book title">
-        </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title"  style="background-color: white" required placeholder="Enter book title">
+            </div>
 
-        <div class="form-group">
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author"  style="background-color: white" required placeholder="Enter author name">
-        </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author"  style="background-color: white" required placeholder="Enter author name">
+            </div>
 
-        <div class="form-group">
-            <label for="pages">Pages:</label>
-            <input type="number" id="pages" name="pages"  style="background-color: white" required placeholder="Enter the Number of Pages of the book" min="1">
-        </div>
+            <div class="form-group">
+                <label for="pages">Pages:</label>
+                <input type="number" id="pages" name="pages"  style="background-color: white" required placeholder="Enter the Number of Pages of the book" min="1">
+            </div>
 
-        <div class="form-group">
-            <label for="description">description:</label>
-            <input type="text" id="description" name="description"  style="background-color: white" required placeholder="Enter the description of the book">
-        </div>
+            <div class="form-group">
+                <label for="description">description:</label>
+                <input type="text" id="description" name="description"  style="background-color: white" required placeholder="Enter the description of the book">
+            </div>
 
-        <div class="form-group">
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price"  style="background-color: white" required placeholder="Enter book price" min="0">
-        </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price"  style="background-color: white" required placeholder="Enter book price" min="0">
+            </div>
 
-        <div class="form-group">
-            <label for="image">Book Image:</label>
-            <input type="text" id="image" name="image"  style="background-color: white" required placeholder="Enter image URL">
-        </div>
+            <div class="form-group">
+                <label for="image">Book Image:</label>
+                <input type="text" id="image" name="image"  style="background-color: white" required placeholder="Enter image URL">
+            </div>
 
-        <div class="form-group">
-            <label for="genre">Book Genre:</label>
-            <select id="genre" name="genre" style="background-color: white; width: 91.5%; padding: 10px; margin-top: 5px;" required>
-                <option value="" style="color: #1a2a44" disabled selected>Select a Genre</option>
-                <option value="Non-Fiction" style="color: #1a2a44">Non-Fiction</option>
-                <option value="Fantasy" style="color: #1a2a44">Fantasy</option>
-                <option value="Romance" style="color: #1a2a44">Romance</option>
-                <option value="Science Fiction" style="color: #1a2a44">Science Fiction</option>
-                <option value="Historical Fiction" style="color: #1a2a44">Historical Fiction</option>
-                <option value="Mystery/Thriller" style="color: #1a2a44">Mystery/Thriller</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="genre">Book Genre:</label>
+                <select id="genre" name="genre" style="background-color: white; width: 91.5%; padding: 10px; margin-top: 5px;" required>
+                    <option value="" style="color: #1a2a44" disabled selected>Select a Genre</option>
+                    <option value="Non-Fiction" style="color: #1a2a44">Non-Fiction</option>
+                    <option value="Fantasy" style="color: #1a2a44">Fantasy</option>
+                    <option value="Romance" style="color: #1a2a44">Romance</option>
+                    <option value="Science Fiction" style="color: #1a2a44">Science Fiction</option>
+                    <option value="Historical Fiction" style="color: #1a2a44">Historical Fiction</option>
+                    <option value="Mystery/Thriller" style="color: #1a2a44">Mystery/Thriller</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="state">Book State:</label>
-            <select id="state" name="state" style="background-color: white; width: 91.5%; padding: 10px; margin-top: 5px;" required>
-                <option value="" style="color: #1a2a44" disabled selected>Select a Genre</option>
-                <option value="available" style="color: #1a2a44">Available</option>
-                <option value="not-available" style="color: #1a2a44">Not Available</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="state">Book State:</label>
+                <select id="state" name="state" style="background-color: white; width: 91.5%; padding: 10px; margin-top: 5px;" required>
+                    <option value="" style="color: #1a2a44" disabled selected>Select a State</option>
+                    <option value="Available" style="color: #1a2a44">Available</option>
+                    <option value="Out of Stock" style="color: #1a2a44">Out of Stock</option>
+                </select>
+            </div>
 
-        <button type="submit" class="btn" style="margin-top: 15px;">Add Book</button>
-    </form>
+            <button type="submit" class="btn" style="margin-top: 15px;">Add Book</button>
+        </form>
 
-    <!-- List to display books -->
-    <h2>Book List</h2>
-    <ul id="bookList" class="book-list"></ul>
-</div>
+        <!-- List to display books -->
+        <h2>Book List</h2>
+        <ul id="bookList" class="book-list"></ul>
+    </div>
 
-<script src="addnewbook.js"></script>
-
+    <script src="addnewbook.js"></script>
+    
 </body>
 </html>
