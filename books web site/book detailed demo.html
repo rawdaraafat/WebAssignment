@@ -8,30 +8,15 @@
     <link rel="stylesheet" href="bars.css">
     <link rel="stylesheet" href="books.css">
     <script src="login-signup.js"></script>
+
 </head>
 <body>
-    <div class="bars"></div>
-    <script src="bars.js"></script>
-    <div id="AboutBook">
-        <!-- Book Title -->
-        <h2 id="bookTitle">Harry Potter and the Philosopher’s Stone</h2>
-        <div class="content-row">
-            <img src="imgs/harry1.jpg">
-            <div class="book-details">
-                <!-- Book Details -->
-                <p id="category">Category: Fantasy</p>
-                <p id="author">Author: J.K. Rowling</p>
-                <p id="description">About the book: Turning the envelope over, his hand trembling...</p>
-                <p id="pages">Pages: 333</p>
-                <p id="state">State: Available</p>
-            </div>
-        </div>
-        <ul class="book-edite">
-            <!-- Edit Button -->
-            <li><a id="editButton" href="update%20book%20detailed.html">Edit book details</a></li>
-            <li><a href="favouritePageDemo.html">Add to Favorites</a></li>
-        </ul>
-    </div>
+<div class="bars"></div>
+<script src="bars.js"></script>
+<div id="bookDetails">
+    <script src="book-details.js"></script>
+
+</div>
 
     <!-- JavaScript to Load Book Data from localStorage -->
     <script>
@@ -48,7 +33,7 @@
                 document.getElementById('author').innerText = `Author: ${book.author}`;
                 document.getElementById('description').innerText = `About the book: ${book.description}`;
                 document.getElementById('pages').innerText = `Pages: ${book.pages}`;
-                // document.getElementById('state').innerText = `State: ${book.state}`;
+                document.getElementById('state').innerText = `State: ${book.state}`;
             } else {
                 console.log('Book data not found in localStorage.');
             }
