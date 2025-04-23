@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const genre = document.getElementById('genre').value.trim();
         const description = document.getElementById('description').value.trim();
         const pages = parseInt(document.getElementById('pages').value);
+        const state = document.getElementById('state').value.trim();
+
         console.log("Form submitted");
         // Validate form data
         if (
@@ -64,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
             !genre || genre === 'Select genre' ||
             !description ||
             isNaN(pages) || pages <= 0 ||
-            isNaN(book_id) || book_id <= 0
+            isNaN(book_id) || book_id <= 0 ||
+            !state || state === 'Select state'
         )   {
             alert("Please fill in all fields correctly.");
             return;
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // Create a new book object
-        const newBook = {book_id, title, author, price, image,  genre, description, pages };
+        const newBook = {book_id, title, author, price, image,  genre, description, pages, state };
 
         // Add the new book to the array
         books.push(newBook);
