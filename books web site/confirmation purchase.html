@@ -1,64 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books Library - Confirm Purchase</title>
-    <link rel="stylesheet" href="confirm purchase.css">
-    <link rel="stylesheet" href="bars.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books Library - Confirm Purchase</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+    <div class="bars"></div>
     <script src="bars.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-
-<body>
-    <!-- Header -->
-    <header class="header">
         <div class="container">
-            <h1>FCAI LIBRARY</h1>
-            <nav>
-                <a href="home.html" class="home"><i class="fas fa-home"></i></a>
-                <a href="cart.html" class="cart"><i class="fas fa-shopping-cart"></i></a>
-                <a href="login-signup.html" class="login">Log In</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container">
-        <section class="confirmation-section">
-            <h2>Confirm Your Purchase</h2>
-            <hr>
-
-            <div class="book-details">
-                <div class="book-image">
-                    <img src="imgs/harry1.jpg" alt="Book Cover">
-                </div>
+                <h2>Confirm Your Purchase</h2>
                 <div class="book-info">
-                    <h2>Harry Potter and the Sorcerer’s Stone</h2>
-                    <p><strong>Author:</strong> J.K. Rowling</p>
-                    <p><strong>Price:</strong> $25.99</p>
-                    <label for="payment">Choose Payment Method:</label>
-                    <select id="payment">
-                        <option value="credit-card">Credit Card</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="cash">Cash on Delivery</option>
-                    </select>
+                    <img src="imgs/harry1.jpg" alt="Book Cover">
+                    <div class="details">
+                        <h2>Harry Potter and the Sorcerer’s Stone</h2>
+                        <h3>Author: J.K. Rowling</h3>
+                        <h3 class="price">Price: $25.99</h3>
+                        <label for="payment">Choose Payment Method:</label>
+                        <select id="payment">
+                            <option value="credit-card">Credit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="cash">Cash on Delivery</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-
-            <button class="confirm-button"><a href="cart.html">Confirm Purchase</a></button>
-            <button class="cancel-button"><a href="Booklist.html">Cancel</a></button>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>A digital library that provides electronic access to books with smart recommendations and digital borrowing options.</p>
-            <a href="#" class="contact-us"><i class="fas fa-phone"></i> Contact Us</a>
+                <a href="cart.html">
+                    <button>Confirm Purchase</button>
+                </a>
         </div>
-    </footer>
-
-</body>
+    </body>
 </html>
