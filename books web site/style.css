@@ -146,11 +146,10 @@ select option {
 
 .intro {
     position:absolute;
-    top: 7.5%;
-    bottom:80%;
+    top: 5%;
     right: 0;
     width: 40%;
-    height: 85vh;
+    height: 91.5%;
     color: black;
     display: flex;
     flex-direction: column;
