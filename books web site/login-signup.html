@@ -8,9 +8,10 @@
 </head>
 <body>
     <div class="container2">
+        <!-- Login form box -->
         <div class="form-box login">
-            <form action="">
-                <h3 style="text-align: center;" >Login</h3>
+            <form>
+                <h3 style="text-align: center;">Login</h3>
                 <p>Welcome back! Please login to continue.</p>
 
                 <label for="email">Email</label>
@@ -20,13 +21,14 @@
                 <input style="background-color: white" type="password" id="password" name="password" required placeholder="Enter your password">
 
                 <button type="submit">Login</button>
-                <p>Forget Password? <a href="resetPassword.html">Reset Password</a></p>
 
+                <p>Forget Password? <a href="resetPassword.html">Reset Password</a></p>
             </form>
         </div>
 
+        <!-- Signup form box -->
         <div class="form-box signup">
-           <form action="">
+            <form action="">
                 <h3 style="text-align: center;">Sign Up</h3>
                 <p>Create an account to access our digital library.</p>
 
@@ -37,13 +39,13 @@
                 <input style="background-color: white" type="text" id="username" name="username" required placeholder="Choose a username">
 
                 <label for="pass-word">Password</label>
-                <input style="background-color:white" type="password" id="pass-word" name="password" required placeholder="Enter your password">
+                <input style="background-color: white" type="password" id="pass-word" name="password" required placeholder="Enter your password">
 
                 <label for="card-number">Card number</label>
                 <input style="background-color: white" type="text" id="card-number" name="card-number" required placeholder="Enter your card number">
 
                 <label for="card-password">Card password</label>
-                <input style="background-color:white" type="password" id="card-password" name="card-password" required placeholder="Enter your card password">
+                <input style="background-color: white" type="password" id="card-password" name="card-password" required placeholder="Enter your card password">
 
                 <label>
                     <input style="background-color: white" type="checkbox" name="newsletter"> I want to receive news and updates
@@ -53,12 +55,16 @@
             </form>
         </div>
 
+        <!-- Panel that toggles between login and signup views -->
         <div class="switch-box">
+            <!-- Switch to Signup panel -->
             <div class="switch-panel switch-left">
                 <h1 style="color: white">Hello, Welcome back!</h1>
                 <p style="color: white; font-weight: bold;">Don't have an account?</p>
                 <button class="button signup-b" type="submit">Sign up</button>
             </div>
+
+            <!-- Switch to Login panel -->
             <div class="switch-panel switch-right">
                 <h1 style="color: white">Hello, Welcome!</h1>
                 <p style="color: white; font-weight: bold;">Already have an account?</p>
@@ -68,6 +74,5 @@
     </div>
 
     <script src="login-signup.js"></script>
-
 </body>
 </html>

@@ -10,7 +10,6 @@
 
 /* Navigation */
 .navigation {
-    /*background-color:#1a2a44;*/
     background-color: rgba(000, 000, 150, 0.3);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -45,6 +44,18 @@
     color:white;
     text-decoration: none;
     font-size: 18px;
+}
+
+a:hover {
+    box-shadow: 0px 15px 20px white;
+}
+
+.login-link{
+    position: fixed;
+    right: 2%;
+    margin: 2%;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 /* Dropdown container */
@@ -91,6 +102,7 @@ ul li.dropdown:hover .dropdown-content {
     right: 110px;
 }
 
+/*icons*/
 .cart-icon img {
     width: 30px;
     height: 30px;
@@ -110,13 +122,17 @@ ul li.dropdown:hover .dropdown-content {
     display: none;
 }
 
+img {
+    height: 30px;
+    width: 30px;
+}
+
+/*footer*/
 .footer {
     background-color: rgba(000, 000, 150, 0.3);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    text-align: center;
     justify-content: center;
-    align-items: center;
     display: flex;
     padding: 0.5%;
     font-size: 14px;
@@ -125,24 +141,7 @@ ul li.dropdown:hover .dropdown-content {
     bottom: 0;
     height: 4%;
     width: 100%;
-    z-index: 9999;
-}
-
-img {
-    height: 30px;
-    width: 30px;
-}
-
-.login-link{
-    position: fixed;
-    right: 2%;
-    margin: 2%;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-a:hover {
-    box-shadow: 0px 15px 20px white;
+    z-index: 1000;
 }
 
 .ContactUs {

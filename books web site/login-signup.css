@@ -4,6 +4,7 @@ body {
     justify-content: center;
 }
 
+/*container*/
 .container2{
     top: 40px;
     position: relative;
@@ -14,6 +15,42 @@ body {
     box-shadow: 0 0 30px rgba(0 ,0 ,0 ,.2);
     overflow: hidden;
     margin: 20px;
+}
+
+.container2.active .form-box{
+    right: 50%;
+}
+
+.container2.active .form-box.signup {
+    visibility: visible;
+}
+
+.container2.active .switch-box::before{
+    left: 50%;
+}
+
+.container2.active .switch-panel.switch-left{
+    left: -50%;
+    transition-delay: .5s;
+}
+
+.container2.active .switch-panel.switch-right{
+    right: 0;
+    transition-delay: .5s;
+}
+
+/*form*/
+form {
+    width: 100%;
+    text-align: left;
+    height: 600px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form input{
+    background:white;
+    color:#1a2a44;
 }
 
 .form-box{
@@ -30,31 +67,11 @@ body {
     transition: .5s ease-in-out .5s;
 }
 
-.container2.active .form-box{
-    right: 50%;
-}
-
 .form-box.signup{
     visibility: hidden;
 }
 
-.container2.active .form-box.signup {
-    visibility: visible;
-}
-
-form {
-    width: 100%;
-    text-align: left;
-    height: 600px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-form input{
-    background:white;
-    color:#1a2a44;
-}
-
+/*switch-box*/
 .switch-box{
     position: absolute;
     width: 100%;
@@ -71,10 +88,6 @@ form input{
     border-radius: 150px;
     z-index: 2;
     transition: 1s ease-in-out;
-}
-
-.container2.active .switch-box::before{
-    left: 50%;
 }
 
 .switch-panel{
@@ -100,15 +113,6 @@ form input{
     transition-delay: .5s;
 }
 
-.container2.active .switch-panel.switch-left{
-    left: -50%;
-    transition-delay: .5s;
-}
-
-.container2.active .switch-panel.switch-right{
-    right: 0;
-    transition-delay: .5s;
-}
 
 button.signup-b{
     background: transparent;

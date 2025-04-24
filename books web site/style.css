@@ -7,25 +7,7 @@ body {
     background-attachment: fixed;
 }
 
-h2 {
-    border-bottom: 2px solid #1a2a44;
-    padding-bottom: 5px;
-}
-
-input[type="checkbox"] {
-    width: auto;
-    margin-right: 5px;
-    font-weight: bold;
-}
-
-label {
-    font-size: 22px;
-    color:#1a2a44;
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
+/*input*/
 input {
     width: 90%;
     padding: 8px;
@@ -34,6 +16,40 @@ input {
     border-radius: 5px;
 }
 
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+/*container*/
+.container {
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 7%;
+    margin-bottom: 5%;
+    position: relative;
+    background-color:  #f5efeb;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.container h2 {
+    font-size: 26px;
+    color:#1a2a44;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.container p {
+    font-size: 16px;
+    color:#1a2a44;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/*button*/
 button {
     background-color: #1a2a99;
     color:  #f5efeb;
@@ -51,6 +67,7 @@ button:hover {
     background-color: #4400FA;
 }
 
+/*select*/
 select {
     width: 100%;
     padding: 10px;
@@ -66,10 +83,11 @@ select {
 select option {
     padding: 10px;
     background-color:  #f5efeb;
-    color:#f5efeb;
+    color:#1a2a44;
     font-weight: bold;
 }
 
+/*search*/
 .search-section {
     text-align: left;
     margin-bottom: 10px;
@@ -100,50 +118,7 @@ select option {
     align-items: center;
 }
 
-.container h2 {
-    font-size: 26px;
-    color:#1a2a44;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.container p {
-    font-size: 16px;
-    color:#1a2a44;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.container {
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 7%;
-    margin-bottom: 5%;
-    position: relative;
-    background-color:  #f5efeb;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-#about {
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #f5efeb;
-    margin: 80px;
-}
-
-.confirmation-box {
-    background:  #f5efeb;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 1000px;
-    height: 550px;
-}
-
+/*home look*/
 .intro {
     position:absolute;
     top: 5%;
@@ -198,18 +173,16 @@ select option {
     margin: 0 auto 5px;
 }
 
-
+/*cart*/
 #cart {
     display: flex;
     align-items: flex-start;
 }
 
-
 #cartBooks {
     width: 60%;
     margin-right: 0;
 }
-
 
 #cartTotal {
     width: 30%;
@@ -242,4 +215,27 @@ select option {
 
 .thumbnail .price {
     align-self: center;
+}
+
+/*other*/
+#about {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #f5efeb;
+    margin: 80px;
+}
+
+
+label {
+    font-size: 22px;
+    color:#1a2a44;
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+h2 {
+    border-bottom: 2px solid #1a2a44;
+    padding-bottom: 5px;
 }
