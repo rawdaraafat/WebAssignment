@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Library - login signup</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/login-signup.css' %}">
+    <style>
+        .alert {
+            padding: 15px;
+            margin: 20px auto;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .alert-error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        .alert a {
+            color: #0c5460;
+            text-decoration: underline;
+        }
+        .messages-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            z-index: 1000;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container2">
+        <!-- Login form box -->
+        <div class="form-box login">
+            <form id="loginForm" method="post" action="{% url 'main:login' %}">
+                {% csrf_token %}
+                <h3 style="text-align: center;">Login</h3>
+                <p>Welcome back! Please login to continue.</p>
+
+                <label for="email">Email</label>
+                <input style="background-color: white" type="email" id="email" name="email" required placeholder="Enter your email">
+
+                <label for="password">Password (8 digits)</label>
+                <input style="background-color: white" type="password" id="password" name="password" required 
+                       pattern="[0-9]{8}" maxlength="8" minlength="8" 
+                       placeholder="Enter 8-digit password"
+                       title="Please enter exactly 8 digits">
+
+                <button type="submit">Login</button>
+
+                <p>Forget Password? <a href="{% url 'main:resetPassword' %}">Reset Password</a></p>
+            </form>
+        </div>
+
+        <!-- Signup form box -->
+        <div class="form-box signup">
+            <form id="signupForm" method="post" action="{% url 'main:profile' %}">
+                {% csrf_token %}
+                <h3 style="text-align: center;">Sign Up</h3>
+                <p>Create an account to access our digital library.</p>
+
+                <label for="e-mail">Email</label>
+                <input style="background-color: white" type="email" id="e-mail" name="email" required placeholder="Enter your email">
+
+                <label for="username">User Name</label>
+                <input style="background-color: white" type="text" id="username" name="username" required placeholder="Choose a username">
+
+                <label for="pass-word">Password (8 digits)</label>
+                <input style="background-color: white" type="password" id="pass-word" name="password" required 
+                       pattern="[0-9]{8}" maxlength="8" minlength="8" 
+                       placeholder="Enter 8-digit password"
+                       title="Please enter exactly 8 digits">
+
+                <label for="userType-signup">User Type</label>
+                <select class="form-control" id="userType-signup" name="userType" required>
+                    <option value="">Select user type</option>
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <label>
+                    <input style="background-color: white" type="checkbox" name="newsletter"> I want to receive news and updates
+                </label>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Panel that toggles between login and signup views -->
+        <div class="switch-box">
+            <!-- Switch to Signup panel -->
+            <div class="switch-panel switch-left">
+                <h1 style="color: white">Hello, Welcome back!</h1>
+                <p style="color: white; font-weight: bold;">Don't have an account?</p>
+                <button class="button signup-b" type="button">Sign up</button>
+            </div>
+
+            <!-- Switch to Login panel -->
+            <div class="switch-panel switch-right">
+                <h1 style="color: white">Hello, Welcome!</h1>
+                <p style="color: white; font-weight: bold;">Already have an account?</p>
+                <button class="button login-b" type="button">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages container at the bottom -->
+    {% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}alert-error{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+            {{ message|safe }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <script src="{% static 'main/login-signup.js' %}"></script>
+    {% if request.user.is_authenticated %}
+        <script>
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('loginTime', Date.now());
+            localStorage.setItem('userRole', '{{ request.user.userprofile.user_type|lower }}');
+            console.log('userRole:', '{{ request.user.userprofile.user_type|lower }}', 'isLoggedIn:', 'true');
+        </script>
+    {% endif %}
+</body>
+</html>
