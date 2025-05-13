@@ -76,66 +76,71 @@
         </div>
     </div>
 
-    {% if request.user.is_authenticated %}
-    <script>
-        // Set initial values from server-side session
-        const userRole = "{{ request.user.userprofile.user_type }}";
-        const isLoggedIn = true;
-    </script>
-    {% else %}
-    <script>
-        const userRole = null;
-        const isLoggedIn = false;
-    </script>
-    {% endif %}
-
     <script>
     function updateNavBar() {
-        const adminPanelLink = document.querySelector('.admin-icon');
-        const cartIcon = document.querySelector('.cart-icon');
-        const favIcon = document.querySelector('#fav');
-        const aboutIcon = document.querySelector('.about');
-        const borrowIcon = document.querySelector('#borrow');
+        const loginTime = parseInt(localStorage.getItem('loginTime')) || 0;
+        const now = Date.now();
+        // Session duration (24h = 86400000 ms)
+        const sessionDuration = 86400000;
+
+        // Select nav elements
         const loginLink = document.querySelector('.login-link');
         const logoutLink = document.querySelector('.logout-link');
         const profileIcon = document.querySelector('.profile');
+        const cartIcon = document.querySelector('.cart-icon');
+        const adminPanelLink = document.querySelector('.admin-icon');
+        const favIcon = document.querySelector('#fav');
+        const aboutIcon = document.querySelector('.about');
+        const borrowIcon = document.querySelector('#borrow');
 
-        if (isLoggedIn) {
-            // Hide login link and show logout link
-            if (loginLink) loginLink.style.display = 'none';
-            if (logoutLink) logoutLink.style.display = 'block';
-            if (profileIcon) profileIcon.style.display = 'block';
+        // Check if user is logged in and session is still valid
+        const isLoggedIn = localStorage.getItem('loggedIn') === 'true' && (now - loginTime < sessionDuration);
+        const userRole = localStorage.getItem('userRole'); // 'admin' or 'customer' (or 'user')
+
+        if (!isLoggedIn) {
+            // Not logged in: show only login, hide everything else
+            loginLink?.style.setProperty('display', 'inline-block');
+            logoutLink?.style.setProperty('display', 'none');
+            profileIcon?.style.setProperty('display', 'none');
+            cartIcon?.style.setProperty('display', 'none');
+            favIcon?.style.setProperty('display', 'none');
+            aboutIcon?.style.setProperty('display', 'none');
+            borrowIcon?.style.setProperty('display', 'none');
+            adminPanelLink?.style.setProperty('display', 'none');
+        } else {
+            // Logged in: show profile, logout, hide login
+            loginLink?.style.setProperty('display', 'none');
+            logoutLink?.style.setProperty('display', 'inline-block');
+            profileIcon?.style.setProperty('display', 'inline-block');
 
             if (userRole === 'admin') {
                 // Admin: show admin panel, hide user features
-                if (adminPanelLink) adminPanelLink.style.display = 'inline-block';
-                if (cartIcon) cartIcon.style.display = 'none';
-                if (favIcon) favIcon.style.display = 'none';
-                if (aboutIcon) aboutIcon.style.display = 'none';
-                if (borrowIcon) borrowIcon.style.display = 'none';
+                adminPanelLink?.style.setProperty('display', 'inline-block');
+                cartIcon?.style.setProperty('display', 'none');
+                favIcon?.style.setProperty('display', 'none');
+                aboutIcon?.style.setProperty('display', 'none');
+                borrowIcon?.style.setProperty('display', 'none');
             } else {
                 // Regular user: show user features, hide admin panel
-                if (adminPanelLink) adminPanelLink.style.display = 'none';
-                if (cartIcon) cartIcon.style.display = 'inline-block';
-                if (favIcon) favIcon.style.display = 'inline-block';
-                if (aboutIcon) aboutIcon.style.display = 'inline-block';
-                if (borrowIcon) borrowIcon.style.display = 'inline-block';
+                adminPanelLink?.style.setProperty('display', 'none');
+                cartIcon?.style.setProperty('display', 'inline-block');
+                favIcon?.style.setProperty('display', 'inline-block');
+                aboutIcon?.style.setProperty('display', 'inline-block');
+                borrowIcon?.style.setProperty('display', 'inline-block');
             }
-        } else {
-            // Not logged in: show login link, hide everything else
-            if (loginLink) loginLink.style.display = 'block';
-            if (logoutLink) logoutLink.style.display = 'none';
-            if (adminPanelLink) adminPanelLink.style.display = 'none';
-            if (cartIcon) cartIcon.style.display = 'none';
-            if (favIcon) favIcon.style.display = 'none';
-            if (aboutIcon) aboutIcon.style.display = 'none';
-            if (borrowIcon) borrowIcon.style.display = 'none';
-            if (profileIcon) profileIcon.style.display = 'none';
         }
     }
 
     // Call on page load
     document.addEventListener('DOMContentLoaded', updateNavBar);
     </script>
+
+    {% if request.user.is_authenticated %}
+        <script>
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('loginTime', Date.now());
+            localStorage.setItem('userRole', '{{ request.user.userprofile.user_type }}');
+        </script>
+    {% endif %}
 </body>
 </html>

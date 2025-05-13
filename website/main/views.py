@@ -26,18 +26,21 @@ def login(request):
         password = request.POST.get('password')
 
         try:
+            # Find user by email
             user = User.objects.get(email=email)
             
+            # Check if the password matches for this specific user
             if check_password(password, user.password):
+                # Password matches, log the user in
                 auth_login(request, user)
-                # Set user role in session
-                request.session['user_role'] = user.userprofile.user_type
                 messages.success(request, 'Login successful!')
                 return redirect('main:home')
             else:
+                # Password doesn't match, show alert and stay on login page
                 messages.error(request, 'Incorrect password. If you forgot your password, use the Reset Password link below.')
                 return render(request, 'main/login-signup.html')
         except User.DoesNotExist:
+            # User not found
             messages.error(request, 'No account found with this email. Please sign up first.')
             return render(request, 'main/login-signup.html')
 
