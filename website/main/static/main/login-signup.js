@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.container2');
     const signupb = document.querySelector('.signup-b');
     const loginb = document.querySelector('.login-b');
-    const signupForm = document.getElementById('signupForm');
-
     // Toggle views
     if (signupb) {
         signupb.addEventListener('click', () => {
