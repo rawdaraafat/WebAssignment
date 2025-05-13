@@ -112,7 +112,7 @@ def profile(request):
             messages.error(request, f'Error creating account: {str(e)}')
             return redirect('main:login')
 
-    return render(request, 'main/user profile.html')
+    return render(request, 'main/userprofile.html')
 
 def cart(request):
     return render(request, 'main/cart.html')

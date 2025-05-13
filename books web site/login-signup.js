@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('showAdmin', 'false');
         localStorage.setItem('loggedIn', 'true');
         console.log('User signed up');
-        window.location.href = 'user profile.html';
+        window.location.href = 'userprofile.html';
 
     });
 });

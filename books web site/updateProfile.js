@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     saveUserData(userData);
-    window.location.href = 'user profile.html';
+    window.location.href = 'userprofile.html';
   });
 
   // Handle image upload
