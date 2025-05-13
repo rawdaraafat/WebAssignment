@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'main'
 
@@ -16,5 +18,7 @@ urlpatterns = [
     path('admin/', views.admin, name='admin'),
     path('bars/', views.bars, name='bars'),
     path('updateUserProfile/', views.updateUserProfile, name='updateUserProfile'),
-]
+    path('book/<int:book_id>/', views.book_details, name='book_details'),
+    path('booklist/category/<str:genre>/', views.category_view, name='category'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
