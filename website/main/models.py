@@ -5,6 +5,38 @@ from django.dispatch import receiver
 
 # Create your models here.
 
+class Book(models.Model):
+    GENRE_CHOICES = [
+        ('non-fiction', 'Non-Fiction'),
+        ('mystery', 'Mystery'),
+        ('sci-fi', 'Science Fiction'),
+        ('fantasy', 'Fantasy'),
+        ('romance', 'Romance'),
+        ('history', 'History'),
+    ]
+
+    STATUS_CHOICES = [
+        ('available', 'Available'),
+        ('borrowed', 'Borrowed'),
+        ('reserved', 'Reserved'),
+    ]
+
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    isbn = models.CharField(max_length=13, unique=True)
+    genre = models.CharField(max_length=20, choices=GENRE_CHOICES)
+    description = models.TextField()
+    publication_date = models.DateField()
+    publisher = models.CharField(max_length=200)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='available')
+    cover_image = models.ImageField(upload_to='book_covers/', null=True, blank=True)
+    quantity = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+
 class UserProfile(models.Model):
     USER_TYPE_CHOICES = [
         ('customer', 'Customer'),
