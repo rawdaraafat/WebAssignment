@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import UserProfile
+from .models import UserProfile, Book
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.hashers import check_password
 
@@ -9,7 +9,15 @@ def home(request):
     return render(request, 'main/home.html')
 
 def booklist(request):
-    return render(request, 'main/booklist.html')
+    books = Book.objects.all().order_by('-created_at')  # Get all books, newest first
+    return render(request, 'main/booklist.html', {'books': books})
+def category_view(request, genre):
+    genre = genre  # Re-convert slugs to original if needed
+    books = Book.objects.filter(genre__iexact=genre)
+    return render(request, 'main/category.html', {'books': books, 'genre': genre})
+def book_detail_view(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'main/book_detail.html.html', {'book': book})
 
 def favourite(request):
     return render(request, 'main/favourite.html')
@@ -112,7 +120,7 @@ def profile(request):
             messages.error(request, f'Error creating account: {str(e)}')
             return redirect('main:login')
 
-    return render(request, 'main/userprofile.html')
+    return render(request, 'main/user profile.html')
 
 def cart(request):
     return render(request, 'main/cart.html')
@@ -125,3 +133,7 @@ def bars(request):
 
 def updateUserProfile(request):
     return render(request, 'main/updateUserProfile.html')
+
+def book_details(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'main/book_detail.html', {'book': book})
