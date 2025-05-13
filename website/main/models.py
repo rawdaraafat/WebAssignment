@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     ]
     
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+    usertype = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
     newsletter_subscribed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

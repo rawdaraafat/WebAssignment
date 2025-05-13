@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -95,10 +94,10 @@
                        title="Please enter exactly 8 digits">
 
                 <label for="userType-signup">User Type</label>
-                <select class="form-control" id="userType-signup" name="userType" required>
+                <select class="form-control" id="userType-signup" name="usertype" required>
                     <option value="">Select user type</option>
-                    <option value="customer">Customer</option>
-                    <option value="admin">Admin</option>
+                    <option value="customer">customer</option>
+                    <option value="admin">admin</option>
                 </select>
 
                 <label>
@@ -139,13 +138,5 @@
     {% endif %}
 
     <script src="{% static 'main/login-signup.js' %}"></script>
-    {% if request.user.is_authenticated %}
-        <script>
-            localStorage.setItem('loggedIn', 'true');
-            localStorage.setItem('loginTime', Date.now());
-            localStorage.setItem('userRole', '{{ request.user.userprofile.user_type|lower }}');
-            console.log('userRole:', '{{ request.user.userprofile.user_type|lower }}', 'isLoggedIn:', 'true');
-        </script>
-    {% endif %}
 </body>
 </html>
