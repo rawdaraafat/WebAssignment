@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books Library - Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="bars.css">
+        <link rel="stylesheet" href="books.css">
+
+    </head>
+
+    <body>
+        {% include 'main/bars.html' %}
+        <script src="login-signup.js"></script>
+        <div class="container main-content">
+            <h2>Admin Dashboard</h2>
+            <div>
+                <a href="addnewbook.html">
+                    <button>Add & Delete Books</button>
+                </a>
+            </div>
+            <div>
+                <a href="Booklist.html">
+                    <button>View Availabel books</button>
+                </a>
+            </div>
+            <!--<div>
+                <a href="addnewbook.html">
+                    <button>Delete some books</button>
+                </a>
+            </div>-->
+            <div class="visits">
+                <i class="fa-solid fa-users"></i>
+                <h3 style="text-align: center;">Number of visits in the past week</h3>
+                <p style="text-align: center;">17</p>
+            </div>
+        </div>
+    </body>
+</html>

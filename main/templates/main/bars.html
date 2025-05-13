@@ -1,0 +1,151 @@
+{% load static %}   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Library</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/bars.css' %}">
+    <link rel="stylesheet" href="{% static 'main/books.css' %}">
+    <script src="{% static 'main/login-signup.js' %}"></script>
+    <script src="{% static 'main/bars.js' %}"></script>
+</head>
+<body>
+    <nav class="navigation">
+        <p id="logo">FCAI LIBRARY</p>
+        <ul>
+            <a href="{% url 'main:cart' %}" class="appears cart-icon">
+                <img src="{% static 'imgs/grocery-store.png' %}">
+            </a>
+
+            <a href="{% url 'main:profile' %}" class="appears profile">
+                <img src="{% static 'imgs/boy.png' %}" alt="Profile" style="width:40px; height:40px; border-radius:70%;">
+            </a>
+
+            <a href="{% url 'main:admin' %}" class="appears admin-icon">
+                <img src="{% static 'imgs/profile.png' %}">
+            </a>
+
+            <a href="{% url 'main:login' %}" class="login-link a">Log In</a>
+
+            <li><a href="{% url 'main:home' %}" class="a"><img src="{% static 'imgs/home.png' %}"></a></li>
+            <li class="dropdown">
+                <a href="{% url 'main:booklist' %}" class="a"><img src="{% static 'imgs/book-with-white-bookmark.png' %}"></a>
+                <ul class="dropdown-content">
+                    <li><a href="{% url 'main:category' 'fantasy' %}"><img src="{% static 'imgs/fairy-tale.png' %}"> Fantasy</a></li>
+                    <li><a href="{% url 'main:category' 'mystery' %}"><img src="{% static 'imgs/detective-story.png' %}"> Mystery/Thriller</a></li>
+                    <li><a href="{% url 'main:category' 'sci-fi' %}"><img src="{% static 'imgs/astrology.png' %}"> Science Fiction</a></li>
+                    <li><a href="{% url 'main:category' 'romance' %}"><img src="{% static 'imgs/romantic-novel.png' %}"> Romance</a></li>
+                    <li><a href="{% url 'main:category' 'non-fiction' %}"><img src="{% static 'imgs/atlas.png' %}"> Non-Fiction</a></li>
+                    <li><a href="{% url 'main:category' 'history' %}"><img src="{% static 'imgs/history-book.png' %}"> History</a></li>
+                </ul>
+            </li>
+
+            <li><a href="{% url 'main:favourite' %}" class="appears" id="fav"><img src="{% static 'imgs/bookmark.png' %}"></a></li>
+            <li><a href="{% url 'main:borrow' %}" class="appears" id="borrow"><img src="{% static 'imgs/book.png' %}"></a></li>
+            <li><a href="{% url 'main:about' %}" class="appears about"><img src="{% static 'imgs/info.png' %}"></a></li>
+            <li><a href="{% url 'main:login' %}" class="appears logout-link a" onclick="handleLogout(event)">Log Out</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Content block for child templates -->
+    {% block content %}
+    {% endblock %}
+
+    <div class="footer show">
+        <p>digital library that provides electronic access to books with smart recommendations and digital borrowing options.</p>
+        <button class="ContactUs" id="menuToggle">
+            <img src="{% static 'imgs/telephone-call.png' %}" alt="Contact us">
+        </button>
+
+        <div class="menu" id="ContactMenu">
+            <button class="menuItem" style="--i:0;">
+                <img src="{% static 'imgs/facebook_icon.png' %}" alt="Facebook" class="icon">
+            </button>
+            <button class="menuItem" style="--i:1;">
+                <img src="{% static 'imgs/whatsapp_icon.png' %}" alt="WhatsApp" class="icon">
+            </button>
+            <button class="menuItem" style="--i:2;">
+                <img src="{% static 'imgs/email_icon.png' %}" alt="email" class="icon">
+            </button>
+            <button class="menuItem" style="--i:3;">
+                <img src="{% static 'imgs/discord_icon.png' %}" alt="discord" class="icon">
+            </button>
+            <button class="menuItem" style="--i:4;">
+                <a href="https://github.com/rawdaraafat/WebAssignment/tree/main">
+                    <img src="{% static 'imgs/github_icon.png' %}" alt="github" class="icon">
+                </a>
+            </button>
+        </div>
+    </div>
+
+    <script>
+    function updateNavBar() {
+        const loginTime = parseInt(localStorage.getItem('loginTime')) || 0;
+        const now = Date.now();
+        // Session duration (24h = 86400000 ms)
+        const sessionDuration = 86400000;
+
+        // Select nav elements
+        const loginLink = document.querySelector('.login-link');
+        const logoutLink = document.querySelector('.logout-link');
+        const profileIcon = document.querySelector('.profile');
+        const cartIcon = document.querySelector('.cart-icon');
+        const adminPanelLink = document.querySelector('.admin-icon');
+        const favIcon = document.querySelector('#fav');
+        const aboutIcon = document.querySelector('.about');
+        const borrowIcon = document.querySelector('#borrow');
+
+        // Check if user is logged in and session is still valid
+        const isLoggedIn = localStorage.getItem('loggedIn') === 'true' && (now - loginTime < sessionDuration);
+        const userRole = localStorage.getItem('userRole'); // 'admin' or 'customer' (or 'user')
+
+        if (!isLoggedIn) {
+            // Not logged in: show only login, hide everything else
+            loginLink?.style.setProperty('display', 'inline-block');
+            logoutLink?.style.setProperty('display', 'none');
+            profileIcon?.style.setProperty('display', 'none');
+            cartIcon?.style.setProperty('display', 'none');
+            favIcon?.style.setProperty('display', 'none');
+            aboutIcon?.style.setProperty('display', 'none');
+            borrowIcon?.style.setProperty('display', 'none');
+            adminPanelLink?.style.setProperty('display', 'none');
+        } else {
+            // Logged in: show profile, logout, hide login
+            loginLink?.style.setProperty('display', 'none');
+            logoutLink?.style.setProperty('display', 'inline-block');
+            profileIcon?.style.setProperty('display', 'inline-block');
+
+            if (userRole === 'admin') {
+                // Admin: show admin panel, hide user features
+                adminPanelLink?.style.setProperty('display', 'inline-block');
+                cartIcon?.style.setProperty('display', 'none');
+                favIcon?.style.setProperty('display', 'none');
+                aboutIcon?.style.setProperty('display', 'none');
+                borrowIcon?.style.setProperty('display', 'none');
+            } else {
+                // Regular user: show user features, hide admin panel
+                adminPanelLink?.style.setProperty('display', 'none');
+                cartIcon?.style.setProperty('display', 'inline-block');
+                favIcon?.style.setProperty('display', 'inline-block');
+                aboutIcon?.style.setProperty('display', 'inline-block');
+                borrowIcon?.style.setProperty('display', 'inline-block');
+            }
+        }
+    }
+
+    // Call on page load
+    document.addEventListener('DOMContentLoaded', updateNavBar);
+    </script>
+
+    {% if request.user.is_authenticated %}
+        <script>
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('loginTime', Date.now());
+            localStorage.setItem('userRole', '{{ request.user.userprofile.user_type }}');
+        </script>
+    {% endif %}
+</body>
+</html>

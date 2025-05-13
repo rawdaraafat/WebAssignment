@@ -1,0 +1,66 @@
+{% extends 'main/bars.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>The Readers' Planet - Book List</h1>
+    <div class="search-section">
+        <img src="{% static 'imgs/search.png' %}" style="width: 25px ; height: 25px">
+        <input type="text" id="searchInput" style="background-color: white" placeholder="Search by Title or Author">
+    </div>
+    <div class="book-shelf" id="dynamicBookShelf">
+        {% for book in books %}
+        <div class="book">
+            <div class="book-inner">
+                <div class="book-front">
+                    {% if book.cover_image %}
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-cover">
+                    {% else %}
+                        <img src="{% static 'imgs/default-book-cover.jpg' %}" alt="Default Cover" class="book-cover">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="no-books">
+            <p>No books available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Pass the books data from Django to JavaScript
+    const books = [
+        {% for book in books %}
+        {
+            title: "{{ book.title }}",
+            author: "{{ book.author }}",
+            genre: "{{ book.get_genre_display }}",
+            status: "{{ book.get_status_display }}",
+            image: "{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static 'imgs/default-book-cover.jpg' %}{% endif %}",
+            book_id: "{{ book.id }}"
+        },
+        {% endfor %}
+    ];
+</script>
+
+<script src="{% static 'main/booklist.js' %}"></script>
+<script src="{% static 'main/search.js' %}"></script>
+
+<!-- JavaScript to Load Book Data from localStorage -->
+<script>
+    function updateUserButtons() {
+        const userRole = localStorage.getItem("userRole");
+        const userButtons = document.querySelectorAll(".user");
+        userButtons.forEach((btn) => {
+            btn.style.display = userRole === "user" ? "inline-block" : "none";
+        });
+    }
+
+    // Ensure the function runs after the books are displayed
+    document.addEventListener("DOMContentLoaded", () => {
+        updateUserButtons();
+    });
+</script>
+{% endblock %}

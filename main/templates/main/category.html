@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Library - category</title>
+    
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'main/style.css' %}">
+  <link rel="stylesheet" href="{% static 'main/bars.css' %}">
+  <link rel="stylesheet" href="{% static 'main/books.css' %}">
+</head>
+<body>
+  {% include 'main/bars.html' %}
+
+  <main class="container">
+    <section>
+        <h2 id="category-title">{{ genre }} Books</h2>
+
+        {% if books %}
+        <div class="book-shelf">
+            {% for book in books %}
+            <div class="book">    
+            <div class="book-inner">
+                <a href="{% url 'main:book_details' book.id %}">
+                    <div class="book-front">
+                        {% if book.cover_image %}
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-cover">
+                    {% else %}
+                        <img src="{% static 'imgs/default-book-cover.jpg' %}" alt="Default Cover" class="book-cover">
+                    {% endif %}
+                    </div>
+                </a>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% else %}
+        <p>No books found in this genre.</p>
+        {% endif %}
+    </section>
+  </main>
+
+</body>
+</html>
