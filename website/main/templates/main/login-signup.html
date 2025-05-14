@@ -127,7 +127,7 @@
     <script>
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('loginTime', Date.now());
-        localStorage.setItem('userRole', '{{ request.user.userprofile.user_type }}');
+        localStorage.setItem('userRole', '{{ request.session.user_type }}');
     </script>
     {% endif %}
 </body>

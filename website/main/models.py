@@ -1,9 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-# Create your models here.
+class CustomUser(AbstractUser):
+    USER_TYPE_CHOICES = [
+        ('customer', 'Customer'),
+        ('admin', 'Admin'),
+    ]
+    user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default='customer')
 
 class Book(models.Model):
     GENRE_CHOICES = [
@@ -38,13 +43,7 @@ class Book(models.Model):
         return f"{self.title} by {self.author}"
 
 class UserProfile(models.Model):
-    USER_TYPE_CHOICES = [
-        ('customer', 'Customer'),
-        ('admin', 'Admin'),
-    ]
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     newsletter_subscribed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -53,7 +52,7 @@ class UserProfile(models.Model):
         return f"{self.user.username}'s profile"
 
 # Signal to create/update UserProfile when User is created/updated
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=CustomUser)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
