@@ -36,45 +36,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle form submission
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const userData = {
-      name: form.elements.name.value,
-      age: form.elements.age.value,
-      location: form.elements.location.value,
-      hobbies: form.elements.hobbies.value,
-      profilePassword: form.elements.profilePassword.value,
-      cardPassword: form.elements.cardPassword.value,
-      cardNumber: form.elements.cardNumber.value,
-      profileImage: imagePreview.src
-    };
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    saveUserData(userData);
-    window.location.href = 'userprofile.html';
-  });
+      // Create FormData object to handle file upload
+      const formData = new FormData(form);
+
+      // Send the form data to the server
+      fetch('/profile/update/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken')
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert(data.message);
+          window.location.href = '/profile/';
+        } else {
+          alert('Error: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error updating profile. Please try again.');
+      });
+    });
+  }
 
   // Handle image upload
   if (imageUpload) {
-    imageUpload.addEventListener('change', function (event) {
-      // Get the selected file from the event
+    imageUpload.addEventListener('change', function(event) {
       const file = event.target.files[0];
       if (file) {
-        // Create a FileReader to read the image as a Data URL (base64 format)
         const reader = new FileReader();
-
-        reader.onload = function (e) {
-          const imageData = e.target.result;
-
-          // Set the source of the image preview to the new image data
-          imagePreview.src = imageData;
-
-          // Load current user data (from localStorage, if available)
-          const currentData = loadUserData() || {};
-
-          // Update the profileImage property of the user data with the new image data
-          currentData.profileImage = imageData;
-
-          saveUserData(currentData);
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
         };
         reader.readAsDataURL(file);
       }
@@ -87,7 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleProfilePassword.addEventListener('click', () => {
       isVisible = !isVisible;
       profilePasswordField.type = isVisible ? 'text' : 'password';
-      toggleProfilePassword.src = isVisible ? 'imgs/invisibleEye.png' : 'imgs/eye.png';
+      //toggleProfilePassword.src = isVisible ? '../imgs/invisibleEye.png' : '../imgs/eye.png';
+      toggleProfilePassword.src = isVisible ? '/static/imgs/invisibleEye.png' : '/static/imgs/eye.png';
+
     });
   }
 
@@ -97,7 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleCardPassword.addEventListener('click', () => {
       isVisible = !isVisible;
       cardPasswordField.type = isVisible ? 'text' : 'password';
-      toggleCardPassword.src = isVisible ? 'imgs/invisibleEye.png' : 'imgs/eye.png';
+     // toggleCardPassword.src = isVisible ? '../imgs/invisibleEye.png' : '../imgs/eye.png';
+     toggleCardPassword.src = isVisible ? '/static/imgs/invisibleEye.png' : '/static/imgs/eye.png';
+
     });
   }
 });
+
+// Helper function to get CSRF token
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
