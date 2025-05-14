@@ -4,37 +4,41 @@ from django.contrib import messages
 from .models import UserProfile, Book
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.hashers import check_password
+from django.http import JsonResponse
+import os
+from PIL import Image, ImageDraw
+
 
 def home(request):
     return render(request, 'main/home.html')
 
+
 def booklist(request):
     books = Book.objects.all().order_by('-created_at')  # Get all books, newest first
     return render(request, 'main/booklist.html', {'books': books})
+
+
 def category_view(request, genre):
     genre = genre  # Re-convert slugs to original if needed
     books = Book.objects.filter(genre__iexact=genre)
     return render(request, 'main/category.html', {'books': books, 'genre': genre})
 
+
 def book_detail_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'main/book_detail.html.html', {'book': book})
 
+
 def favourite(request):
     return render(request, 'main/favourite.html')
+
 
 def borrow(request):
     return render(request, 'main/borrow.html')
 
+
 def about(request):
     return render(request, 'main/about.html')
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import login as auth_login
-from django.contrib import messages
-from django.contrib.auth.hashers import check_password
-from .models import UserProfile
 
 
 def login(request):
@@ -52,7 +56,8 @@ def login(request):
                 messages.success(request, 'Login successful!')
                 return redirect('main:home')
             else:
-                messages.error(request, 'Incorrect password. If you forgot your password, use the Reset Password link below.')
+                messages.error(request,
+                               'Incorrect password. If you forgot your password, use the Reset Password link below.')
                 return render(request, 'main/login-signup.html')
         except User.DoesNotExist:
             messages.error(request, 'No account found with this email. Please sign up first.')
@@ -120,7 +125,8 @@ def signup(request):
             messages.error(request, f'Error creating account: {str(e)}')
             return redirect('main:login')
 
-    return render(request, 'main/user profile.html')
+    return render(request, 'main/userprofile.html')
+
 
 def profile(request):
     if request.method == 'POST':
@@ -146,7 +152,7 @@ def profile(request):
                 email=email,
                 password=password
             )
-            
+
             # Create user profile
             user_profile = UserProfile.objects.get(user=user)
             user_profile.user_type = user_type
@@ -155,27 +161,54 @@ def profile(request):
 
             # Log the user in using the renamed auth_login function
             auth_login(request, user)
-            
+
             messages.success(request, 'Account created successfully!')
             return redirect('main:home')
         except Exception as e:
             messages.error(request, f'Error creating account: {str(e)}')
             return redirect('main:login')
 
-    return render(request, 'main/user profile.html')
+    return render(request, 'main/userprofile.html')
+
 
 def cart(request):
     return render(request, 'main/cart.html')
 
+
 def admin(request):
     return render(request, 'main/admin.html')
+
 
 def bars(request):
     return render(request, 'main/bars.html')
 
+
 def updateUserProfile(request):
-    return render(request, 'main/updateUserProfile.html')
+    if request.method == 'POST':
+        try:
+            user_profile = request.user.userprofile
+
+            # Update profile fields
+            user_profile.age = request.POST.get('age')
+            user_profile.location = request.POST.get('location')
+            user_profile.hobbies = request.POST.get('hobbies')
+            user_profile.profile_password = request.POST.get('profile_password')
+            user_profile.card_password = request.POST.get('card_password')
+            user_profile.card_number = request.POST.get('card_number')
+
+            # Handle profile image upload
+            if 'profile_image' in request.FILES:
+                user_profile.profile_image = request.FILES['profile_image']
+
+            user_profile.save()
+            return JsonResponse({'success': True, 'message': 'Profile updated successfully!'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
+    else:
+        return render(request, 'main/updateUserProfile.html')
+
 
 def book_details(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'main/book_detail.html', {'book': book})
+
