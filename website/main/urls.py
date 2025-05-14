@@ -14,6 +14,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('resetPassword/', views.resetPassword, name='resetPassword'),
     path('profile/', views.profile, name='profile'),
+    path('profile/update/', views.updateUserProfile, name='updateUserProfile'),
     path('cart/', views.cart, name='cart'),
     path('admin/', views.admin, name='admin'),
     path('bars/', views.bars, name='bars'),
