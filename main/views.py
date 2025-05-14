@@ -15,9 +15,11 @@ def category_view(request, genre):
     genre = genre  # Re-convert slugs to original if needed
     books = Book.objects.filter(genre__iexact=genre)
     return render(request, 'main/category.html', {'books': books, 'genre': genre})
+
+
 def book_detail_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    return render(request, 'main/book_detail.html.html', {'book': book})
+    return render(request, 'main/book_detail.html', {'book': book})
 
 def favourite(request):
     return render(request, 'main/favourite.html')
@@ -133,7 +135,3 @@ def bars(request):
 
 def updateUserProfile(request):
     return render(request, 'main/updateUserProfile.html')
-
-def book_details(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    return render(request, 'main/book_detail.html', {'book': book})
