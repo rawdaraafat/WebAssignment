@@ -1,44 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Books Library - category</title>
-    
-    {% load static %}
-  <link rel="stylesheet" href="{% static 'main/style.css' %}">
-  <link rel="stylesheet" href="{% static 'main/bars.css' %}">
-  <link rel="stylesheet" href="{% static 'main/books.css' %}">
-</head>
-<body>
-  {% include 'main/bars.html' %}
+{% extends 'main/bars.html' %}
+{% load static %}
 
-  <main class="container">
-    <section>
-        <h2 id="category-title">{{ genre }} Books</h2>
+{% block content %}
 
-        {% if books %}
-        <div class="book-shelf">
-            {% for book in books %}
-            <div class="book">    
+<main class="container">
+  <section>
+    <h2 id="category-title">{{ genre|title }} Books</h2>
+    <div id="book-shelf" class="book-shelf">
+      {% if books %}
+        {% for book in books %}
+          <div class="book">
             <div class="book-inner">
-                <a href="{% url 'main:book_details' book.id %}">
-                    <div class="book-front">
-                        {% if book.cover_image %}
-                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-cover">
-                    {% else %}
-                        <img src="{% static 'imgs/default-book-cover.jpg' %}" alt="Default Cover" class="book-cover">
-                    {% endif %}
-                    </div>
-                </a>
+              <div class="book-front">
+                {% if book.cover_image %}
+                  <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+                {% else %}
+                  <img src="{% static 'imgs/default-book-cover.jpg' %}" alt="Default Cover">
+                {% endif %}
+              </div>
+              <div class="book-back">
+                <p class="book-title">{{ book.title }}</p>
+                <p class="book-author">{{ book.author }}</p>
+                <a href="{% url 'main:book_details' book.id %}" class="details"><button class="Details">Show Details</button></a>
+              </div>
             </div>
-            </div>
+          </div>
         {% endfor %}
-        </div>
-        {% else %}
-        <p>No books found in this genre.</p>
-        {% endif %}
-    </section>
-  </main>
-
-</body>
-</html>
+      {% else %}
+        <p>No books found for this genre.</p>
+      {% endif %}
+    </div>
+  </section>
+</main>
+{% endblock %}
