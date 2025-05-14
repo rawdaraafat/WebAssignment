@@ -1,28 +1,40 @@
-// Load user data from localStorage
-function loadUserData() {
-  const savedData = localStorage.getItem('userProfile');
-  return savedData ? JSON.parse(savedData) : null;
-}
-
 // Update the profile page with user data
 function updateProfilePage() {
-  const userData = loadUserData();
-  if (!userData) return;
+    // The profile data will be loaded from the server via Django template
+    const profileImage = document.querySelector('.profileOverview img');
+    const profileName = document.querySelector('.profileOverview h3');
+    const ageElement = document.querySelector('p:nth-of-type(1)');
+    const locationElement = document.querySelector('p:nth-of-type(2)');
+    const hobbiesElement = document.querySelector('p:nth-of-type(3)');
+    const profilePasswordElement = document.querySelector('p:nth-of-type(4)');
+    const cardPasswordElement = document.querySelector('p:nth-of-type(5)');
+    const cardNumberElement = document.querySelector('p:nth-of-type(6)');
 
-  // Update profile image if available
-  const profileImage = document.querySelector('.profileOverview img');
-  if (userData.profileImage) {
-    profileImage.src = userData.profileImage;
-  }
+    // Add event listeners for password visibility toggles
+    const toggleProfilePassword = document.getElementById('togglePassword');
+    const toggleCardPassword = document.getElementById('eyePassword');
 
-  // Update basic info
-  document.querySelector('.profileOverview h3').textContent = userData.name;
-  document.querySelector('p:nth-of-type(1)').innerHTML = `<strong>Age:</strong> ${userData.age}`;
-  document.querySelector('p:nth-of-type(2)').innerHTML = `<strong>Location:</strong> ${userData.location}`;
-  document.querySelector('p:nth-of-type(3)').innerHTML = `<strong>Hobbies:</strong> ${userData.hobbies}`;
-  document.querySelector('p:nth-of-type(4)').innerHTML = `<strong>Profile password:</strong> ********`;
-  document.querySelector('p:nth-of-type(5)').innerHTML = `<strong>Card password:</strong> ********`;
-  document.querySelector('p:nth-of-type(6)').innerHTML = `<strong>Card number:</strong> **** **** **** ****`;
+    if (toggleProfilePassword) {
+        toggleProfilePassword.addEventListener('click', () => {
+            const passwordField = document.getElementById('password');
+            if (passwordField) {
+                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+                //toggleProfilePassword.src = passwordField.type === 'password' ? 'imgs/eye.png' : 'imgs/invisibleEye.png';
+                toggleProfilePassword.src = isVisible ? '/static/imgs/invisibleEye.png' : '/static/imgs/eye.png';
+            }
+        });
+    }
+
+    if (toggleCardPassword) {
+        toggleCardPassword.addEventListener('click', () => {
+            const passwordField = document.getElementById('cardpassword');
+            if (passwordField) {
+                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+               // toggleCardPassword.src = passwordField.type === 'password' ? 'imgs/eye.png' : 'imgs/invisibleEye.png';
+     toggleCardPassword.src = isVisible ? '/static/imgs/invisibleEye.png' : '/static/imgs/eye.png';
+            }
+        });
+    }
 }
 
 // Update the profile when the page loads
