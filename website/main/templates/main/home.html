@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -70,6 +69,8 @@
 </head>
 <body>
   {% include 'main/bars.html' %}
+  <p>Welcome, {{ request.user.username }}</p>
+  <p>Your role: {{ request.user.userprofile.user_type }}</p>
 
   <section class="hero">
     <div class="intro">

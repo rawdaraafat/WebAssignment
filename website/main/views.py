@@ -15,6 +15,7 @@ def category_view(request, genre):
     genre = genre  # Re-convert slugs to original if needed
     books = Book.objects.filter(genre__iexact=genre)
     return render(request, 'main/category.html', {'books': books, 'genre': genre})
+
 def book_detail_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'main/book_detail.html.html', {'book': book})
@@ -28,6 +29,14 @@ def borrow(request):
 def about(request):
     return render(request, 'main/about.html')
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import login as auth_login
+from django.contrib import messages
+from django.contrib.auth.hashers import check_password
+from .models import UserProfile
+
+
 def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -36,23 +45,21 @@ def login(request):
         try:
             # Find user by email
             user = User.objects.get(email=email)
-            
-            # Check if the password matches for this specific user
+
+            # Check if the password matches
             if check_password(password, user.password):
-                # Password matches, log the user in
                 auth_login(request, user)
                 messages.success(request, 'Login successful!')
                 return redirect('main:home')
             else:
-                # Password doesn't match, show alert and stay on login page
                 messages.error(request, 'Incorrect password. If you forgot your password, use the Reset Password link below.')
                 return render(request, 'main/login-signup.html')
         except User.DoesNotExist:
-            # User not found
             messages.error(request, 'No account found with this email. Please sign up first.')
             return render(request, 'main/login-signup.html')
 
     return render(request, 'main/login-signup.html')
+
 
 def resetPassword(request):
     if request.method == 'POST':
@@ -60,25 +67,60 @@ def resetPassword(request):
         new_password = request.POST.get('new_password')
         confirm_password = request.POST.get('confirm_password')
 
+        if new_password != confirm_password:
+            messages.error(request, 'Passwords do not match!')
+            return redirect('main:resetPassword')
+
         try:
-            # Find user by email
             user = User.objects.get(email=email)
-            
-            if new_password != confirm_password:
-                messages.error(request, 'Passwords do not match!')
-                return redirect('main:resetPassword')
-            
-            # Update the password for this specific user
             user.set_password(new_password)
             user.save()
-            
-            messages.success(request, 'Password has been reset successfully! Please login with your new password.')
+            messages.success(request, 'Password reset successful! Please log in.')
             return redirect('main:login')
         except User.DoesNotExist:
             messages.error(request, 'No account found with this email.')
             return redirect('main:resetPassword')
 
     return render(request, 'main/resetPassword.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user_type = request.POST.get('userType')
+        newsletter = request.POST.get('newsletter') == 'on'
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username already exists!')
+            return redirect('main:login')
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered!')
+            return redirect('main:login')
+
+        try:
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password
+            )
+
+            # Create user profile
+            UserProfile.objects.create(
+                user=user,
+                user_type=user_type,
+                newsletter_subscribed=newsletter
+            )
+
+            auth_login(request, user)
+            messages.success(request, 'Account created successfully!')
+            return redirect('main:home')
+        except Exception as e:
+            messages.error(request, f'Error creating account: {str(e)}')
+            return redirect('main:login')
+
+    return render(request, 'main/user profile.html')
 
 def profile(request):
     if request.method == 'POST':
