@@ -46,6 +46,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
     newsletter_subscribed = models.BooleanField(default=False)
+    profile_image = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    age = models.IntegerField(null=True, blank=True)
+    location = models.CharField(max_length=100, null=True, blank=True)
+    hobbies = models.CharField(max_length=255, null=True, blank=True)
+    profile_password = models.CharField(max_length=100, null=True, blank=True)
+    card_password = models.CharField(max_length=100, null=True, blank=True)
+    card_number = models.CharField(max_length=20, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
