@@ -11,15 +11,6 @@
     <div class="book-shelf" id="dynamicBookShelf">
         {% for book in books %}
         <div class="book">
-            <div class="book-inner">
-                <div class="book-front">
-                    {% if book.cover_image %}
-                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-cover">
-                    {% else %}
-                        <img src="{% static 'imgs/default-book-cover.jpg' %}" alt="Default Cover" class="book-cover">
-                    {% endif %}
-                </div>
-            </div>
         </div>
         {% empty %}
         <div class="no-books">
