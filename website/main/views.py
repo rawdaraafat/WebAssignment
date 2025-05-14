@@ -16,10 +16,6 @@ def category_view(request, genre):
     books = Book.objects.filter(genre__iexact=genre)
     return render(request, 'main/category.html', {'books': books, 'genre': genre})
 
-def book_detail_view(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    return render(request, 'main/book_detail.html.html', {'book': book})
-
 def favourite(request):
     return render(request, 'main/favourite.html')
 
@@ -28,13 +24,6 @@ def borrow(request):
 
 def about(request):
     return render(request, 'main/about.html')
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import login as auth_login
-from django.contrib import messages
-from django.contrib.auth.hashers import check_password
-from .models import UserProfile
 
 
 def login(request):
