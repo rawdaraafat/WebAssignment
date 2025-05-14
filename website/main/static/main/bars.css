@@ -110,7 +110,8 @@ ul li.dropdown:hover .dropdown-content {
 
 .admin-icon {
     position: fixed;
-    right: 110px;
+    left: 500px; /* Move it to the left side */
+    right: unset; /* Unset the right positioning */
 }
 
 .admin-icon img {
