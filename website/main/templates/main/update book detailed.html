@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Library - Edit Book Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bars.css">
+    <link rel="stylesheet" href="books.css">
+</head>
+
+<body>
+    {% include 'main/bars.html' %}
+    <h2>Edit Book Details</h2>
+    <div class="container">
+        <div class="main-content book-info">
+            <img src="imgs/harry1.jpg" alt="Not Found">
+            <form id="editBookForm">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" value="">
+
+                <label for="author">Author:</label>
+                <input type="text" id="author" value="">
+
+                <label for="genre">Book Genre:</label>
+                <select id="genre" name="genre" style="background-color: white; width: 91.5%; padding: 10px; margin-top: 5px;" required>
+                    <option value="" style="color: #1a2a44" disabled selected>Select a Genre</option>
+                    <option value="Non-Fiction" style="color: #1a2a44">Non-Fiction</option>
+                    <option value="Fantasy" style="color: #1a2a44">Fantasy</option>
+                    <option value="Romance" style="color: #1a2a44">Romance</option>
+                    <option value="Science Fiction" style="color: #1a2a44">Science Fiction</option>
+                    <option value="Historical Fiction" style="color: #1a2a44">Historical Fiction</option>
+                    <option value="Mystery/Thriller" style="color: #1a2a44">Mystery/Thriller</option>
+                </select>
+
+                <label for="description">Description:</label>
+                <textarea id="description" style="width: 280px"></textarea>
+
+                <label for="pages">Pages:</label>
+                <input type="number" id="pages" value="">
+
+                <label for="state">Book State:</label>
+                <select id="state" name="state" style="background-color: white; width: 91.5%; padding: 10px; margin-top: 5px;" required>
+                    <option value="" style="color: #1a2a44" disabled selected>Select a Genre</option>
+                    <option value="available" style="color: #1a2a44">Available</option>
+                    <option value="not-available" style="color: #1a2a44">Not Available</option>
+                </select>
+
+                <button type="submit" id="saveChangesBtn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const bookId = parseInt(params.get("id")); // Get bookId from URL
+            const books = JSON.parse(localStorage.getItem('books')) || [];
+
+            const book = books.find(b => b.book_id === bookId);
+
+            if (book) {
+                // Populate form fields
+                document.getElementById('title').value = book.title || '';
+                document.getElementById('author').value = book.author || '';
+                document.getElementById('genre').value = book.genre || '';
+                document.getElementById('description').value = book.description || '';
+                document.getElementById('pages').value = book.pages || '';
+                document.getElementById('state').value = book.state || '';
+            } else {
+                alert('Book not found.');
+            }
+
+            document.getElementById('editBookForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Update fields only if the book exists
+                if (book) {
+                    book.title = document.getElementById('title').value;
+                    book.author = document.getElementById('author').value;
+                    book.genre = document.getElementById('genre').value; // Note: used "genre", not "category"
+                    book.description = document.getElementById('description').value;
+                    book.pages = parseInt(document.getElementById('pages').value);
+                    book.state = document.getElementById('state').value;
+
+                    // Save updated array
+                    localStorage.setItem('books', JSON.stringify(books));
+
+                    alert("Book updated successfully!");
+
+                    // Redirect to updated book details
+                    window.location.href = `book detailed demo.html?id=${bookId}`;
+                }
+            });
+        });
+    </script>
+
+
+
+    //<script>
+        // Load book data from localStorage when the page loads
+        //document.addEventListener('DOMContentLoaded', function() {
+            //const bookId = 1; // ID of the book to be edited
+            //const storedBooks = JSON.parse(localStorage.getItem('books')) || {};
+            //const book = storedBooks[bookId];
+
+            //if (book) {
+                // Populate form fields with book data
+               // document.getElementById('title').value = book.title || '';
+                // document.getElementById('author').value = book.author || '';
+                // document.getElementById('genre').value = book.genre || '';
+                // document.getElementById('description').value = book.description || '';
+                // document.getElementById('pages').value = book.pages || '';
+                // document.getElementById('state').value = book.state || '';
+            // } else {
+                // alert('Book data not found.');
+            //}
+        //});
+
+        // Save updated book details to localStorage and redirect back to the main page
+        //document.getElementById('editBookForm').addEventListener('submit', function(event) {
+           // event.preventDefault(); // Prevent page reload
+
+            //const bookId = 1; // ID of the book being edited
+            //const storedBooks = JSON.parse(localStorage.getItem('books')) || {};
+
+            // Update book data
+            //storedBooks[bookId] = {
+                //title: document.getElementById('title').value,
+                //author: document.getElementById('author').value,
+                //category: document.getElementById('genre').value,
+                //description: document.getElementById('description').value,
+                //pages: document.getElementById('pages').value,
+                //state: document.getElementById('state').value
+           // };
+//
+            // Save updated data back to localStorage
+            //localStorage.setItem('books', JSON.stringify(storedBooks));
+
+           // alert("Book updated successfully!");
+
+            // Redirect back to the main page after saving changes
+           // window.location.href = "book detailed demo.html"; // Replace with the actual URL of the main page
+        //});
+    //</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Library - Update Profile</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/bars.css' %}">
+    <link rel="stylesheet" href="{% static 'main/books.css' %}">
+    <link rel="stylesheet" href="{% static 'main/userProfile.css' %}">
+    <script src="{% static 'main/login-signup.js' %}"></script>
+</head>
+<body>
+{% include 'main/bars.html' %}
+
+<div class="profile-card">
+    <form id="updateProfileForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user.userprofile.profile_image %}
+            <img id="preview" src="{{ user.userprofile.profile_image.url }}" alt="Profile Picture" style="max-width: 150px; margin-top: 10px;">
+        {% else %}
+            <img id="preview" src="{% static 'main/imgs/women.png' %}" alt="Profile Picture" style="max-width: 150px; margin-top: 10px;">
+        {% endif %}
+        <input type="file" accept="image/*" id="imageUpload" name="profile_image"><br>
+
+        <strong>Name:</strong> <input style="background-color: white" type="text" size="20" maxlength="100" name="username" value="{{ user.username }}" readonly> <br/>
+
+        <strong>Age:</strong> <input style="background-color: white" type="number" size="3" maxlength="3" name="age" value="{{ user.userprofile.age|default:'' }}"> <br/>
+
+        <strong>Location: </strong><input style="background-color: white" type="text" size="10" maxlength="100" name="location" value="{{ user.userprofile.location|default:'' }}"> <br/>
+
+        <strong>Hobbies:</strong><input style="background-color: white" type="text" size="10" maxlength="100" name="hobbies" value="{{ user.userprofile.hobbies|default:'' }}"> <br/>
+
+        <strong>Profile password:</strong>
+        <input style="background-color: white" type="password" id="password" size="10" maxlength="100" name="profile_password" value="{{ user.userprofile.profile_password|default:'' }}">
+
+        <img src="{% static 'imgs/eye.png' %}" id="togglePassword" alt="Toggle Password Visibility" style="height: 24px; cursor: pointer; vertical-align: middle;">
+        <br/>
+
+        <strong>Card password:</strong>
+        <input style="background-color: white" type="password" size="10" maxlength="100" name="card_password" id="cardpassword" value="{{ user.userprofile.card_password|default:'' }}">
+
+        <img src="{% static 'imgs/eye.png' %}" id="eyePassword" alt="Toggle Password Visibility" style="height: 24px; cursor: pointer; vertical-align: middle;">
+        <br/>
+
+        <strong>Card Number:</strong><input style="background-color: white" type="text" id="cardNumber" name="card_number" value="{{ user.userprofile.card_number|default:'' }}" placeholder="4001 1253 **** ****"><br/>
+
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+
+<script src="{% static 'main/updateProfile.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
