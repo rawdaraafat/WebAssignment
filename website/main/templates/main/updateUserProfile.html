@@ -1,38 +1,52 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Books Library - Update Profile</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="bars.css">
-    <link rel="stylesheet" href="books.css">
-    <link rel="stylesheet" href="userProfile.css">
-    <script src="login-signup.js"></script>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/bars.css' %}">
+    <link rel="stylesheet" href="{% static 'main/books.css' %}">
+    <link rel="stylesheet" href="{% static 'main/userProfile.css' %}">
+    <script src="{% static 'main/login-signup.js' %}"></script>
 </head>
 <body>
 {% include 'main/bars.html' %}
 
 <div class="profile-card">
-    <form id="updateProfileForm">
-        <img id="preview" src="imgs/women.png" alt="Profile Picture" style="max-width: 150px; margin-top: 10px;"><br>
-        <input type="file" accept="image/*" id="imageUpload"><br>
+    <form id="updateProfileForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user.userprofile.profile_image %}
+            <img id="preview" src="{{ user.userprofile.profile_image.url }}" alt="Profile Picture" style="max-width: 150px; margin-top: 10px;">
+        {% else %}
+            <img id="preview" src="{% static 'main/imgs/women.png' %}" alt="Profile Picture" style="max-width: 150px; margin-top: 10px;">
+        {% endif %}
+        <input type="file" accept="image/*" id="imageUpload" name="profile_image"><br>
 
-        <strong>Name:</strong> <input style="background-color: white" type="text" size="20" maxlength="100" name="name" value="John Doe"> <br/>
+        <strong>Name:</strong> <input style="background-color: white" type="text" size="20" maxlength="100" name="username" value="{{ user.username }}" readonly> <br/>
 
-        <strong>Age:</strong> <input style="background-color: white" type="number" size="3" maxlength="3" name="age" value="28"> <br/>
+        <strong>Age:</strong> <input style="background-color: white" type="number" size="3" maxlength="3" name="age" value="{{ user.userprofile.age|default:'' }}"> <br/>
 
-        <strong>Location: </strong><input style="background-color: white" type="text" size="10" maxlength="100" name="location" value="New York, USA"> <br/>
+        <strong>Location: </strong><input style="background-color: white" type="text" size="10" maxlength="100" name="location" value="{{ user.userprofile.location|default:'' }}"> <br/>
 
-        <strong>Hobbies:</strong><input style="background-color: white" type="text" size="10" maxlength="100" name="hobbies" value="Coding, Gaming, Traveling"> <br/>
+        <strong>Hobbies:</strong><input style="background-color: white" type="text" size="10" maxlength="100" name="hobbies" value="{{ user.userprofile.hobbies|default:'' }}"> <br/>
 
-        <strong>Profile password:</strong><input style="background-color: white" type="password" id = "password" size="10" maxlength="100" name="profilePassword" placeholder="********"><span><img src="imgs/eye.png"  id = "togglePassword"></span></label><br/>
+        <strong>Profile password:</strong>
+        <input style="background-color: white" type="password" id="password" size="10" maxlength="100" name="profile_password" value="{{ user.userprofile.profile_password|default:'' }}">
+        <img src="{% static 'main/imgs/eye.png' %}" id="togglePassword" alt="Toggle Password Visibility" style="height: 24px; cursor: pointer; vertical-align: middle;">
+        <br/>
 
-        <strong>Card password:</strong><input style="background-color: white" type="password" size="10" maxlength="100" name="cardPassword" id = "cardpassword" placeholder="********"><img src="imgs/eye.png" id = "eyePassword"> <br/>
+        <strong>Card password:</strong>
+        <input style="background-color: white" type="password" size="10" maxlength="100" name="card_password" id="cardpassword" value="{{ user.userprofile.card_password|default:'' }}">
+        <img src="{% static 'main/imgs/eye.png' %}" id="eyePassword" alt="Toggle Password Visibility" style="height: 24px; cursor: pointer; vertical-align: middle;">
+        <br/>
 
-        <strong>Card Number:</strong><input style="background-color: white" type="text" id="cardNumber" placeholder="4001 1253 **** ****" required><button type="submit">Update Profile</button>
+        <strong>Card Number:</strong><input style="background-color: white" type="text" id="cardNumber" name="card_number" value="{{ user.userprofile.card_number|default:'' }}" placeholder="4001 1253 **** ****"><br/>
+
+        <button type="submit">Update Profile</button>
     </form>
-    <script src="updateProfile.js"></script>
 </div>
+<script src="{% static 'main/updateProfile.js' %}"></script>
 </body>
 </html>
 
