@@ -27,9 +27,9 @@
             <p style="font-size: 20px"><strong>Age:</strong> {{ user.userprofile.age|default:"Not set" }}</p>
             <p style="font-size: 20px"><strong>Location:</strong> {{ user.userprofile.location|default:"Not set" }}</p>
             <p style="font-size: 20px"><strong>Hobbies:</strong> {{ user.userprofile.hobbies|default:"Not set" }}</p>
-            <p style="font-size: 20px"><strong>Profile password:</strong> ********</p>
-            <p style="font-size: 20px"><strong>Card password:</strong> ********</p>
-            <p style="font-size: 20px"><strong>Card number:</strong> {{ user.userprofile.card_number|default:"Not set"|slice:":4" }} **** **** ****</p>
+{#            <p style="font-size: 20px"><strong>Profile password:</strong> ********</p>#}
+{#            <p style="font-size: 20px"><strong>Card password:</strong> ********</p>#}
+{#            <p style="font-size: 20px"><strong>Card number:</strong> {{ user.userprofile.card_number|default:"Not set"|slice:":4" }} **** **** ****</p>#}
             <a href="{% url 'main:updateUserProfile' %}">
                 <button>Update Profile</button>
             </a>
