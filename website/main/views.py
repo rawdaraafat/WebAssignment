@@ -162,7 +162,7 @@ def cart(request):
     return render(request, 'main/cart.html')
 
 def admin(request):
-    return render(request, 'main/admin.html')
+    return render(request, 'main/admin dashboard.html')
 
 def bars(request):
     return render(request, 'main/bars.html')
