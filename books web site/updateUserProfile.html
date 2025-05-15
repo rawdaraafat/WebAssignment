@@ -31,6 +31,12 @@
 
         <strong>Hobbies:</strong><input style="background-color: white" type="text" size="10" maxlength="100" name="hobbies" value="{{ user.userprofile.hobbies|default:'' }}"> <br/>
 
+<<<<<<< HEAD
+
+         <strong>Profile password:</strong><input style="background-color: white" type="password" id="password" size="10" maxlength="100" name="profile_password" value="{{ user.userprofile.profile_password|default:'' }}"><span><img src="{% static 'main/imgs/eye.png' %}" id="togglePassword"></span><br/>
+<
+         <strong>Card password:</strong><input style="background-color: white" type="password" size="10" maxlength="100" name="card_password" id="cardpassword" value="{{ user.userprofile.card_password|default:'' }}"><img src="{% static 'main/imgs/eye.png' %}" id="eyePassword"> <br/>
+=======
         <strong>Profile password:</strong>
         <input style="background-color: white" type="password" id="password" size="10" maxlength="100" name="profile_password" value="{{ user.userprofile.profile_password|default:'' }}">
         <img src="{% static 'imgs/eye.png' %}" id="togglePassword" alt="Toggle Password Visibility" style="height: 24px; cursor: pointer; vertical-align: middle;">
@@ -40,13 +46,18 @@
         <input style="background-color: white" type="password" size="10" maxlength="100" name="card_password" id="cardpassword" value="{{ user.userprofile.card_password|default:'' }}">
         <img src="{% static 'imgs/eye.png' %}" id="eyePassword" alt="Toggle Password Visibility" style="height: 24px; cursor: pointer; vertical-align: middle;">
         <br/>
+>>>>>>> 7bf7b0ffc177287b2bcafd3744139866f6392026
 
         <strong>Card Number:</strong><input style="background-color: white" type="text" id="cardNumber" name="card_number" value="{{ user.userprofile.card_number|default:'' }}" placeholder="4001 1253 **** ****"><br/>
 
         <button type="submit">Update Profile</button>
     </form>
 </div>
+<<<<<<< HEAD
+<script src="{% static 'main/updateProfile.js' %}"></script>
+=======
 <script src="{% static 'main/updateProfilFe.js' %}"></script>
+>>>>>>> 7bf7b0ffc177287b2bcafd3744139866f6392026
 </body>
 </html>
 

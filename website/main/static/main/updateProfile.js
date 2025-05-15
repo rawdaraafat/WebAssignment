@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Create FormData object to handle file upload
       const formData = new FormData(form);
 
+
       // Send the form data to the server
       fetch('/profile/update/', {
         method: 'POST',
