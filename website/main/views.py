@@ -5,7 +5,7 @@ from .models import UserProfile, Book
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
-
+from .forms import BookForm
 def home(request):
     return render(request, 'main/home.html')
 
@@ -190,3 +190,21 @@ def updateUserProfile(request):
             return JsonResponse({'success': False, 'message': str(e)})
     else:
         return render(request, 'main/updateUserProfile.html')
+    
+
+def edit_book(request, book_id):
+    if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        return redirect('main:login')  # حماية من الوصول غير المصرح به
+
+    book = get_object_or_404(Book, id=book_id)
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Book updated successfully!')
+            return redirect('main:book_details', book_id=book.id)
+    else:
+        form = BookForm(instance=book)
+
+    return render(request, 'main/edit_book.html', {'form': form, 'book': book})
