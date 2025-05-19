@@ -120,7 +120,7 @@ def profile(request):
         user_type = request.POST.get('userType')
         newsletter = request.POST.get('newsletter') == 'on'
 
-        # تحقق من وجود اسم المستخدم والبريد بدون احتساب المستخدم الحالي
+       
         if User.objects.exclude(pk=request.user.pk).filter(username=username).exists():
             messages.error(request, 'Username already exists!')
             return redirect('main:profile')
@@ -151,6 +151,7 @@ def cart(request):
 
 def admin(request):
     if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to access this page.')
         return redirect('main:login')
     return render(request, 'main/admin_dashboard.html')
 
@@ -181,6 +182,7 @@ def updateUserProfile(request):
 
 def edit_book(request, book_id):
     if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to edit books.')
         return redirect('main:login')
 
     book = get_object_or_404(Book, id=book_id)
