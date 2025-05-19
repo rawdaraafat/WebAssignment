@@ -41,9 +41,11 @@
             <li><a href="{% url 'main:borrow' %}" class="appears" id="borrow"><img src="{% static 'imgs/book.png' %}"></a></li>
             <li><a href="{% url 'main:about' %}" class="appears about"><img src="{% static 'imgs/info.png' %}"></a></li>
             <li><a href="{% url 'main:login' %}" class="appears logout-link a" onclick="clearLocalStorage()">Logout</a></li>
-            <a href="{% url 'main:admin' %}" class="appears admin-icon"  style="display:none;">
+            {% if request.user.is_authenticated and request.user.userprofile.user_type == 'admin' %}
+            <a href="{% url 'main:admin' %}" class="appears admin-icon">
                 <img src="{% static 'imgs/profile.png' %}">
-            </a></li>
+            </a>
+            {% endif %}
         </ul>
     </nav>
 
@@ -96,7 +98,7 @@
 
         // Check if user is logged in and session is still valid
         const isLoggedIn = localStorage.getItem('loggedIn') === 'true' && (now - loginTime < sessionDuration);
-        const userEmail = localStorage.getItem('userEmail'); // Get stored email
+        const userType = localStorage.getItem('userType'); // Get stored user type
 
         if (!isLoggedIn) {
             // Not logged in: show only login, hide everything else
@@ -118,17 +120,11 @@
             aboutIcon?.style.setProperty('display', 'inline-block');
             borrowIcon?.style.setProperty('display', 'inline-block');
 
-            if (userEmail === "admin1@gmail.com") {
-                // Only show admin panel for specific admin
+            // Show admin panel only for admin users
+            if (userType === 'admin') {
                 adminPanelLink?.style.setProperty('display', 'inline-block');
-
             } else {
-                // Regular user or non-specific admin: show user features, hide admin panel
                 adminPanelLink?.style.setProperty('display', 'none');
-                cartIcon?.style.setProperty('display', 'inline-block');
-                favIcon?.style.setProperty('display', 'inline-block');
-                aboutIcon?.style.setProperty('display', 'inline-block');
-                borrowIcon?.style.setProperty('display', 'inline-block');
             }
         }
     }
@@ -158,6 +154,7 @@
             localStorage.removeItem('loggedIn');
             localStorage.removeItem('loginTime');
             localStorage.removeItem('userEmail');
+            localStorage.removeItem('userType');
         }
     </script>
 
@@ -166,6 +163,7 @@
             localStorage.setItem('loggedIn', 'true');
             localStorage.setItem('loginTime', Date.now());
             localStorage.setItem('userEmail', '{{ request.user.email }}');
+            localStorage.setItem('userType', '{{ request.user.userprofile.user_type }}');
         </script>
     {% endif %}
 </body>
