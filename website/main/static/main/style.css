@@ -214,10 +214,19 @@ select option {
     align-self: center;
     width: auto;
     margin-left: 2%;
+    font-weight: bold;
+    background-color: #ba0032;
+}
+.thumbnail button:hover {
+    background-color: #ff0044;
 }
 
 .thumbnail .price {
     align-self: center;
+}
+
+.thumbnail a {
+    align-content: center;
 }
 
 /*other*/

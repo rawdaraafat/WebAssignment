@@ -1,0 +1,35 @@
+{% extends 'main/bars.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h2>Favourite Books</h2>
+        <div class="book-shelf" id="dynamicBookShelf">
+            {% for book in books %}
+            <div class="book">
+            </div>
+            {% empty %}
+            <div class="no-books">
+                <p>You have not added any favourites</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        // Pass the books data from Django to JavaScript
+        const books = [
+            {% for book in books %}
+            {
+                title: "{{ book.title }}",
+                author: "{{ book.author }}",
+                genre: "{{ book.get_genre_display }}",
+                status: "{{ book.get_status_display }}",
+                image: "{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static 'imgs/default-book-cover.jpg' %}{% endif %}",
+                book_id: "{{ book.id }}"
+            },
+            {% endfor %}
+        ];
+    </script>
+    <script src="{% static 'main/favourite.js' %}?v=1.0.2"></script>
+{% endblock %}
+

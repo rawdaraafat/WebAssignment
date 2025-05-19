@@ -29,9 +29,15 @@
             <div class="book-actions d-flex flex-wrap gap-3 mb-3">
                 {% if user.is_authenticated %}
                     <div class="edit-button mb-3">
-                        <button type="button" class="btn btn-primary btn-lg me-3 mb-2 Purchase">Buy</button>
-                        <button type="button" class="btn btn-success btn-lg me-3 mb-2 Borrow">Borrow</button>
-                        <button type="button" class="btn btn-warning btn-lg text-white me-3 mb-2 fav">Add to Favorites</button>
+                        <a href="/cart/{{book.id}}/">
+                            <button type="button" class="btn btn-primary btn-lg me-3 mb-2 Purchase">Buy</button>
+                        </a>
+                        <a href="/borrow/{{book.id}}/">
+                            <button type="button" class="btn btn-success btn-lg me-3 mb-2 Borrow">Borrow</button>
+                        </a>
+                        <a href="/favourite/{{book.id}}/">
+                            <button type="button" class="btn btn-warning btn-lg text-white me-3 mb-2 fav">Add to Favorites</button>
+                        </a>
                     </div>
                 {% else %}
                     <a href="{% url 'main:login' %}" class="btn btn-outline-primary btn-lg mb-2">Login to Buy/Borrow</a>
@@ -42,7 +48,7 @@
 
 </div>
 
-<script>
+<!-- <script>
     // Add event listeners for the buttons
     document.querySelector('.Purchase')?.addEventListener('click', () => {
         let cartBooks = JSON.parse(localStorage.getItem("Cart")) || [];
@@ -85,5 +91,5 @@
             localStorage.setItem("Favorites", JSON.stringify(favs));
         }
     });
-</script>
+</script> -->
 {% endblock %}

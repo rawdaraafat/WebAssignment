@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const loggedIn = localStorage.getItem('loggedIn') === 'true';
     // Add logout functionality to profile icon if logged in
     if (loggedIn && profileIcon) {
         profileIcon.addEventListener('click', handleLogout);

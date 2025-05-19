@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books Library - Cart</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="bars.css">
-    <link rel="stylesheet" href="books.css">
-</head>
+{% extends 'main/bars.html' %}
+{% load static %}
 
-<body>
-    {% include 'main/bars.html' %}
+{% block content %}
     <div id="cart">
         <main class="container" id="cartBooks">
             <h2>Shopping Cart</h2>
-            <div class="thumbnail container">
+            <!-- <div class="thumbnail container">
                 <img src="imgs/harry1.jpg" alt="Book Cover" style="width:100px;height:120px">
                 <div>
                     <p>Harry Potter and the Sorcerer's Stone</p>
                     <span>Author: J.K. Rowling</span>
                 </div>
                 <p class="price">$25.99</p>
-            </div>
-            <div class="thumbnail container">
-<!--                <img src="imgs/harry2.jpg" alt="Book Cover" style="width:100px;height:120px">-->
-<!--                <div>-->
-<!--                    <p>Harry Potter and the Chamber of Secrets</p>-->
-<!--                    <span>Author: J.K. Rowling</span>-->
-<!--                </div>-->
-<!--                <p class="price">$25.99</p>-->
-            </div>
+            </div> -->
         </main>
         <aside class="container" id="cartTotal">
             <h3>
@@ -48,6 +31,21 @@
             <button>Place Order</button>
         </aside>
     </div>
-    <script src="cart.js"></script>
-</body>
-</html>
+    <script>
+        // Pass the books data from Django to JavaScript
+        const cartBooks = [
+            {% for book in books %}
+            {
+                title: "{{ book.title }}",
+                author: "{{ book.author }}",
+                genre: "{{ book.get_genre_display }}",
+                status: "{{ book.get_status_display }}",
+                image: "{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static 'imgs/default-book-cover.jpg' %}{% endif %}",
+                book_id: "{{ book.id }}",
+                price: "{{ book.price }}"
+            },
+            {% endfor %}
+        ];
+    </script>
+    <script src="{% static 'main/cart.js' %}"></script>
+{% endblock %}

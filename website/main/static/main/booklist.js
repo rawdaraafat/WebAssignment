@@ -14,9 +14,9 @@ function displayBooks(books) {
         bookDiv.className = 'book';
 
         // Decide links based on login
-        const purchaseLink = isLoggedIn ? "/book-purchase/" : "/login/";
-        const borrowLink = isLoggedIn ? "/borrow/" : "/login/";
-        const favLink = isLoggedIn ? "/favourite/" : "/login/";
+        const purchaseLink = isLoggedIn ? `/cart/${book.id}` : "/login/";
+        const borrowLink = isLoggedIn ? `/borrow/${book.id}` : "/login/";
+        const favLink = isLoggedIn ? `/favourite/${book.id}` : "/login/";
 
         bookDiv.innerHTML = `
             <div class="book-inner">
@@ -41,35 +41,35 @@ function displayBooks(books) {
         `;
 
         // Only add event listeners if user is logged in
-        if (isLoggedIn) {
-            bookDiv.getElementsByClassName("Purchase")[0].addEventListener("click", (e) => {
-                let cartBooks = JSON.parse(localStorage.getItem("Cart")) || [];
-                if (!(cartBooks.some(elm => elm.title == book.title))) {
-                    cartBooks.push(book);
-                    localStorage.setItem("Cart", JSON.stringify(cartBooks));
-                }
-            });
+        // if (isLoggedIn) {
+        //     bookDiv.getElementsByClassName("Purchase")[0].addEventListener("click", (e) => {
+        //         let cartBooks = JSON.parse(localStorage.getItem("Cart")) || [];
+        //         if (!(cartBooks.some(elm => elm.title == book.title))) {
+        //             cartBooks.push(book);
+        //             localStorage.setItem("Cart", JSON.stringify(cartBooks));
+        //         }
+        //     });
 
-            bookDiv.getElementsByClassName("Borrow")[0].addEventListener("click", (e) => {
-                let borrowed = JSON.parse(localStorage.getItem("Borrowed")) || [];
-                if (!(borrowed.some(elm => elm.title == book.title))) {
-                    let dueDate = new Date();
-                    dueDate.setDate(dueDate.getDate() + 7);
-                    // Don't mutate the original book object
-                    let borrowedBook = { ...book, dueDate: dueDate.toISOString() };
-                    borrowed.push(borrowedBook);
-                    localStorage.setItem("Borrowed", JSON.stringify(borrowed));
-                }
-            });
+        //     bookDiv.getElementsByClassName("Borrow")[0].addEventListener("click", (e) => {
+        //         let borrowed = JSON.parse(localStorage.getItem("Borrowed")) || [];
+        //         if (!(borrowed.some(elm => elm.title == book.title))) {
+        //             let dueDate = new Date();
+        //             dueDate.setDate(dueDate.getDate() + 7);
+        //             // Don't mutate the original book object
+        //             let borrowedBook = { ...book, dueDate: dueDate.toISOString() };
+        //             borrowed.push(borrowedBook);
+        //             localStorage.setItem("Borrowed", JSON.stringify(borrowed));
+        //         }
+        //     });
 
-            bookDiv.getElementsByClassName("fav")[0].addEventListener("click", (e) => {
-                let favs = JSON.parse(localStorage.getItem("Favorites")) || [];
-                if (!(favs.some(elm => elm.title == book.title))) {
-                    favs.push(book);
-                    localStorage.setItem("Favorites", JSON.stringify(favs));
-                }
-            });
-        }
+        //     bookDiv.getElementsByClassName("fav")[0].addEventListener("click", (e) => {
+        //         let favs = JSON.parse(localStorage.getItem("Favorites")) || [];
+        //         if (!(favs.some(elm => elm.title == book.title))) {
+        //             favs.push(book);
+        //             localStorage.setItem("Favorites", JSON.stringify(favs));
+        //         }
+        //     });
+        // }
 
         bookShelf.appendChild(bookDiv);
     });

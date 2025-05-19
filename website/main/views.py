@@ -22,12 +22,45 @@ def book_detail_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'main/book_detail.html', {'book': book})
 
-def favourite(request):
-    return render(request, 'main/favourite.html')
+def add_favourite(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    profile = UserProfile.objects.get(user=request.user)
+    profile.favorite_books.add(book)
+    return redirect('/favourite/')
 
+def favourite(request):
+    profile = UserProfile.objects.get(user=request.user)
+    books = profile.favorite_books.all()
+    return render(request, 'main/favourite.html', {'books': books})
+
+def remove_favourite(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    profile = UserProfile.objects.get(user=request.user)
+    profile.favorite_books.remove(book)
+    return redirect('/favourite/')
+
+def borrow_book(request, book_id):
+    return render(request, 'main/borrow.html')
 
 def borrow(request):
     return render(request, 'main/borrow.html')
+
+def add_to_cart(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    profile = UserProfile.objects.get(user=request.user)
+    profile.cart_books.add(book)
+    return redirect('/cart/')
+
+def cart(request):
+    profile = UserProfile.objects.get(user=request.user)
+    books = profile.cart_books.all()    
+    return render(request, 'main/cart.html', {'books': books})
+
+def remove_from_cart(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    profile = UserProfile.objects.get(user=request.user)
+    profile.cart_books.remove(book)
+    return redirect('/cart/')
 
 def about(request):
     return render(request, 'main/about.html')
@@ -157,9 +190,6 @@ def profile(request):
             return redirect('main:login')
 
     return render(request, 'main/userprofile.html')
-
-def cart(request):
-    return render(request, 'main/cart.html')
 
 def admin(request):
     return render(request, 'main/admin dashboard.html')

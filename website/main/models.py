@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from datetime import timedelta
 
 # Create your models here.
 
@@ -33,6 +34,7 @@ class Book(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=9.99)
 
     def __str__(self):
         return f"{self.title} by {self.author}"
@@ -55,9 +57,23 @@ class UserProfile(models.Model):
     card_number = models.CharField(max_length=20, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    favorite_books = models.ManyToManyField(Book, related_name="favored_by")
+    cart_books = models.ManyToManyField(Book, related_name="added_to_cart")
 
     def __str__(self):
         return f"{self.user.username}'s profile"
+    
+# Keep track of borrowed books
+# class BorrowedBook(models.Model):
+#     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="borrowed_books")
+#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+#     borrow_date = models.DateField(default=now)
+#     due_date = models.DateField()
+
+#     def save(self):
+#         self.due_date = self.borrow_date + timedelta(days=7)
+#         self.book.status = 'borrowed'
+
 
 # Signal to create/update UserProfile when User is created/updated
 @receiver(post_save, sender=User)

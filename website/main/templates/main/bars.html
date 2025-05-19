@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books Library</title>
-    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}?v=1.0.3">
     <link rel="stylesheet" href="{% static 'main/bars.css' %}">
     <link rel="stylesheet" href="{% static 'main/books.css' %}">
     <script src="{% static 'main/login-signup.js' %}"></script>
-    <script src="{% static 'main/bars.js' %}"></script>
+    <script src="{% static 'main/bars.js' %}?v=1.0.1"></script>
 </head>
 <body>
     <nav class="navigation">
@@ -51,7 +51,7 @@
     {% block content %}
     {% endblock %}
 
-    <div class="footer show">
+    <div class="footer">
         <p>digital library that provides electronic access to books with smart recommendations and digital borrowing options.</p>
         <button class="ContactUs" id="menuToggle">
             <img src="{% static 'imgs/telephone-call.png' %}" alt="Contact us">
@@ -135,6 +135,22 @@
 
     // Call on page load
     document.addEventListener('DOMContentLoaded', updateNavBar);
+    </script>
+
+    <script>
+        // Function to toggle the footer contact menu
+        function footerMenu() {
+            const menu = document.getElementById("ContactMenu"); // Footer menu
+            const button = document.getElementById("menuToggle"); // Toggle button
+
+            // Toggle menu visibility on click
+            button.onclick = () => {
+                menu.classList.toggle("show");
+            };
+        }
+
+        // Call on page load
+        document.addEventListener('DOMContentLoaded', footerMenu);
     </script>
 
     <script>
