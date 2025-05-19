@@ -5,16 +5,16 @@ from .models import UserProfile, Book
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
+from .forms import BookForm
 
 def home(request):
     return render(request, 'main/home.html')
 
 def booklist(request):
-    books = Book.objects.all().order_by('-created_at')  # Get all books, newest first
+    books = Book.objects.all().order_by('-created_at')
     return render(request, 'main/booklist.html', {'books': books})
 
 def category_view(request, genre):
-    genre = genre  # Re-convert slugs to original if needed
     books = Book.objects.filter(genre__iexact=genre)
     return render(request, 'main/category.html', {'books': books, 'genre': genre})
 
@@ -71,20 +71,16 @@ def login(request):
         password = request.POST.get('password')
 
         try:
-            # Find user by email
             user = User.objects.get(email=email)
-
-            # Check if the password matches
             if check_password(password, user.password):
                 auth_login(request, user)
                 messages.success(request, 'Login successful!')
                 return redirect('main:home')
             else:
-                messages.error(request,
-                               'Incorrect password. If you forgot your password, use the Reset Password link below.')
+                messages.error(request, 'Incorrect password. Use reset password if forgotten.')
                 return render(request, 'main/login-signup.html')
         except User.DoesNotExist:
-            messages.error(request, 'No account found with this email. Please sign up first.')
+            messages.error(request, 'No account found with this email.')
             return render(request, 'main/login-signup.html')
 
     return render(request, 'main/login-signup.html')
@@ -132,14 +128,11 @@ def signup(request):
                 email=email,
                 password=password
             )
-
-            # Create user profile
             UserProfile.objects.create(
                 user=user,
                 user_type=user_type,
                 newsletter_subscribed=newsletter
             )
-
             auth_login(request, user)
             messages.success(request, 'Account created successfully!')
             return redirect('main:home')
@@ -150,49 +143,48 @@ def signup(request):
     return render(request, 'main/userprofile.html')
 
 def profile(request):
+    if not request.user.is_authenticated:
+        return redirect('main:login')
+
+    user_profile = request.user.userprofile
+
     if request.method == 'POST':
-        # Get form data
         email = request.POST.get('email')
         username = request.POST.get('username')
-        password = request.POST.get('password')
         user_type = request.POST.get('userType')
         newsletter = request.POST.get('newsletter') == 'on'
 
-        # Check if username or email already exists
-        if User.objects.filter(username=username).exists():
+       
+        if User.objects.exclude(pk=request.user.pk).filter(username=username).exists():
             messages.error(request, 'Username already exists!')
-            return redirect('main:login')
-        if User.objects.filter(email=email).exists():
+            return redirect('main:profile')
+        if User.objects.exclude(pk=request.user.pk).filter(email=email).exists():
             messages.error(request, 'Email already registered!')
-            return redirect('main:login')
+            return redirect('main:profile')
 
         try:
-            # Create new user
-            user = User.objects.create_user(
-                username=username,
-                email=email,
-                password=password
-            )
+            user = request.user
+            user.username = username
+            user.email = email
+            user.save()
 
-            # Create user profile
-            user_profile = UserProfile.objects.get(user=user)
             user_profile.user_type = user_type
             user_profile.newsletter_subscribed = newsletter
             user_profile.save()
 
-            # Log the user in using the renamed auth_login function
-            auth_login(request, user)
-
-            messages.success(request, 'Account created successfully!')
-            return redirect('main:home')
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('main:profile')
         except Exception as e:
-            messages.error(request, f'Error creating account: {str(e)}')
-            return redirect('main:login')
+            messages.error(request, f'Error updating profile: {str(e)}')
+            return redirect('main:profile')
 
-    return render(request, 'main/userprofile.html')
+    return render(request, 'main/userprofile.html', {'user_profile': user_profile})
 
 def admin(request):
-    return render(request, 'main/admin dashboard.html')
+    if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to access this page.')
+        return redirect('main:login')
+    return render(request, 'main/admin_dashboard.html')
 
 def bars(request):
     return render(request, 'main/bars.html')
@@ -202,7 +194,6 @@ def updateUserProfile(request):
         try:
             user_profile = request.user.userprofile
 
-            # Update profile fields
             user_profile.age = request.POST.get('age')
             user_profile.location = request.POST.get('location')
             user_profile.hobbies = request.POST.get('hobbies')
@@ -210,7 +201,6 @@ def updateUserProfile(request):
             user_profile.card_password = request.POST.get('card_password')
             user_profile.card_number = request.POST.get('card_number')
 
-            # Handle profile image upload
             if 'profile_image' in request.FILES:
                 user_profile.profile_image = request.FILES['profile_image']
 
@@ -220,3 +210,21 @@ def updateUserProfile(request):
             return JsonResponse({'success': False, 'message': str(e)})
     else:
         return render(request, 'main/updateUserProfile.html')
+
+def edit_book(request, book_id):
+    if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to edit books.')
+        return redirect('main:login')
+
+    book = get_object_or_404(Book, id=book_id)
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Book updated successfully!')
+            return redirect('main:book_details', book_id=book.id)
+    else:
+        form = BookForm(instance=book)
+
+    return render(request, 'main/edit_book.html', {'form': form, 'book': book})

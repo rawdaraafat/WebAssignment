@@ -1,45 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books Library - Book List</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="books.css">
-    <link rel="stylesheet" href="bars.css">
-    <script src="login-signup.js"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'books.css' %}">
+    <link rel="stylesheet" href="{% static 'bars.css' %}">
 </head>
 
 <body>
 <div class="bars"></div>
-<script src="bars.js"></script>
+<script src="{% static 'bars.js' %}"></script>
+
 <div class="container">
     <h1>The Readers' Planet - Book List</h1>
+
     <div class="search-section">
-        <img src="imgs/search.png" style="width: 25px ; height: 25px">
-        <input type="text" id="searchInput" style="background-color: white" placeholder="Search by Title or Author">
+        <img src="{% static 'imgs/search.png' %}" style="width: 25px; height: 25px;">
+        <input type="text" id="searchInput" placeholder="Search by Title or Author">
     </div>
-    <div class="book-shelf" id="dynamicBookShelf"></div>
 
+    <div class="book-shelf" id="dynamicBookShelf">
+        {% for book in books %}
+            <div class="book-card">
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover" class="book-cover">
+                {% else %}
+                    <img src="{% static 'imgs/default-book.png' %}" alt="No Cover" class="book-cover">
+                {% endif %}
+                <h3>{{ book.title }}</h3>
+                <p>by {{ book.author }}</p>
+                <p><strong>Genre:</strong> {{ book.get_genre_display }}</p>
+                <p><strong>Status:</strong> {{ book.get_status_display }}</p>
+                <a href="{% url 'main:book_details' book.id %}" class="details-btn">View Details</a>
+            </div>
+        {% empty %}
+            <p>No books found.</p>
+        {% endfor %}
+    </div>
 </div>
-<script src="booklist.js"></script>
-<script src="search.js"></script>
 
-<!-- JavaScript to Load Book Data from localStorage -->
-<script>
-    function updateUserButtons() {
-        const userRole = localStorage.getItem("userRole");
-        const userButtons = document.querySelectorAll(".user");
-        userButtons.forEach((btn) => {
-            btn.style.display = userRole === "user" ? "inline-block" : "none";
-        });
-    }
-
-    // Ensure the function runs after the books are displayed
-    document.addEventListener("DOMContentLoaded", () => {
-        updateUserButtons();
-    });
-</script>
-
+<!-- Optional: script for future search (JS-based or form-based) -->
 </body>
 </html>

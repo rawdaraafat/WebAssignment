@@ -1,53 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books Library - Book Details</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="bars.css">
-    <link rel="stylesheet" href="books.css">
-    <script src="login-signup.js"></script>
-
+    <title>{{ book.title }} - Book Details</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'bars.css' %}">
+    <link rel="stylesheet" href="{% static 'books.css' %}">
 </head>
 <body>
 <div class="bars"></div>
-<script src="bars.js"></script>
-<div id="bookDetails">
-    <script src="book-details.js"></script>
+<script src="{% static 'bars.js' %}"></script>
 
+<div class="container" id="bookDetails">
+    <h1>{{ book.title }}</h1>
+
+    <div class="book-detail-card">
+        {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-detail-cover">
+        {% else %}
+            <img src="{% static 'imgs/default-book.png' %}" alt="No Cover" class="book-detail-cover">
+        {% endif %}
+
+        <div class="book-info">
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Genre:</strong> {{ book.get_genre_display }}</p>
+            <p><strong>Status:</strong> {{ book.get_status_display }}</p>
+            <p><strong>Published:</strong> {{ book.publication_date }}</p>
+            <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+            <p><strong>Description:</strong><br>{{ book.description }}</p>
+        </div>
+    </div>
+
+    {% if request.user.is_authenticated and request.user.userprofile.user_type == 'admin' %}
+        <a href="{% url 'main:edit_book' book.id %}" class="edit-btn" id="editButton">Edit Book</a>
+    {% endif %}
 </div>
 
-    <!-- JavaScript to Load Book Data from localStorage -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // // Get book data from localStorage
-            // const bookId = 1; // Unique ID for the book
-            // const storedBooks = JSON.parse(localStorage.getItem('books')) || {};
-            // const book = storedBooks[bookId];
-            //
-            // if (book) {
-            //     // Update page content with book data
-            //     document.getElementById('bookTitle').innerText = book.title;
-            //     document.getElementById('category').innerText = `Category: ${book.category}`;
-            //     document.getElementById('author').innerText = `Author: ${book.author}`;
-            //     document.getElementById('description').innerText = `About the book: ${book.description}`;
-            //     document.getElementById('pages').innerText = `Pages: ${book.pages}`;
-            //     document.getElementById('state').innerText = `State: ${book.state}`;
-            // } else {
-            //     console.log('Book data not found in localStorage.');
-            // }
-
-            // Show or hide buttons based on user role
-            const userRole = localStorage.getItem('userRole');
-            const editButton = document.getElementById('editButton');
-
-            if (userRole === 'admin') {
-                editButton.style.display = 'inline-block';
-            } else {
-                editButton.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
