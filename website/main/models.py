@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 from datetime import timedelta
 
 # Create your models here.
@@ -59,20 +60,17 @@ class UserProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     favorite_books = models.ManyToManyField(Book, related_name="favored_by")
     cart_books = models.ManyToManyField(Book, related_name="added_to_cart")
+    borrowed_books = models.ManyToManyField(Book, through='BorrowedBook', related_name="borrowed_by")
 
     def __str__(self):
         return f"{self.user.username}'s profile"
     
 # Keep track of borrowed books
-# class BorrowedBook(models.Model):
-#     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="borrowed_books")
-#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-#     borrow_date = models.DateField(default=now)
-#     due_date = models.DateField()
-
-#     def save(self):
-#         self.due_date = self.borrow_date + timedelta(days=7)
-#         self.book.status = 'borrowed'
+class BorrowedBook(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="borrowed")
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    borrow_date = models.DateTimeField(default=timezone.now)
+    due_date = models.DateTimeField(null=True)
 
 
 # Signal to create/update UserProfile when User is created/updated

@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Books Library - Favourites</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="bars.css">
-  <link rel="stylesheet" href="books.css">
-</head>
+{% extends 'main/bars.html' %}
+{% load static %}
 
-<body>
-  {% include 'main/bars.html' %}
+{% block content %}
   <div class="container">
     <h2>Your Borrowed Books</h2>
     <div class="book-shelf">
-      <div class="book">
-      </div>
-      <div class="book">
-      </div>
+      <!-- This is where the books will be dynamically added  -->
     </div>
   </div>
-  <script src="borrowed.js"></script>
-</body>
-</html>
+  <script>
+        // Pass the books data from Django to JavaScript
+        const books = [
+            {% for record in borrow_records %}
+            {
+                title: "{{ record.book.title }}",
+                author: "{{ record.book.author }}",
+                genre: "{{ record.book.get_genre_display }}",
+                status: "{{ record.book.get_status_display }}",
+                image: "{% if record.book.cover_image %}{{ record.book.cover_image.url }}{% else %}{% static 'imgs/default-book-cover.jpg' %}{% endif %}",
+                book_id: "{{ record.book.id }}",
+                due_date: "{{ record.due_date }}"
+            },
+            {% endfor %}
+        ];
+    </script>
+    <script src="{% static 'main/borrow.js' %}"></script>
+{% endblock %}
 

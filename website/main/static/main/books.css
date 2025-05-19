@@ -93,7 +93,8 @@
 .book-back .Purchase,
 .Borrow
 ,.fav
-,.details{
+,.details,
+.remove{
     width: 175px;
     height: 40px;
     font-size: 16px;
@@ -104,6 +105,13 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.book-back .remove {
+    background-color: #ba0032;
+}
+.book-back .remove:hover {
+    background-color: #ff0044;
 }
 
 .book-back .Purchase:hover {

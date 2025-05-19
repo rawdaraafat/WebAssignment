@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import UserProfile, Book
+from .models import UserProfile, Book, BorrowedBook
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth.hashers import check_password
 from django.http import JsonResponse
 from .forms import BookForm
+from datetime import timedelta
+from django.utils import timezone
 
 def home(request):
     return render(request, 'main/home.html')
@@ -40,10 +42,43 @@ def remove_favourite(request, book_id):
     return redirect('/favourite/')
 
 def borrow_book(request, book_id):
-    return render(request, 'main/borrow.html')
+    book = get_object_or_404(Book, id=book_id)
+    profile = UserProfile.objects.get(user=request.user)
+    isborrowed = BorrowedBook.objects.filter(user=profile, book=book).exists()
+    if not isborrowed and book.status == 'available':
+        borrow_record = BorrowedBook.objects.create(user=profile, book=book)
+        borrow_record.due_date = borrow_record.borrow_date + timedelta(days=7)
+        borrow_record.save()
+        book.quantity -= 1
+        if book.quantity == 0:
+            book.status = 'borrowed'
+        book.save()
+    return redirect('/borrow/')
 
 def borrow(request):
-    return render(request, 'main/borrow.html')
+    profile = UserProfile.objects.get(user=request.user)
+    borrow_records = BorrowedBook.objects.filter(user=profile)
+    for record in borrow_records:
+        if record.due_date < timezone.now():
+            book = record.book
+            book.status = 'available'
+            book.quantity += 1
+            book.save()
+            record.delete()
+    borrow_records = BorrowedBook.objects.filter(user=profile)
+    return render(request, 'main/borrow.html', {'borrow_records': borrow_records})
+
+def return_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    profile = UserProfile.objects.get(user=request.user)
+    isborrowed = BorrowedBook.objects.filter(user=profile, book=book).exists()
+    if isborrowed:
+        borrow_record = BorrowedBook.objects.get(user=profile, book=book)
+        book.quantity += 1
+        book.status = 'available'
+        book.save()
+        borrow_record.delete()
+    return redirect('/borrow/')
 
 def add_to_cart(request, book_id):
     book = get_object_or_404(Book, id=book_id)
