@@ -158,16 +158,26 @@ def signup(request):
             return redirect('main:login')
 
         try:
+            # Create the user
             user = User.objects.create_user(
                 username=username,
                 email=email,
                 password=password
             )
-            UserProfile.objects.create(
-                user=user,
-                user_type=user_type,
-                newsletter_subscribed=newsletter
-            )
+            
+            # Check if UserProfile already exists
+            if not hasattr(user, 'userprofile'):
+                UserProfile.objects.create(
+                    user=user,
+                    user_type=user_type,
+                    newsletter_subscribed=newsletter
+                )
+            else:
+                # Update existing profile
+                user.userprofile.user_type = user_type
+                user.userprofile.newsletter_subscribed = newsletter
+                user.userprofile.save()
+                
             auth_login(request, user)
             messages.success(request, 'Account created successfully!')
             return redirect('main:home')
@@ -175,7 +185,7 @@ def signup(request):
             messages.error(request, f'Error creating account: {str(e)}')
             return redirect('main:login')
 
-    return render(request, 'main/userprofile.html')
+    return render(request, 'main/login-signup.html')
 
 def profile(request):
     if not request.user.is_authenticated:
