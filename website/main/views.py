@@ -226,9 +226,6 @@ def profile(request):
     return render(request, 'main/userprofile.html', {'user_profile': user_profile})
 
 def admin(request):
-    if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
-        messages.error(request, 'You do not have permission to access this page.')
-        return redirect('main:login')
     return render(request, 'main/admin_dashboard.html')
 
 def bars(request):
