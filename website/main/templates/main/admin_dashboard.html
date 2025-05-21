@@ -5,18 +5,21 @@
 <div class="container main-content">
     <h2>Admin Dashboard</h2>
     <div class="admin-actions">
-        <a href="{% url 'main:add_new_book' %}">
-            <button class="btn btn-primary">Add & Delete Books</button>
-        </a>
-        <a href="{% url 'main:book_list' %}">
-            <button class="btn btn-secondary">View Available Books</button>
+        <a href="{% url 'main:addnewbook' %}">
+            <button class="btn btn-primary">Add Books</button>
         </a>
     </div>
 
     <div class="visits mt-4 p-3 border rounded">
         <i class="fa-solid fa-users"></i>
         <h3 style="text-align: center;">Number of visits in the past week</h3>
-        <p style="text-align: center;">20</p>
+        <p style="text-align: center;">27</p>
+    </div>
+
+    <div class="books mt-4 p-3 border rounded">
+        <i class="fa-solid fa-book"></i>
+        <h3 style="text-align: center;">Total Number of Books</h3>
+        <p style="text-align: center;">{{ total_books }}</p>
     </div>
 </div>
 {% endblock %}

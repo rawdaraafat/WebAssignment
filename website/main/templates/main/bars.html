@@ -42,7 +42,7 @@
             <li><a href="{% url 'main:about' %}" class="appears about"><img src="{% static 'imgs/info.png' %}"></a></li>
             <li><a href="{% url 'main:login' %}" class="appears logout-link a" onclick="clearLocalStorage()">Logout</a></li>
             {% if request.user.is_authenticated and request.user.userprofile.user_type == 'admin' %}
-            <a href="{% url 'main:admin' %}" class="appears admin-icon">
+            <a href="{% url 'main:admin_dashboard' %}" class="appears admin-icon">
                 <img src="{% static 'imgs/profile.png' %}">
             </a>
             {% endif %}

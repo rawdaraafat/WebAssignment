@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('showCart', 'false');
             localStorage.setItem('showAdmin', 'true');
             console.log('Logged in as admin');
-            window.location.href = 'admin dashboard.html';
+            window.location.href = 'admin_dashboard.html';
         } else {
             localStorage.setItem('userRole', 'user');
             localStorage.setItem('loggedIn', 'true');

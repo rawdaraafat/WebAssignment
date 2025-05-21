@@ -226,6 +226,14 @@ def profile(request):
     return render(request, 'main/userprofile.html', {'user_profile': user_profile})
 
 def admin(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Please log in to access the admin dashboard.')
+        return redirect('main:login')
+    
+    if not hasattr(request.user, 'userprofile') or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to access the admin dashboard.')
+        return redirect('main:home')
+        
     return render(request, 'main/admin_dashboard.html')
 
 def bars(request):
@@ -270,3 +278,42 @@ def edit_book(request, book_id):
         form = BookForm(instance=book)
 
     return render(request, 'main/edit_book.html', {'form': form, 'book': book})
+
+def admin_dashboard(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Please log in to access the admin dashboard.')
+        return redirect('main:login')
+    
+    if not hasattr(request.user, 'userprofile') or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to access the admin dashboard.')
+        return redirect('main:home')
+    
+    # Get some basic stats for the dashboard
+    total_books = Book.objects.count()
+    available_books = Book.objects.filter(status='available').count()
+    borrowed_books = Book.objects.filter(status='borrowed').count()
+    
+    context = {
+        'total_books': total_books,
+        'available_books': available_books,
+        'borrowed_books': borrowed_books,
+    }
+    
+    return render(request, 'main/admin_dashboard.html', context)
+
+def addnewbook(request):
+    if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to add books.')
+        return redirect('main:login')
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Book added successfully!')
+            return redirect('main:admin_dashboard')
+    else:
+        form = BookForm()
+        books = Book.objects.all().order_by('-created_at')
+
+    return render(request, 'main/addnewbook.html', {'form': form, 'books': books})
