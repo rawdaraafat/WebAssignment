@@ -3,23 +3,23 @@
 
 {% block content %}
 <div class="container main-content">
-    <h2>Admin Dashboard</h2>
+    <h2>Admin Dashboard</h2><br>
     <div class="admin-actions">
         <a href="{% url 'main:addnewbook' %}">
-            <button class="btn btn-primary">Add Books</button>
+            <button style="height: 15% ; width: 20%;font-size: 25px">Add Books</button>
         </a>
     </div>
 
     <div class="visits mt-4 p-3 border rounded">
         <i class="fa-solid fa-users"></i>
-        <h3 style="text-align: center;">Number of visits in the past week</h3>
-        <p style="text-align: center;">27</p>
+        <h3 style="text-align: center;font-size: 25px">Number of visitors</h3>
+        <p style="text-align: center;font-size: 25px">15</p>
     </div>
 
     <div class="books mt-4 p-3 border rounded">
         <i class="fa-solid fa-book"></i>
-        <h3 style="text-align: center;">Total Number of Books</h3>
-        <p style="text-align: center;">{{ total_books }}</p>
+        <h3 style="text-align: center;font-size: 25px">Total Number of Books</h3>
+        <p style="text-align: center;font-size: 25px">{{ total_books }}</p>
     </div>
 </div>
 {% endblock %}
