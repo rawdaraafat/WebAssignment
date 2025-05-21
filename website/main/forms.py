@@ -18,5 +18,5 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = [
             'title', 'author', 'isbn', 'genre', 'description',
-            'publication_date', 'publisher', 'status', 'cover_image', 'quantity', 'price'
+            'publication_date', 'publisher', 'cover_image', 'quantity', 'price'
         ]
