@@ -3,6 +3,31 @@
 
 {% block content %}
 <div class="container">
+    {% if messages %}
+    <div class="messages-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}alert-error{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}" 
+             style="padding: 15px; margin: 10px 0; border-radius: 4px; min-width: 300px;">
+            {{ message|safe }}
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messagesContainer = document.querySelector('.messages-container');
+            if (messagesContainer) {
+                setTimeout(function() {
+                    messagesContainer.style.opacity = '0';
+                    messagesContainer.style.transform = 'translateX(100%)';
+                    setTimeout(function() {
+                        messagesContainer.remove();
+                    }, 300);
+                }, 1000);
+            }
+        });
+    </script>
+    {% endif %}
+
     <div class="book-info">
         <div>
             {% if book.cover_image %}
