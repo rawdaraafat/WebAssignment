@@ -317,3 +317,13 @@ def addnewbook(request):
         books = Book.objects.all().order_by('-created_at')
 
     return render(request, 'main/addnewbook.html', {'form': form, 'books': books})
+
+def delete_book(request, book_id):
+    if not request.user.is_authenticated or request.user.userprofile.user_type != 'admin':
+        messages.error(request, 'You do not have permission to delete books.')
+        return redirect('main:login')
+    
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    messages.success(request, 'Book deleted successfully!')
+    return redirect('main:booklist')

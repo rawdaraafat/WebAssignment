@@ -21,6 +21,7 @@
                 <p><strong>ISBN:</strong> {{ book.isbn }}</p>
                 <p><strong>Status:</strong> <span class="status {{ book.status }}">{{ book.get_status_display }}</span></p>
                 <p><strong>Available Copies:</strong> {{ book.quantity }}</p>
+                <p><strong>Price:</strong> ${{ book.price }}</p>
             </div>
             <div class="book-description">
                 <h3><strong>Description:</strong></h3>
@@ -39,21 +40,20 @@
                             <button type="button" class="btn btn-warning btn-lg text-white me-3 mb-2 fav">Add to Favorites</button>
                         </a>
                         {% if request.user.is_authenticated and request.user.userprofile.user_type == 'admin' %}
-                            <a>
-                                <button class="button"> Delete </button>
+                            <a href="{% url 'main:delete_book' book.id %}">
+                                <button class="btn btn-danger btn-lg me-3 mb-2">Delete</button>
                             </a>
-                            <a>
-                                <button class="button"> Update </button>
+                            <a href="{% url 'main:edit_book' book.id %}">
+                                <button class="btn btn-info btn-lg me-3 mb-2">Update Details</button>
                             </a>
-                    {% endif %}
+                        {% endif %}
                     </div>
                 {% else %}
                     <a href="{% url 'main:login' %}" class="btn btn-outline-primary btn-lg mb-2">Login to Buy/Borrow</a>
                 {% endif %}
             </div>
         </div>
-        </div>
-
+    </div>
 </div>
 
 <!-- <script>

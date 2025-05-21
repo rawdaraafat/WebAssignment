@@ -29,4 +29,5 @@ urlpatterns = [
     path('book/<int:book_id>/', views.book_detail_view, name='book_details'),
     path('booklist/category/<str:genre>/', views.category_view, name='category'),
     path('book/<int:book_id>/edit/', views.edit_book, name='edit_book'),
+    path('book/<int:book_id>/delete/', views.delete_book, name='delete_book'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
